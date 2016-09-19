@@ -2184,7 +2184,7 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.3048" drill="0">
 </class>
 </classes>
 <parts>
