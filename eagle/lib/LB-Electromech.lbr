@@ -186,7 +186,7 @@
 <gate name="G$1" symbol="SWITCH-MOMENTARY-2" x="0" y="0"/>
 </gates>
 <devices>
-<device name="PTS840GKP" package="PTS840G*P">
+<device name="_PTS840GKP" package="PTS840G*P">
 <connects>
 <connect gate="G$1" pin="1" pad="3 4" route="any"/>
 <connect gate="G$1" pin="2" pad="1 2" route="any"/>

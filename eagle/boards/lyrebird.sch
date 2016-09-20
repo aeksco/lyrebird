@@ -2182,67 +2182,6 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 </deviceset>
 </devicesets>
 </library>
-<library name="LB_Electromech">
-<description>Lyrebird library of electromechanical components (i.e. buttons)</description>
-<packages>
-<package name="PTS840G*P">
-<smd name="1" x="-1.8" y="0.725" dx="1.4" dy="1.05" layer="1"/>
-<smd name="2" x="1.8" y="0.725" dx="1.4" dy="1.05" layer="1"/>
-<smd name="3" x="-1.8" y="-0.725" dx="1.4" dy="1.05" layer="1"/>
-<smd name="4" x="1.8" y="-0.725" dx="1.4" dy="1.05" layer="1"/>
-<hole x="0" y="0.9" drill="0.7"/>
-<hole x="0" y="-0.9" drill="0.7"/>
-<wire x1="-1.75" y1="1.45" x2="1.75" y2="1.45" width="0.127" layer="51"/>
-<wire x1="1.75" y1="1.45" x2="1.75" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="1.75" y1="-1.45" x2="0.85" y2="-1.45" width="0.127" layer="21"/>
-<wire x1="0.85" y1="-1.45" x2="-0.85" y2="-1.45" width="0.127" layer="21"/>
-<wire x1="-0.85" y1="-1.45" x2="-1.75" y2="-1.45" width="0.127" layer="21"/>
-<wire x1="-1.75" y1="-1.45" x2="-1.75" y2="1.45" width="0.127" layer="51"/>
-<wire x1="-1.75" y1="1.45" x2="1.75" y2="1.45" width="0.127" layer="21"/>
-<wire x1="1.75" y1="-1.45" x2="0.85" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="0.85" y1="-1.45" x2="-0.85" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="-0.85" y1="-1.45" x2="-1.75" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="-0.85" y1="-1.45" x2="-0.85" y2="-2.3" width="0.127" layer="51"/>
-<wire x1="-0.85" y1="-2.3" x2="0.85" y2="-2.3" width="0.127" layer="51"/>
-<wire x1="0.85" y1="-2.3" x2="0.85" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="-0.85" y1="-1.45" x2="-0.85" y2="-1.1" width="0.127" layer="21"/>
-<wire x1="-0.85" y1="-1.1" x2="0.85" y2="-1.1" width="0.127" layer="21"/>
-<wire x1="0.85" y1="-1.1" x2="0.85" y2="-1.45" width="0.127" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SWITCH-MOMENTARY-2">
-<wire x1="1.905" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="0" x2="1.905" y2="1.27" width="0.254" layer="94"/>
-<circle x="-2.54" y="0" radius="0.127" width="0.4064" layer="94"/>
-<circle x="2.54" y="0" radius="0.127" width="0.4064" layer="94"/>
-<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
-<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="2"/>
-<pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SPST">
-<gates>
-<gate name="G$1" symbol="SWITCH-MOMENTARY-2" x="0" y="0"/>
-</gates>
-<devices>
-<device name="PTS840GKP" package="PTS840G*P">
-<connects>
-<connect gate="G$1" pin="1" pad="3 4" route="any"/>
-<connect gate="G$1" pin="2" pad="1 2" route="any"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PARTNO" value="CKN10514TR-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="LB-Connectors">
 <packages>
 <package name="2X3_SMD_MALE">
@@ -2339,6 +2278,67 @@ Pogo pins- HW-11044</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="LB-Electromech">
+<description>Lyrebird library of electromechanical components (i.e. buttons)</description>
+<packages>
+<package name="PTS840G*P">
+<smd name="1" x="-1.8" y="0.725" dx="1.4" dy="1.05" layer="1"/>
+<smd name="2" x="1.8" y="0.725" dx="1.4" dy="1.05" layer="1"/>
+<smd name="3" x="-1.8" y="-0.725" dx="1.4" dy="1.05" layer="1"/>
+<smd name="4" x="1.8" y="-0.725" dx="1.4" dy="1.05" layer="1"/>
+<hole x="0" y="0.9" drill="0.7"/>
+<hole x="0" y="-0.9" drill="0.7"/>
+<wire x1="-1.75" y1="1.45" x2="1.75" y2="1.45" width="0.127" layer="51"/>
+<wire x1="1.75" y1="1.45" x2="1.75" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="1.75" y1="-1.45" x2="0.85" y2="-1.45" width="0.127" layer="21"/>
+<wire x1="0.85" y1="-1.45" x2="-0.85" y2="-1.45" width="0.127" layer="21"/>
+<wire x1="-0.85" y1="-1.45" x2="-1.75" y2="-1.45" width="0.127" layer="21"/>
+<wire x1="-1.75" y1="-1.45" x2="-1.75" y2="1.45" width="0.127" layer="51"/>
+<wire x1="-1.75" y1="1.45" x2="1.75" y2="1.45" width="0.127" layer="21"/>
+<wire x1="1.75" y1="-1.45" x2="0.85" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="0.85" y1="-1.45" x2="-0.85" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-0.85" y1="-1.45" x2="-1.75" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-0.85" y1="-1.45" x2="-0.85" y2="-2.3" width="0.127" layer="51"/>
+<wire x1="-0.85" y1="-2.3" x2="0.85" y2="-2.3" width="0.127" layer="51"/>
+<wire x1="0.85" y1="-2.3" x2="0.85" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-0.85" y1="-1.45" x2="-0.85" y2="-1.1" width="0.127" layer="21"/>
+<wire x1="-0.85" y1="-1.1" x2="0.85" y2="-1.1" width="0.127" layer="21"/>
+<wire x1="0.85" y1="-1.1" x2="0.85" y2="-1.45" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SWITCH-MOMENTARY-2">
+<wire x1="1.905" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="1.905" y2="1.27" width="0.254" layer="94"/>
+<circle x="-2.54" y="0" radius="0.127" width="0.4064" layer="94"/>
+<circle x="2.54" y="0" radius="0.127" width="0.4064" layer="94"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="2"/>
+<pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SPST" prefix="S">
+<gates>
+<gate name="G$1" symbol="SWITCH-MOMENTARY-2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_PTS840GKP" package="PTS840G*P">
+<connects>
+<connect gate="G$1" pin="1" pad="3 4" route="any"/>
+<connect gate="G$1" pin="2" pad="1 2" route="any"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PARTNO" value="CKN10514TR-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -2393,12 +2393,18 @@ Pogo pins- HW-11044</description>
 <part name="SUPPLY4" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND5" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="4.7k"/>
+<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="4.7k">
+<attribute name="PARTNO" value="RC0402JR-074K7L"/>
+</part>
 <part name="GND6" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="SparkFun-Aesthetics" deviceset="VIN" device=""/>
-<part name="S1" library="LB_Electromech" deviceset="SPST" device="PTS840GKP"/>
+<part name="S1" library="LB-Electromech" deviceset="SPST" device="_PTS840GKP">
+<attribute name="PARTNO" value="PTS840 GKP SMTR LFS"/>
+</part>
 <part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="J2" library="LB-Connectors" deviceset="M03X2" device="SMD_MALE"/>
+<part name="J2" library="LB-Connectors" deviceset="M03X2" device="SMD_MALE">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -2449,12 +2455,16 @@ Pogo pins- HW-11044</description>
 <instance part="SUPPLY4" gate="G$1" x="-66.04" y="33.02"/>
 <instance part="SUPPLY5" gate="G$1" x="30.48" y="-7.62"/>
 <instance part="GND5" gate="1" x="60.96" y="2.54"/>
-<instance part="R3" gate="G$1" x="-22.86" y="48.26" rot="R90"/>
+<instance part="R3" gate="G$1" x="-22.86" y="48.26" rot="R90">
+<attribute name="PARTNO" x="-22.86" y="48.26" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND6" gate="1" x="-38.1" y="27.94"/>
 <instance part="SUPPLY6" gate="G$1" x="-22.86" y="55.88"/>
 <instance part="S1" gate="G$1" x="-30.48" y="38.1" rot="MR0"/>
 <instance part="GND7" gate="1" x="48.26" y="40.64"/>
-<instance part="J2" gate="G$1" x="35.56" y="48.26"/>
+<instance part="J2" gate="G$1" x="35.56" y="48.26">
+<attribute name="BOM" x="35.56" y="48.26" size="1.778" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
