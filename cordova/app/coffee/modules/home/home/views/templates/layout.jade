@@ -1,16 +1,7 @@
-//- .row
-//-   .col-xs-12.text-center
-//-     //- h2 Tack
-//-     //- p.lead Contacts made easy.
-
-//-     h2
-//-       |Lyrebird
-//-       small.text-muted( style='font-weight: 200; margin-left: 1rem;') Impersonate the world.
-
 mixin inputItem(icon, text)
 
   .col-xs-6
-    a.card.card-block( href='#' )
+    a.card.card-block( href='#interface/' + text.toLowerCase() )
       h4.card-title.text-center
         i.fa.fa-fw( class=icon )
         br

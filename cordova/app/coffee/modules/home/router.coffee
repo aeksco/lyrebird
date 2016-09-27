@@ -8,8 +8,6 @@ class HomeRouter extends Backbone.Routing.Router
     '(/)':  'home'
 
   home: ->
-    plugins?.deviceFeedback.haptic()
-    plugins?.deviceFeedback.acoustic()
     new HomeRoute({ container: window.Container })
 
 # # # # #
