@@ -15,9 +15,13 @@ window.LoadingView = require './views/loading'
 
 # # # # #
 
+# Modules
 HomeModule = require './modules/home/router'
 DeviceModule = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
+
+# Services
+BluetoothService = require './services/bluetooth'
 
 # # # # #
 
