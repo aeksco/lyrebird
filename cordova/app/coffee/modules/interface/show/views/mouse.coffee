@@ -2,26 +2,25 @@
 class MouseInterface extends require './abstractInterface'
   template: require './templates/mouse'
 
-  onRender: ->
-    setTimeout( =>
-      @initMouseCanvas()
-    , 500 )
+  events:
+    'touchstart canvas':  'onTouchStart'
+    'touchmove canvas':   'onTouchMove'
 
-  initMouseCanvas: ->
-    canvas = document.getElementById('mouse-canvas')
-    context = canvas.getContext('2d')
+  onTouchStart: (e) ->
+    console.log 'onTouchStart'
 
-    getMousePos = (canvas, evt) ->
-      rect = canvas.getBoundingClientRect()
-      return { x: evt.clientX - (rect.left), y: evt.clientY - (rect.top) }
+  onTouchMove: (e) ->
+    evt = e.originalEvent
 
-    canvas.addEventListener 'mousemove', ((evt) ->
-      mousePos = getMousePos(canvas, evt)
-      message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y
-      # console.log message
+    if evt.touches && evt.touches.length == 1 # Only deal with one finger
+      touch   = evt.touches[0] # Get the information for finger #1
+      touchX  = touch.pageX-touch.target.offsetLeft
+      touchY  = touch.pageY-touch.target.offsetTop
+
+      mousePos = { x: touchX, y: touchY }
+      message = 'Mouse position: ' + Math.round(mousePos.x) + ',' + Math.round(mousePos.y)
       $('.position').text(message)
       return
-    ), false
 
 # # # # #
 
