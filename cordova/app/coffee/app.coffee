@@ -1,6 +1,10 @@
-require './hammer-time.min'
+require './hammer-time.min' # TODO - should be node module
 window.Promise = require 'bluebird'
 
+# # # # #
+
+# Marionette behaviors configuration
+Marionette.Behaviors.behaviorsLookup = -> require './behaviors'
 
 # # # # #
 
