@@ -1,7 +1,10 @@
-mixin remoteKey(icon, keyCode)
+mixin remoteKey(icon, keyCode, text)
   a.card.card-block( data-keycode=keyCode, data-haptic=true )
     h4.card-title.text-center.m-b-0
-      i.fa.fa-fw( class=icon )
+      if icon
+        i.fa.fa-fw( class=icon )
+      if text
+        = text
 
 
 .row
@@ -12,7 +15,10 @@ mixin remoteKey(icon, keyCode)
   .col-xs-4
     +remoteKey('fa-arrow-left', '27')
 
-  .col-xs-4.col-xs-push-4
+  .col-xs-4
+    +remoteKey(null, '32', 'Space')
+
+  .col-xs-4
     +remoteKey('fa-arrow-right', '26')
 
 .row
