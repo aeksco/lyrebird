@@ -1,0 +1,52 @@
+{
+  "name": "tack_cordova",
+  "version": "0.0.1",
+  "description": "Cordova Application for TackRPI",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-livereload": "~3.8.0",
+    "gulp-plumber": "~1.0.1",
+    "gulp-rename": "~1.2.2",
+    "gulp-concat": "~2.5.2",
+    "gulp-webserver": "^0.9.1",
+    "browserify": "~10.2.4",
+    "gulp-browserify": "~0.5.1",
+
+    "jade": "~1.11.0",
+    "gulp-jade": "~1.0.1",
+    "jadeify": "~4.3.0",
+
+    "coffeeify": "~1.1.0",
+    "coffee-script": "~1.9.3",
+    "gulp-coffeelint": "~0.5.0",
+    "gulp-uglify": "~1.2.0",
+
+    "gulp-sass": "~2.0.1",
+    "gulp-scss-lint": "~0.2.0",
+    "gulp-minify-css": "~1.1.6",
+
+    "backbone": "~1.2",
+    "backbone-metal": "^0.6.2",
+    "backbone-relational": "~0.10",
+    "backbone-routing": "^0.2.0",
+    "backbone-validation": "~0.11",
+    "backbone.cocktail": "~0.5",
+    "backbone.marionette": "~2.4",
+    "backbone.paginator": "~2.0",
+    "backbone.radio": "~1.0",
+    "backbone.syphon": "~0.6",
+    "bluebird": "~3.0",
+    "bootstrap": "4.0.0-alpha.2",
+    "bourbon": "~4.2",
+    "font-awesome": "~4.6",
+    "jquery": "~2.1",
+    "marionette-service": "~0.0",
+    "moment": "~2.10",
+    "qs": "~6.0",
+    "tether": "~1.1",
+    "underscore": "~1.8"
+
+  },
+  "author": "Alexander Schwartzberg",
+  "license": "MIT"
+}

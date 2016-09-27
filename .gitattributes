@@ -1,0 +1,5 @@
+# Git will always convert line endings to LF on checkout. You should use this for files that must keep LF endings, even on Windows.
+*.sass text eol=lf
+*.jade text eol=lf
+*.coffee text eol=lf
+*.json text eol=lf
