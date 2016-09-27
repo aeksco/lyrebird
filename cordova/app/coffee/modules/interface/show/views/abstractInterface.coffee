@@ -5,12 +5,7 @@ class AbstractInterfaceView extends Marionette.LayoutView
 
   behaviors:
     Haptic: {}
-
-  events:
-    'click [data-keycode]': 'onKeyClicked'
-
-  onKeyClicked: (e) ->
-    console.log 'SEND KEYCODE: ', @$(e.currentTarget).data('keycode')
+    KeyClick: {}
 
 # # # # #
 

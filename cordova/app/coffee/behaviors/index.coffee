@@ -1,3 +1,4 @@
 # Marionette Behaviors manifest
 module.exports =
-  Haptic: require './haptic'
+  Haptic:   require './haptic'
+  KeyClick: require './keyClick'

@@ -11,13 +11,13 @@ class InterfaceShowRoute extends Backbone.Routing.Route
     @container = options.container
 
   render: (id) ->
-    if id == 'mouse'
-      view = new MouseInterface()
+    switch id
+      when 'mouse'    then view = new Mouse()
+      when 'keyboard' then view = new Keyboard()
+      when 'remote'   then view = new Remote()
+      when 'gamepad'  then view = new Gamepad()
 
-    else if id == 'keyboard'
-      view = new LayoutView({ interface: id })
-
-    @container.show(view) if view
+    @container.show(view)
 
 # # # # #
 

@@ -1,5 +1,4 @@
 
-# TODO - this should be an abstract Interface view class
 class HapticBehavior extends Marionette.Behavior
 
   ui:
