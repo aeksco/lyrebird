@@ -5,6 +5,12 @@ class MouseInterface extends require './abstractInterface'
   events:
     'touchstart canvas':  'onTouchStart'
     'touchmove canvas':   'onTouchMove'
+    'click [data-mouse]': 'onMouseClick'
+
+  onMouseClick: (e) ->
+    el = $(e.currentTarget)
+    clicked = el.data('mouse')
+    console.log 'SEND MOUSE CLICK?: ', clicked
 
   onTouchStart: (e) ->
     console.log 'onTouchStart'
@@ -12,15 +18,26 @@ class MouseInterface extends require './abstractInterface'
   onTouchMove: (e) ->
     evt = e.originalEvent
 
-    if evt.touches && evt.touches.length == 1 # Only deal with one finger
-      touch   = evt.touches[0] # Get the information for finger #1
-      touchX  = touch.pageX-touch.target.offsetLeft
-      touchY  = touch.pageY-touch.target.offsetTop
+    return unless evt.touches
 
-      mousePos = { x: touchX, y: touchY }
-      message = 'Mouse position: ' + Math.round(mousePos.x) + ',' + Math.round(mousePos.y)
-      $('.position').text(message)
-      return
+    # Two-finger scroll
+    if evt.touches.length == 2 # Only deal with one finger
+      mode = 'Scroll to: '
+
+    # Mose move
+    else
+      mode = 'Move to: '
+
+    # Gets position
+    touch   = evt.touches[0] # Get the information for finger #1
+    touchX  = touch.pageX-touch.target.offsetLeft
+    touchY  = touch.pageY-touch.target.offsetTop
+
+    # Outputs position
+    mousePos = { x: touchX, y: touchY }
+    message = mode + Math.round(mousePos.x) + ',' + Math.round(mousePos.y)
+    $('.position').text(message)
+    return
 
 # # # # #
 

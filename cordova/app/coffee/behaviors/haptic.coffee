@@ -2,7 +2,7 @@
 class HapticBehavior extends Marionette.Behavior
 
   ui:
-    'hapticInput': '[data-haptic=true]'
+    'hapticInput': '[data-haptic]'
 
   events:
     'click @ui.hapticInput': 'onHapticClick'
