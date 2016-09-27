@@ -41,8 +41,8 @@ cordova/.node_repl_history
 .DS_Store
 
 # Cordova Platforms
-cordova/platforms/ios
-cordova/platforms/android
+cordova/platforms/ios/*
+cordova/platforms/android/*
 
 # Cordova Plugins
 cordova/plugins/*
