@@ -1,5 +1,5 @@
 
-class MouseInterface extends require './layout'
+class MouseInterface extends require './abstractInterface'
   template: require './templates/mouse'
 
   onRender: ->

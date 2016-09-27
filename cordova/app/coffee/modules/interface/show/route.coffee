@@ -1,5 +1,7 @@
-LayoutView  = require './views/layout'
-MouseInterface = require './views/mouse'
+Mouse    = require './views/mouse'
+Keyboard = require './views/keyboard'
+Remote   = require './views/remote'
+Gamepad  = require './views/gamepad'
 
 # # # # #
 
@@ -12,10 +14,10 @@ class InterfaceShowRoute extends Backbone.Routing.Route
     if id == 'mouse'
       view = new MouseInterface()
 
-    else
+    else if id == 'keyboard'
       view = new LayoutView({ interface: id })
 
-    @container.show(view)
+    @container.show(view) if view
 
 # # # # #
 
