@@ -22,15 +22,10 @@ class InterfaceShowRoute extends Backbone.Routing.Route
 
       # Force bluetooth enabled...
       Backbone.Radio.channel('bluetooth').request('force:enable')
-      .then () =>
-        console.log 'BLUETOOTH ENABLED!'
-        return true
-      .catch (error) =>
-        console.log 'BLUETOOTH CANNOT BE ENABLED'
-        return false
+      .then () => return true
+      .catch (error) => return false
 
   render: (id) ->
-    console.log 'Ever get to render?'
     switch id
       when 'mouse'    then view = new Mouse()
       when 'keyboard' then view = new Keyboard()
