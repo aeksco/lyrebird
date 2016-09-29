@@ -30,9 +30,12 @@ cordova/www/*
 # Dependency directories
 cordova/node_modules
 cordova/jspm_packages
+firmware_updater/node_modules
+firmware_updater/jspm_packages
 
 # Optional npm cache directory
 cordova/.npm
+firmware_updater/.npm
 
 # Optional REPL history
 cordova/.node_repl_history

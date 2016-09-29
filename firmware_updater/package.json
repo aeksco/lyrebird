@@ -1,7 +1,7 @@
 {
-  "name": "lyrebird_cordiva",
+  "name": "tack_cordova",
   "version": "0.0.1",
-  "description": "Cordova Application for Lyrebird",
+  "description": "Cordova Application for TackRPI",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-livereload": "~3.8.0",
