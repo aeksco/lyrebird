@@ -24,30 +24,34 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-cordova/build/Release
-cordova/www/*
+client/mobile/build/Release
+client/mobile/www/*
 
 # Dependency directories
-cordova/node_modules
-cordova/jspm_packages
-firmware_updater/node_modules
-firmware_updater/jspm_packages
+client/mobile/node_modules
+client/mobile/jspm_packages
+client/desktop/node_modules
+client/desktop/jspm_packages
 
 # Optional npm cache directory
-cordova/.npm
-firmware_updater/.npm
+client/mobile/.npm
+client/desktop/.npm
 
 # Optional REPL history
-cordova/.node_repl_history
+client/mobile/.node_repl_history
+
+# Builds
+client/desktop/build
+client/mobile/www
 
 # Mac
 .DS_Store
 
 # Cordova Platforms
-cordova/platforms/ios/*
-cordova/platforms/android/*
+client/mobile/platforms/ios/*
+client/mobile/platforms/android/*
 
 # Cordova Plugins
-cordova/plugins/*
-!cordova/plugins/android.json
-!cordova/plugins/fetch.json
+client/mobile/plugins/*
+!client/mobile/plugins/android.json
+!client/mobile/plugins/fetch.json

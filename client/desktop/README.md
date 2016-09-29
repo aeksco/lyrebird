@@ -1,5 +1,4 @@
-# lyrebird_updater
-
+# lyrebird_desktop
 
 Debug NW.js apps
 http://docs.nwjs.io/en/v0.13.0-beta4/For%20Developers/Building%20NW.js/#build-flavors
