@@ -24,18 +24,4 @@ module.exports = (gulp, paths, plugins) ->
     stream.pipe uglify() if process.env.NODE_ENV == 'prod'
     stream.pipe gulp.dest paths.dest + 'js/'
 
-  # Compiles NodeWebKit package.json manifest
-  gulp.task 'manifest', ->
-
-    writeManifest = ->
-      manifest = require('./app/manifest.coffee')
-      plugins.fs.writeFile( paths.dest + paths.manifest.dest, manifest )
-      # plugins.fs.writeFile(paths.manifest.dest, manifest)
-
-    plugins.fs.exists paths.dest, (exists) ->
-      if exists
-        writeManifest()
-      else
-        plugins.fs.mkdir paths.dest, -> writeManifest()
-
 # # # # #
