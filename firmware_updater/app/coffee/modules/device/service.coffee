@@ -35,8 +35,10 @@ class DeviceService extends Marionette.Service
     return new Promise (resolve,reject) =>
       Backbone.Radio.channel('usb').request('devices') # TODO - USB service should merge into this
       .then (devices) =>
-        @collectionCache.set(devices, { parse: true })
+        @collectionCache.reset(devices, { parse: true })
         return resolve(@collectionCache)
+
+
 
 # # # # #
 

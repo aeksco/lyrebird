@@ -1,10 +1,9 @@
 window.Promise = require 'bluebird'
 
-Marionette = require 'backbone.marionette'
-
 # # # # #
 
 # Marionette behaviors configuration
+Marionette = require 'backbone.marionette'
 Marionette.Behaviors.behaviorsLookup = -> require './behaviors'
 
 # # # # #
@@ -31,14 +30,3 @@ UsbService = require './services/usb'
 $(document).on 'ready', =>
   console.log 'Document Ready'
   Backbone.history.start()
-
-  # lb = '<br><br>'
-
-  # Backbone.Radio.channel('usb').request('devices')
-  # .then (devices) =>
-  #   $('body').append('GOT USB DEVICES\n')
-  #   $('body').append(lb)
-
-  #   for d in devices
-  #     $('body').append( JSON.stringify(d, null, 2) )
-  #     $('body').append(lb)
