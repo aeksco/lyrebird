@@ -43,19 +43,31 @@
 
 	/* Macros: */
 		/** Endpoint address of the CDC device-to-host notification IN endpoint. */
-		#define CDC_NOTIFICATION_EPADDR        (ENDPOINT_DIR_IN  | 2)
+		#define CDC_NOTIFICATION_EPADDR        (ENDPOINT_DIR_IN  | 1)
 
 		/** Endpoint address of the CDC device-to-host data IN endpoint. */
-		#define CDC_TX_EPADDR                  (ENDPOINT_DIR_IN  | 3)
+		#define CDC_TX_EPADDR                  (ENDPOINT_DIR_IN  | 2)
 
 		/** Endpoint address of the CDC host-to-device data OUT endpoint. */
-		#define CDC_RX_EPADDR                  (ENDPOINT_DIR_OUT | 4)
+		#define CDC_RX_EPADDR                  (ENDPOINT_DIR_OUT | 3)
 
 		/** Size in bytes of the CDC device-to-host notification IN endpoint. */
 		#define CDC_NOTIFICATION_EPSIZE        8
 
 		/** Size in bytes of the CDC data IN and OUT endpoints. */
 		#define CDC_TXRX_EPSIZE                16
+
+		/** Endpoint address of the Keyboard HID reporting IN endpoint. */
+		#define KEYBOARD_EPADDR               (ENDPOINT_DIR_IN | 4)
+
+		/** Endpoint address of the Mouse HID reporting IN endpoint. */
+		#define MOUSE_EPADDR                  (ENDPOINT_DIR_IN | 5)
+
+		/** Size in bytes of each of the HID reporting IN endpoints. */
+		#define KEYBOARD_EPSIZE                8
+
+		/** Size in bytes of the Mouse HID reporting IN endpoint. */
+		#define MOUSE_EPSIZE                   8
 
 	/* Type Defines: */
 		/** Type define for the device configuration descriptor structure. This must be defined in the
@@ -67,6 +79,7 @@
 			USB_Descriptor_Configuration_Header_t    Config;
 
 			// CDC Control Interface
+			USB_Descriptor_Interface_Association_t   CDC_IAD;
 			USB_Descriptor_Interface_t               CDC_CCI_Interface;
 			USB_CDC_Descriptor_FunctionalHeader_t    CDC_Functional_Header;
 			USB_CDC_Descriptor_FunctionalACM_t       CDC_Functional_ACM;
@@ -77,6 +90,16 @@
 			USB_Descriptor_Interface_t               CDC_DCI_Interface;
 			USB_Descriptor_Endpoint_t                CDC_DataOutEndpoint;
 			USB_Descriptor_Endpoint_t                CDC_DataInEndpoint;
+
+			// Mouse HID Interface
+			USB_Descriptor_Interface_t               HID_MouseInterface;
+			USB_HID_Descriptor_HID_t                 HID_MouseHID;
+	        USB_Descriptor_Endpoint_t                HID_MouseReportINEndpoint;
+
+			// Keyboard HID Interface
+			USB_Descriptor_Interface_t               HID_KeyboardInterface;
+			USB_HID_Descriptor_HID_t                 HID_KeyboardHID;
+	        USB_Descriptor_Endpoint_t                HID_KeyboardReportINEndpoint;
 		} USB_Descriptor_Configuration_t;
 
 		/** Enum for the device interface descriptor IDs within the device. Each interface descriptor
@@ -85,8 +108,10 @@
 		 */
 		enum InterfaceDescriptors_t
 		{
-			INTERFACE_ID_CDC_CCI = 0, /**< CDC CCI interface descriptor ID */
-			INTERFACE_ID_CDC_DCI = 1, /**< CDC DCI interface descriptor ID */
+			INTERFACE_ID_CDC_CCI  = 0, /**< CDC CCI interface descriptor ID */
+			INTERFACE_ID_CDC_DCI  = 1, /**< CDC DCI interface descriptor ID */
+			INTERFACE_ID_Mouse    = 2, /**< Mouse interface descriptor ID */
+			INTERFACE_ID_Keyboard = 3, /**< Keyboard interface descriptor ID */
 		};
 
 		/** Enum for the device string descriptor IDs within the device. Each string descriptor should
@@ -98,6 +123,8 @@
 			STRING_ID_Language     = 0, /**< Supported Languages string descriptor ID (must be zero) */
 			STRING_ID_Manufacturer = 1, /**< Manufacturer string ID */
 			STRING_ID_Product      = 2, /**< Product string ID */
+			STRING_ID_MouseStr     = 3,
+			STRING_ID_KeyboardStr  = 4
 		};
 
 	/* Function Prototypes: */
