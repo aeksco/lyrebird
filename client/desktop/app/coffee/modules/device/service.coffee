@@ -4,11 +4,6 @@ DeviceCollection = require './collection'
 
 class DeviceService extends Marionette.Service
 
-  # Temporary work-around while Chromium source downloads
-  logJson: (obj) ->
-    $('body').append(JSON.stringify(obj, null, 2))
-    $('body').append('<br><br>')
-
   radioRequests:
     'device model':       'model'
     'device collection':  'collection'
@@ -19,11 +14,9 @@ class DeviceService extends Marionette.Service
     chrome.usb.onDeviceRemoved.addListener( (device) => @onDeviceRemoved(device) )
 
   onDeviceAdded: (device) ->
-    # @logJson({ added: true, d: device })
     @collectionCache.add(device, { parse: true })
 
   onDeviceRemoved: (device) ->
-    # @logJson({ removed: true, d: device })
     @collectionCache.remove(device.device)
 
   model: (id) ->
@@ -33,8 +26,14 @@ class DeviceService extends Marionette.Service
 
   collection: ->
     return new Promise (resolve,reject) =>
+
+      # Return cached
+      return resolve(@collectionCache) if @parsed
+
+      # Fetch devices
       Backbone.Radio.channel('usb').request('devices') # TODO - USB service should merge into this
       .then (devices) =>
+        @parsed = true
         @collectionCache.reset(devices, { parse: true })
         return resolve(@collectionCache)
 
