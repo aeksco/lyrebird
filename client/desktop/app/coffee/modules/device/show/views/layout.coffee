@@ -1,10 +1,20 @@
 
+# # # # #
+
+# TODO - abstract into separate library
+
 # Chrome usbPromise library
 chrome.usb.promise = {}
+
 
 chrome.usb.promise.openDevice = (device) ->
   return new Promise (resolve, reject) ->
     chrome.usb.openDevice(device, (connectionHandle) -> resolve(connectionHandle))
+
+
+chrome.usb.promise.claimInterface = (connectionHandle, interfaceNumber) ->
+  return new Promise (resolve, reject) ->
+    chrome.usb.claimInterface(connectionHandle, interfaceNumber, -> resolve() )
 
 # # # # #
 
@@ -38,7 +48,8 @@ class DeviceShowLayout extends Marionette.LayoutView
 
       # Claim interface
       interfaceNumber = 0
-      chrome.usb.claimInterface connectionHandle, interfaceNumber, () ->
+      chrome.usb.promise.claimInterface(connectionHandle, interfaceNumber)
+      .then () ->
         console.log 'Interface claimed!'
 
         # Interrupt Transfer Options
