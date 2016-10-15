@@ -38,8 +38,6 @@ class DeviceService extends Marionette.Service
         @collectionCache.reset(devices, { parse: true })
         return resolve(@collectionCache)
 
-
-
 # # # # #
 
 module.exports = new DeviceService()

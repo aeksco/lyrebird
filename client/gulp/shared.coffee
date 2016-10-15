@@ -1,3 +1,4 @@
+
 # TODO - abstract into aeksco/gulp_tasks
 module.exports = (gulp, paths, plugins) ->
 
@@ -23,5 +24,12 @@ module.exports = (gulp, paths, plugins) ->
 
     stream.pipe uglify() if process.env.NODE_ENV == 'prod'
     stream.pipe gulp.dest paths.dest + 'js/'
+
+  # Bundle server task
+  gulp.task 'server_bundle', ->
+    gulp.src(paths.src + paths.server_bundle.src)
+      .pipe plugins.plumber()
+      .pipe plugins.coffee({bare: true})
+      .pipe gulp.dest paths.dest + 'js/'
 
 # # # # #

@@ -19,10 +19,19 @@ paths =
     src: 'coffee/app.coffee'
     dest: 'app.js'
 
+  server_bundle:
+    src: 'coffee/server.coffee'
+    dest: 'server.js'
+
+  sass:
+    src:  'sass/app.sass'
+    dest: 'app.css'
+
   concat:
     dest: 'vendor.js'
     src: [
       nodeModules + 'jquery/dist/jquery.js'
+      nodeModules + 'bluebird/js/browser/bluebird.js'
       nodeModules + 'underscore/underscore.js'
       nodeModules + 'backbone/backbone.js'
       nodeModules + 'backbone.babysitter/lib/backbone.babysitter.js'
@@ -45,7 +54,7 @@ require('gulp_tasks/gulp/tasks/env')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/copy')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/sass')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/jade')(gulp, paths, plugins)
-require('gulp_tasks/gulp/tasks/watch')(gulp, paths, plugins)
+# require('gulp_tasks/gulp/tasks/watch')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/webserver')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/noop')(gulp, paths, plugins)
 require('../gulp/shared')(gulp, paths, plugins)
@@ -66,11 +75,19 @@ gulp.task 'manifest', ->
     else
       plugins.fs.mkdir paths.dest, -> writeManifest()
 
+# Watch Task
+gulp.task 'watch', ->
+  gulp.watch paths.src + '**/*.coffee',  ['bundle', 'server_bundle']
+  gulp.watch paths.src + '**/*.jade',    ['bundle', 'server_bundle', 'jade']
+  gulp.watch paths.src + '**/*.sass',    ['sass']
+
+# # # # #
+
 # Build tasks
 gulp.task 'default', ['dev']
 
 gulp.task 'dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy', 'sass', 'jade', 'manifest', 'bundle', 'watch', 'webserver')
+  plugins.runSequence.use(gulp)('env_dev', 'sass', 'jade', 'manifest', 'bundle', 'server_bundle', 'watch', 'webserver')
 
 gulp.task 'release', =>
   plugins.runSequence.use(gulp)('env_prod', 'copy', 'sass', 'jade', 'manifest', => console.log 'release completed.' )

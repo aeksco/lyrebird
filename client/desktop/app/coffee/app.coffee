@@ -1,14 +1,14 @@
-window.Promise = require 'bluebird'
+# TODO - window configuration?
+# window.Promise = require 'bluebird'
+# window.$ = window.jQuery = require 'jquery'
 
-# # # # #
-
-# Marionette behaviors configuration
-Marionette = require 'backbone.marionette'
+# TODO -  Marionette configuration
+# Marionette = require 'backbone.marionette'
 Marionette.Behaviors.behaviorsLookup = -> require './behaviors'
 
 # # # # #
 
-# Window configuration
+# TODO - move elsewhere
 window.Container = require './config/layout'
 window.LoadingView = require './views/loading'
 
@@ -22,11 +22,12 @@ DeviceModule = require './modules/device/router'
 UsbService = require './services/usb'
 
 # Dev tools
-# gui = window.require('nw.gui')
-# gui.Window.get().showDevTools()
+gui = window.require('nw.gui')
+gui.Window.get().showDevTools()
 
 # # # # #
 
+# console.log('MEH')
 $(document).on 'ready', =>
   console.log 'Document Ready'
   Backbone.history.start()

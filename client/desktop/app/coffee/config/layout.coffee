@@ -1,9 +1,11 @@
 
-class LayoutView extends Marionette.LayoutView
+class AppLayout extends Marionette.LayoutView
   el: 'body'
 
   regions:
     main: '[data-region=main]'
 
-layout = new LayoutView()
+# # # # #
+
+layout = new AppLayout()
 module.exports = layout.main
