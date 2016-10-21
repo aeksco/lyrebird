@@ -26,7 +26,7 @@ void EnterBootloader()
  *  passed to all CDC Class driver functions, so that multiple instances of the same class
  *  within a device can be differentiated from one another.
  */
-USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
+/*USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 	{
 		.Config =
 			{
@@ -50,7 +50,7 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 						.Banks            = 1,
 					},
 			},
-	};
+	};*/
 
 /** Buffer to hold the previously generated Mouse HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevMouseHIDReportBuffer[sizeof(USB_MouseReport_Data_t)];
@@ -112,31 +112,32 @@ int main(void)
 {
 	SetupHardware();
 
-	/* Create a regular character stream for the interface so that it can be used with the stdio.h functions */
-	CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
-
-	Serial_CreateStream(&UARTSerialStream);
-	
-	
 	GlobalInterruptEnable();
+
+	/* Create a regular character stream for the interface so that it can be used with the stdio.h functions */
+	// CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
+
+	// Serial_CreateStream(&UARTSerialStream);
+	
+	
 
 	for (;;)
 	{
-		int charIn;
-		while ((charIn = fgetc(&USBSerialStream)) != EOF)
-		{
-			fputc(charIn, &UARTSerialStream);
-			if (charIn == '~')
-			{
-				EnterBootloader();
-			}
-		}
-		while ((charIn = fgetc(&UARTSerialStream)) != EOF)
-		{
-			fputc(charIn, &USBSerialStream);
-		}
+		// int charIn;
+		// while ((charIn = fgetc(&USBSerialStream)) != EOF)
+		// {
+			// fputc(charIn, &USBSerialStream);
+			// if (charIn == '~')
+			// {
+				// EnterBootloader();
+			// }
+		// }
+		//while ((charIn = fgetc(&UARTSerialStream)) != EOF)
+		//{
+		//	fputc(charIn, &USBSerialStream);
+		//}
 
-		CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
+		// CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
 		HID_Device_USBTask(&Mouse_HID_Interface);
 		HID_Device_USBTask(&Keyboard_HID_Interface);
 		USB_USBTask();
@@ -155,7 +156,7 @@ void SetupHardware(void)
 
 	/* Hardware Initialization */
 	USB_Init();
-	Serial_Init(9600, false);
+	// Serial_Init(9600, false);
 	
 	DDRB  |= 0b01000000;
 	PORTB |= 0b01000000;
@@ -170,7 +171,7 @@ void EVENT_USB_Device_Disconnect(void) {}
 /** Event handler for the library USB Configuration Changed event. */
 void EVENT_USB_Device_ConfigurationChanged(void)
 {
-	CDC_Device_ConfigureEndpoints(&VirtualSerial_CDC_Interface);
+	// CDC_Device_ConfigureEndpoints(&VirtualSerial_CDC_Interface);
 	HID_Device_ConfigureEndpoints(&Mouse_HID_Interface);
 	HID_Device_ConfigureEndpoints(&Keyboard_HID_Interface);
 
@@ -187,7 +188,7 @@ void EVENT_USB_Device_StartOfFrame(void)
 /** Event handler for the library USB Control Request reception event. */
 void EVENT_USB_Device_ControlRequest(void)
 {
-	CDC_Device_ProcessControlRequest(&VirtualSerial_CDC_Interface);
+	// CDC_Device_ProcessControlRequest(&VirtualSerial_CDC_Interface);
 	HID_Device_ProcessControlRequest(&Mouse_HID_Interface);
 	HID_Device_ProcessControlRequest(&Keyboard_HID_Interface);
 }
@@ -197,15 +198,15 @@ void EVENT_USB_Device_ControlRequest(void)
  *
  *  \param[in] CDCInterfaceInfo  Pointer to the CDC class interface configuration structure being referenced
  */
-void EVENT_CDC_Device_ControLineStateChanged(USB_ClassInfo_CDC_Device_t *const CDCInterfaceInfo)
-{
-	/* You can get changes to the virtual CDC lines in this callback; a common
-	   use-case is to use the Data Terminal Ready (DTR) flag to enable and
-	   disable CDC communications in your application when set to avoid the
-	   application blocking while waiting for a host to become ready and read
-	   in the pending data from the USB endpoints.
-	*/
-}
+// void EVENT_CDC_Device_ControLineStateChanged(USB_ClassInfo_CDC_Device_t *const CDCInterfaceInfo)
+// {
+	// /* You can get changes to the virtual CDC lines in this callback; a common
+	   // use-case is to use the Data Terminal Ready (DTR) flag to enable and
+	   // disable CDC communications in your application when set to avoid the
+	   // application blocking while waiting for a host to become ready and read
+	   // in the pending data from the USB endpoints.
+	// */
+// }
 
 /** HID class driver callback function for the creation of HID reports to the host.
  *
@@ -223,20 +224,20 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
                                          void* ReportData,
                                          uint16_t* const ReportSize)
 {
-	USB_MouseReport_Data_t*      MouseReport;
-	USB_KeyboardReport_Data_t*   KeyboardReport;
-	switch ((HIDInterfaceInfo -> Config).InterfaceNumber)
+	if (HIDInterfaceInfo == &Keyboard_HID_Interface)
 	{
-		case INTERFACE_ID_Mouse:
-			MouseReport = (USB_MouseReport_Data_t*)ReportData;
+			USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
+			*ReportSize = sizeof(USB_KeyboardReport_Data_t);
+			return false;
+	}
+	else if (HIDInterfaceInfo == &Mouse_HID_Interface)
+	{
+			USB_MouseReport_Data_t* MouseReport = (USB_MouseReport_Data_t*)ReportData;
 			*ReportSize = sizeof(USB_MouseReport_Data_t);
 			return true;
-		case INTERFACE_ID_Keyboard:
-			KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
-			*ReportSize = sizeof(USB_KeyboardReport_Data_t);
-			return true;
 	}
-
+	
+	return true;
 }
 
 /** HID class driver callback function for the processing of HID reports from the host.
