@@ -15,6 +15,7 @@ class DeviceService extends Marionette.Service
     return new Promise (resolve,reject) =>
       resolve(@collectionCache.get(id))
 
+  # TODO - a lot of this should be abstracted into the bluetooth service
   collection: ->
 
     return new Promise (resolve,reject) =>
@@ -29,6 +30,9 @@ class DeviceService extends Marionette.Service
         # console.log 'FOUND DEVICE'
         # console.log JSON.stringify(device)
         foundDevices.push device
+        console.log 'FOUND: ', device
+        console.log String.fromCharCode.apply(null, new Uint8Array(device.advertising))
+        console.log '# # # # # # '
         @collectionCache.add device
 
       # Error callback

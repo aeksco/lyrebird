@@ -18,6 +18,10 @@ class DeviceShowLayout extends Marionette.LayoutView
       console.log 'isConnected?'
       console.log isConnected
 
+    .catch (err) =>
+      console.log 'CATCH'
+      console.log err
+
     #   # @model.connect()
     #   # .then (success) =>
     #   #   console.log 'Connected?'
