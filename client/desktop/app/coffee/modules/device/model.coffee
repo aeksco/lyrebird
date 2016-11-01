@@ -47,13 +47,25 @@ class DeviceModel extends Backbone.Model
       data:       {} # TODO - what is obj?
 
     # Write firmware..?
-    chrome.usb.interruptTransfer @get('handle'), interruptTransferOpts, (result) ->
-      console.log 'InterruptTransfer complete'
-      console.log result
+    return new Promise (resolve, reject) =>
+      chrome.usb.interruptTransfer @get('handle'), interruptTransferOpts, (result) ->
+        console.log 'InterruptTransfer complete'
+        resolve(result)
 
   loadFirmware: ->
     console.log 'LOAD FIRMWARE'
-    console.log window.global.firmware
+    # console.log window.global.firmware
+
+    firmware = window.global.firmware
+
+    bufferPromise = Promise.reduce packets, (res,packet) =>
+            @_sendCommand(packet,false).then => Promise.delay(1000) if i is 1
+        , null
+
+    for line in firmware
+      console.log line
+
+  # # # # #
 
   controlTransfer: ->
     # # Control Transfer Options
