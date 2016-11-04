@@ -2,16 +2,16 @@
 class DeviceModel extends Backbone.Model
 
   connect: ->
-    Backbone.Radio.channel('bluetooth').request('connect', @id)
+    Backbone.Radio.channel('bluetooth').request('connect', @)
 
   disconnect: ->
-    Backbone.Radio.channel('bluetooth').request('disconnect', @id)
+    Backbone.Radio.channel('bluetooth').request('disconnect', @)
 
   isConnected: ->
-    Backbone.Radio.channel('bluetooth').request('is:connected', @id)
+    Backbone.Radio.channel('bluetooth').request('is:connected', @)
 
   readRSSI: ->
-    Backbone.Radio.channel('bluetooth').request('read:rssi', @id)
+    Backbone.Radio.channel('bluetooth').request('read:rssi', @)
 
 # # # # #
 
