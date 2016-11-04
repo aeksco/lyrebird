@@ -10,6 +10,9 @@ class DeviceModel extends Backbone.Model
   isConnected: ->
     Backbone.Radio.channel('bluetooth').request('is:connected', @id)
 
+  readRSSI: ->
+    Backbone.Radio.channel('bluetooth').request('read:rssi', @id)
+
 # # # # #
 
 module.exports = DeviceModel

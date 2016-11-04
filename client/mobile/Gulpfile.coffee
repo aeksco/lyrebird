@@ -46,6 +46,12 @@ require('gulp_tasks/gulp/tasks/webserver')(gulp, paths, plugins)
 require('gulp_tasks/gulp/tasks/noop')(gulp, paths, plugins)
 require('../gulp/shared')(gulp, paths, plugins)
 
+# Watch Task
+gulp.task 'watch', ->
+  gulp.watch paths.src + '**/*.coffee',  ['bundle']
+  gulp.watch paths.src + '**/*.jade',    ['bundle', 'jade']
+  gulp.watch paths.src + '**/*.sass',    ['sass']
+
 # # # # #
 
 # Build tasks

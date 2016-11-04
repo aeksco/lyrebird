@@ -3,9 +3,14 @@
     h4 Device Show
 
   .col-xs-12
-    a.btn.btn-primary-outline( data-click='connect' ) Connect
+    span.label.m-r-1( data-display='connection' )
+    span.label.label-primary( data-display='rssi' ) RSSI: N/A
 
-  .col-xs-12.json-viewer
+  .col-xs-12.m-t-1
+    a.btn.btn-primary-outline( data-click='connect' ) Connect
+    a.btn.btn-primary-outline( data-click='disconnect' ) Disconnect
+
+  .col-xs-12.json-viewer.m-t-1
     pre
       for each in json
         span= each

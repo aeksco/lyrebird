@@ -30,9 +30,9 @@ class DeviceService extends Marionette.Service
         # console.log 'FOUND DEVICE'
         # console.log JSON.stringify(device)
         foundDevices.push device
-        console.log 'FOUND: ', device
-        console.log String.fromCharCode.apply(null, new Uint8Array(device.advertising))
-        console.log '# # # # # # '
+        # console.log 'FOUND: ', device
+        # console.log String.fromCharCode.apply(null, new Uint8Array(device.advertising))
+        # console.log '# # # # # # '
         @collectionCache.add device
 
       # Error callback

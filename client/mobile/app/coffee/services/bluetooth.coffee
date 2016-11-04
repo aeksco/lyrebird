@@ -7,6 +7,7 @@ class BluetoothService extends Marionette.Service
     'bluetooth connect':      'connect'
     'bluetooth disconnect':   'disconnect'
     'bluetooth is:connected': 'isConnected'
+    'bluetooth read:rssi':    'readRSSI'
 
   isEnabled: ->
     return new Promise (resolve, reject) =>
@@ -20,18 +21,11 @@ class BluetoothService extends Marionette.Service
       failure = -> return reject(new Error('Bluetooth cannot be auto-enabled'))
       ble.enable(success, failure)
 
+  # Connect to device
   connect: (device_id) ->
-    console.log 'attempting to connect...'
     return new Promise (resolve, reject) =>
-      success = (dev) ->
-        console.log 'success'
-        console.log dev
-        return resolve(true)
-
-      failure = (err) ->
-        console.log 'ERROR'
-        console.log err
-        return reject(new Error('Cannot connect to bluetooth device'))
+      success = (dev) -> return resolve(dev)
+      failure = (err) -> return reject(new Error(err))
       ble.connect(device_id, success, failure)
 
   disconnect: (device_id) ->
@@ -47,6 +41,12 @@ class BluetoothService extends Marionette.Service
       success = -> return resolve(true)
       failure = -> return reject(new Error('Device is not connected'))
       ble.isConnected(device_id, success, failure)
+
+  readRSSI: (device_id) ->
+    return new Promise (resolve, reject) =>
+      success = (dev) -> return resolve(dev)
+      failure = (err) -> return reject(new Error(err))
+      ble.readRSSI(device_id, success, failure)
 
 # # # # #
 
