@@ -49,9 +49,9 @@ class BluetoothService extends Marionette.Service
 
   readRSSI: (device) ->
     return new Promise (resolve, reject) =>
-      success = (dev) ->
-        device.set(dev)
-        return resolve(dev)
+      success = (rssi) ->
+        device.set('rssi', rssi)
+        return resolve(device)
       failure = (err) -> return reject(new Error(err))
       ble.readRSSI(device.id, success, failure)
 
