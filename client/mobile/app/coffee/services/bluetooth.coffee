@@ -24,16 +24,21 @@ class BluetoothService extends Marionette.Service
   # Connect to device
   connect: (device) ->
     return new Promise (resolve, reject) =>
-      success = (dev) -> return resolve(dev)
+      success = (dev) ->
+        device.set(dev)
+        return resolve(dev)
       failure = (err) -> return reject(new Error(err))
       ble.connect(device.id, success, failure)
 
   disconnect: (device) ->
     console.log 'attempting to disconnect...'
-    # return new Promise (resolve, reject) =>
-    #   success = -> return resolve(true)
-    #   failure = -> return reject(new Error('Cannot disconnect from bluetooth device'))
-    #   ble.disconnect(success, failure)
+    console.log device
+    return new Promise (resolve, reject) =>
+      success = (dev) ->
+        device.set(dev)
+        return resolve(dev)
+      failure = -> return reject(new Error('Cannot disconnect from bluetooth device'))
+      ble.disconnect(device.id, success, failure)
 
   isConnected: (device) ->
     console.log 'attempting to check connection...'
@@ -44,7 +49,9 @@ class BluetoothService extends Marionette.Service
 
   readRSSI: (device) ->
     return new Promise (resolve, reject) =>
-      success = (dev) -> return resolve(dev)
+      success = (dev) ->
+        device.set(dev)
+        return resolve(dev)
       failure = (err) -> return reject(new Error(err))
       ble.readRSSI(device.id, success, failure)
 

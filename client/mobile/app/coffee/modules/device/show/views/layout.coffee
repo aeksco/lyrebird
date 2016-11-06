@@ -9,43 +9,42 @@ class DeviceShowLayout extends Marionette.LayoutView
     disconnect: '[data-click=disconnect]'
     rssi: '[data-display=rssi]'
 
+  modelEvents:
+    'change': 'render'
+
   events:
     'click @ui.connect': 'connectToDevice'
+    'click @ui.disconnect': 'disconnect'
+
+  serializeData: ->
+    data = super
+    console.log data
+    return data
 
   onRender: ->
 
     # TODO - these labels should change with a modelEvent
-    @model.isConnected()
-    .then (isConnected) => @ui.isConnected.addClass('label-success').text('CONNECTED')
-    .catch (err) => @ui.isConnected.addClass('label-danger').text('NOT CONNECTED')
+    # @model.isConnected()
+    # .then (isConnected) => @ui.isConnected.addClass('label-success').text('CONNECTED')
+    # .catch (err) => @ui.isConnected.addClass('label-danger').text('NOT CONNECTED')
 
     # TODO - this setInterval call should happen on the device, not in the view
     return if @setInterval
     @setInterval = true
     setInterval( =>
       @model.readRSSI()
-      .then (dev) => @ui.rssi.text('RSSI: ' + dev)
-      .catch (err) => console.log err
     , 500)
 
   connectToDevice: ->
-    console.log 'CONNECT TO DEVICE'
-    console.log @model
-
     @model.connect()
-    .then (success) =>
-      console.log 'Connected?'
-      console.log success
-      @render()
+    .then (success) => @render()
+    .catch (err) => console.log 'ERROR DISCONNECTING'
 
-    .catch (err) =>
-      console.log 'CONNECTION ERROR'
-      console.log err
+  disconnect: ->
+    @model.disconnect()
+    .then () => @render()
+    .catch () -> console.log 'ERROR DISCONNECTING'
 
-    #   @model.disconnect()
-    #   .then (success) =>
-    #     console.log 'disconnected?'
-    #     console.log success
 
   serializeData: ->
     data = super

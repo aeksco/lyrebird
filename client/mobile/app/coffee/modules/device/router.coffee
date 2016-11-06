@@ -11,13 +11,9 @@ class DeviceRouter extends Backbone.Routing.Router
     'devices/:id(/)':      'show'
 
   list: ->
-    plugins?.deviceFeedback.haptic()
-    plugins?.deviceFeedback.acoustic()
     new ListRoute({ container: window.Container })
 
   show: (id) ->
-    plugins?.deviceFeedback.haptic()
-    plugins?.deviceFeedback.acoustic()
     new ShowRoute({ container: window.Container, id: id })
 
 # # # # #

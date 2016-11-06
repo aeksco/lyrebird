@@ -8,12 +8,15 @@ paths =
   src:          './app/'
   dest:         './www/'
   node_modules: './node_modules/'
-  sassSrc:      './app/sass/app.sass'
   jadeSrc:      './app/index.jade'
 
   bundle:
     src: 'coffee/app.coffee'
     dest: 'app.js'
+
+  sass:
+    src:  './app/sass/app.sass'
+    dest: './www/css/'
 
   concat:
     dest: 'vendor.js'
