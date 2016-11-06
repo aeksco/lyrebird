@@ -26,16 +26,15 @@ class BluetoothService extends Marionette.Service
     return new Promise (resolve, reject) =>
       success = (dev) ->
         device.set(dev)
+        device.set('connected', true)
         return resolve(dev)
       failure = (err) -> return reject(new Error(err))
       ble.connect(device.id, success, failure)
 
   disconnect: (device) ->
-    console.log 'attempting to disconnect...'
-    console.log device
     return new Promise (resolve, reject) =>
       success = (dev) ->
-        device.set(dev)
+        device.set('connected', false)
         return resolve(dev)
       failure = -> return reject(new Error('Cannot disconnect from bluetooth device'))
       ble.disconnect(device.id, success, failure)

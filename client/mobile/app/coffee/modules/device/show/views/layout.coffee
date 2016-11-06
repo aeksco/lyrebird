@@ -8,46 +8,46 @@ class RSSIView extends Marionette.LayoutView
     'change': 'render'
 
   onRender: ->
+    console.log 'RENDERED RSSI'
+
     # TODO - this setInterval call should happen on the device, not in the view
     # TODO - abstract this into the model, set timeout there
-    console.log 'RENDERED RSSI VIEw'
-    return if @setInterval
-    @setInterval = true
-    setInterval( =>
-      @model.readRSSI()
-    , 500)
+
+    # @model.isConnected()
+    # .then (isConnected) =>
+
+    #   return if @setInterval
+
+    #   @setInterval = true
+
+    #   setInterval( =>
+    #     @model.readRSSI()
+    #   , 500)
+
+    # .catch (err) =>
+    #   console.log 'CONNECTION ERROR'
 
 # # # # #
 
-class DeviceShowLayout extends Marionette.LayoutView
-  template: require './templates/layout'
-  className: 'container-fluid'
-
-  regions:
-    rssiRegion: '[data-region=rssi]'
+class ControlsView extends Marionette.LayoutView
+  template: require './templates/controls'
+  className: 'row'
 
   ui:
-    isConnected: '[data-display=connection]'
     connect: '[data-click=connect]'
     disconnect: '[data-click=disconnect]'
 
   events:
-    'click @ui.connect': 'connectToDevice'
+    'click @ui.connect': 'connect'
     'click @ui.disconnect': 'disconnect'
 
-  serializeData: ->
-    data = super
-    return data
-
   onRender: ->
-    @rssiRegion.show new RSSIView({ model: @model })
-
     # TODO - these labels should change with a modelEvent
     # @model.isConnected()
     # .then (isConnected) => @ui.isConnected.addClass('label-success').text('CONNECTED')
     # .catch (err) => @ui.isConnected.addClass('label-danger').text('NOT CONNECTED')
 
-  connectToDevice: ->
+  connect: ->
     @model.connect()
     .then (success) => @render()
     .catch (err) => console.log 'ERROR CONNECTING'
@@ -57,6 +57,19 @@ class DeviceShowLayout extends Marionette.LayoutView
     .then () => @render()
     .catch () -> console.log 'ERROR DISCONNECTING'
 
+# # # # #
+
+class DeviceShowLayout extends Marionette.LayoutView
+  template: require './templates/layout'
+  className: 'container-fluid'
+
+  regions:
+    rssiRegion: '[data-region=rssi]'
+    controlsRegion: '[data-region=controls]'
+
+  onRender: ->
+    @rssiRegion.show new RSSIView({ model: @model })
+    @controlsRegion.show new ControlsView({ model: @model })
 
   serializeData: ->
     data = super

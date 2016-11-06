@@ -28,4 +28,23 @@
     <engine name="android" spec="~5.2.2" />
     <plugin name="cordova-plugin-ble-central" spec="~1.1.2" />
     <plugin name="cordova-plugin-velda-devicefeedback" spec="~0.0.2" />
+
+    <!-- TODO - add icon variants, iOS versions -->
+    <platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="./www/img/logo.png" density="ldpi" />
+        <icon src="./www/img/logo.png" density="mdpi" />
+        <icon src="./www/img/logo.png" density="hdpi" />
+        <icon src="./www/img/logo.png" density="xhdpi" />
+        <icon src="./www/img/logo.png" density="xxhdpi" />
+        <icon src="./www/img/logo.png" density="xxxhdpi" />
+    </platform>
+
 </widget>
