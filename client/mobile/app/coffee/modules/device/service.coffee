@@ -45,6 +45,7 @@ class DeviceService extends Marionette.Service
 
       onScanComplete = =>
         console.log 'Scan complete'
+        console.log @
         @collectionCache.reset(foundDevices)
 
       onStopFail = => console.log 'StopScan failure'

@@ -14,7 +14,8 @@ html
     title Lyrebird
   body
 
-    header
+    .sidebar-region( data-region='sidebar' )
+    .header-region( data-region='header' )
       include ./partials/header
 
-    div( data-region='main' )
+    .main-region( data-region='main' )
