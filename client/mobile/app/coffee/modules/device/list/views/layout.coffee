@@ -41,7 +41,7 @@ class DeviceListLayout extends Marionette.LayoutView
     @listRegion.show new DeviceList({ collection: @collection })
 
   refreshDevices: ->
-    Backbone.Radio.channel('device').request('collection')
+    Backbone.Radio.channel('device').trigger('refresh')
 
 # # # # #
 

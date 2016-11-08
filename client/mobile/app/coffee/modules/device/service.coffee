@@ -8,8 +8,42 @@ class DeviceService extends Marionette.Service
     'device model': 'model'
     'device collection': 'collection'
 
+  radioEvents:
+    'device refresh': 'refresh'
+
   initialize: ->
     @collectionCache = new DeviceCollection()
+
+  refresh: ->
+
+    # Throttles multiple calls to refresh
+    return if @scanning
+
+    # Resets collection
+    @collectionCache.reset([])
+
+    # Success callback
+    onDeviceFound = (device) =>
+      @collectionCache.add device
+
+    # Error callback
+    onScanError = () ->
+      console.log 'ERROR FETCHING DEVICES'
+      return
+
+    # Starts scan
+    ble.startScan([], onDeviceFound, onScanError)
+
+    onScanComplete = =>
+      console.log 'Scan complete'
+      @scanning = false
+
+    onStopFail = => console.log 'StopScan failure'
+
+    # Stops scan after 5 seconds
+    @scanning = true
+    setTimeout(ble.stopScan, 5000, onScanComplete, onStopFail)
+
 
   model: (id) ->
     return new Promise (resolve,reject) =>
@@ -20,38 +54,8 @@ class DeviceService extends Marionette.Service
 
     return new Promise (resolve,reject) =>
 
-      # Resets collection
-      # @collectionCache.reset([])
-
-      foundDevices = []
-
-      # Success callback
-      onDeviceFound = (device) =>
-        # console.log 'FOUND DEVICE'
-        # console.log JSON.stringify(device)
-        foundDevices.push device
-        # console.log 'FOUND: ', device
-        # console.log String.fromCharCode.apply(null, new Uint8Array(device.advertising))
-        # console.log '# # # # # # '
-        @collectionCache.add device
-
-      # Error callback
-      onScanError = () ->
-        console.log 'ERROR FETCHING DEVICES'
-        return
-
-      # Starts scan
-      ble.startScan([], onDeviceFound, onScanError)
-
-      onScanComplete = =>
-        console.log 'Scan complete'
-        console.log @
-        @collectionCache.reset(foundDevices)
-
-      onStopFail = => console.log 'StopScan failure'
-
-      # Stops scan after 5 seconds
-      setTimeout(ble.stopScan, 5000, onScanComplete, onStopFail)
+      # Invokes refresh with respect to this collection
+      @refresh()
 
       # Returns collection, async
       return resolve(@collectionCache)

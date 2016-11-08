@@ -8,24 +8,20 @@ class RSSIView extends Marionette.LayoutView
     'change': 'render'
 
   onRender: ->
-    console.log 'RENDERED RSSI'
+    return @startPolling() if @model.get('connected')
+    @stopPolling()
 
-    # TODO - this setInterval call should happen on the device, not in the view
-    # TODO - abstract this into the model, set timeout there
+  onDestroy: ->
+    @stopPolling()
 
-    # @model.isConnected()
-    # .then (isConnected) =>
+  startPolling: ->
+    return if @interval
+    @interval = setInterval( @model.readRSSI, 500 )
 
-    #   return if @setInterval
-
-    #   @setInterval = true
-
-    #   setInterval( =>
-    #     @model.readRSSI()
-    #   , 500)
-
-    # .catch (err) =>
-    #   console.log 'CONNECTION ERROR'
+  stopPolling: ->
+    return unless @interval
+    clearInterval(@interval)
+    delete @interval
 
 # # # # #
 
@@ -41,12 +37,6 @@ class ControlsView extends Marionette.LayoutView
     'click @ui.connect': 'connect'
     'click @ui.disconnect': 'disconnect'
 
-  onRender: ->
-    # TODO - these labels should change with a modelEvent
-    # @model.isConnected()
-    # .then (isConnected) => @ui.isConnected.addClass('label-success').text('CONNECTED')
-    # .catch (err) => @ui.isConnected.addClass('label-danger').text('NOT CONNECTED')
-
   connect: ->
     @model.connect()
     .then (success) => @render()
@@ -59,6 +49,20 @@ class ControlsView extends Marionette.LayoutView
 
 # # # # #
 
+class DetailsView extends Marionette.LayoutView
+  template: require './templates/details'
+  className: 'json-viewer'
+
+  modelEvents:
+    'change:connected': 'render'
+
+  serializeData: ->
+    data = super
+    data.json = JSON.stringify(@model.toJSON(), null, 2).split("\n")
+    data
+
+# # # # #
+
 class DeviceShowLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'
@@ -66,15 +70,12 @@ class DeviceShowLayout extends Marionette.LayoutView
   regions:
     rssiRegion: '[data-region=rssi]'
     controlsRegion: '[data-region=controls]'
+    detailsRegion: '[data-region=details]'
 
   onRender: ->
     @rssiRegion.show new RSSIView({ model: @model })
     @controlsRegion.show new ControlsView({ model: @model })
-
-  serializeData: ->
-    data = super
-    data.json = JSON.stringify(@model.toJSON(), null, 2).split("\n")
-    data
+    @detailsRegion.show new DetailsView({ model: @model })
 
 # # # # #
 

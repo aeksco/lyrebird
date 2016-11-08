@@ -10,7 +10,7 @@ Marionette.Behaviors.behaviorsLookup = -> require './behaviors'
 # # # # #
 
 # Cordova app & configuration
-# CordovaApp = require './cordova_app'
+CordovaApp = require './cordova_app'
 
 # Application Layout
 # TODO - get rid of references to 'window.X'
@@ -26,7 +26,7 @@ BluetoothService = require './services/bluetooth'
 SidebarComponent = require './modules/sidebar/component'
 
 # Modules
-HomeModule = require './modules/home/router'
+# HomeModule = require './modules/home/router'
 DeviceModule = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
 
@@ -34,7 +34,10 @@ InterfaceModule = require './modules/interface/router'
 
 $(document).on 'ready', =>
   console.log 'Document Ready'
-  Backbone.history.start()
+
+  # Backbone.history.start()
+  # Invoked inside CordovaApp
+  new CordovaApp()
 
   # TODO - abstract elsewhere
   Backbone.Radio.channel('sidebar').trigger('initialize')

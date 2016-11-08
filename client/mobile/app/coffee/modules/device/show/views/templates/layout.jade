@@ -1,14 +1,9 @@
 .row
   .col-xs-12
-    h4 Device Show
+    strong= name
 
-  .col-xs-12
-    span.label.m-r-1( data-display='connection' )
-
-  .col-xs-12(data-region='rssi')
+.row
+  .col-xs-8.text-muted= id
+  .col-xs-4(data-region='rssi')
   .col-xs-12.m-t-1(data-region='controls')
-
-  .col-xs-12.json-viewer.m-t-1
-    pre
-      for each in json
-        span= each
+  .col-xs-12.m-t-1(data-region='details')
