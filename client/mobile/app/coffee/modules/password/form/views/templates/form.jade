@@ -1,0 +1,13 @@
+include ../../../../../../partials/form_helpers
+
+//- Label
+.col-xs-12
+  +formInput({ label: 'Label', placeholder: 'Label', name: 'label', type: 'text' })
+
+//- Address
+.col-xs-12
+  +formInput({ label: 'Street', placeholder: 'streetAddress', name: 'streetAddress', type: 'text' })
+
+//- Submit
+.col-xs-12
+  +submitButton({})
