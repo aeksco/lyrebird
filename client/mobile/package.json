@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "description": "Lyrebird Cordova application",
   "dependencies": {
-    "gulp_tasks":"https://github.com/aeksco/gulp_tasks",
-    "gulp-browserify": "~0.5.1",
     "backbone": "~1.2",
     "backbone-metal": "^0.6.2",
     "backbone-relational": "~0.10",
@@ -18,14 +16,16 @@
     "bluebird": "~3.0",
     "bootstrap": "4.0.0-alpha.2",
     "bourbon": "~4.2",
+    "crypto-js": "^3.1.8",
     "font-awesome": "~4.6",
+    "gulp-browserify": "~0.5.1",
+    "gulp_tasks": "https://github.com/aeksco/gulp_tasks",
     "jquery": "~2.1",
     "marionette-service": "~0.0",
     "moment": "~2.10",
     "qs": "~6.0",
     "tether": "~1.1",
     "underscore": "~1.8"
-
   },
   "author": "Alexander Schwartzberg",
   "license": "MIT"
