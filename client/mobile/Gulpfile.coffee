@@ -33,6 +33,7 @@ paths =
       nodeModules + 'marionette-service/dist/marionette-service.js'
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
+      nodeModules + 'crypto-js/crypto-js.js'
     ]
 
 # Import Plugins
@@ -61,7 +62,7 @@ gulp.task 'watch', ->
 gulp.task 'default', ['dev']
 
 gulp.task 'dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy', 'sass', 'jade', 'bundle', 'watch', 'webserver')
+  plugins.runSequence.use(gulp)('env_dev', 'copy', 'sass', 'jade', 'concat', 'bundle', 'watch', 'webserver')
 
 gulp.task 'release', =>
   plugins.runSequence.use(gulp)('env_prod', 'copy', 'sass', 'jade', => console.log 'release completed.' )
