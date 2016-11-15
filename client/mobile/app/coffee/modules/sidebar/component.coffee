@@ -12,7 +12,7 @@ class SidebarView extends Backbone.Marionette.LayoutView
 
   modules: [
     { title:  'Devices',    icon: 'fa-bluetooth-b',   href: '#devices', divider: true }
-    # { title:  'Password',   icon: 'fa-key',           href: '#passwords' }
+    { title:  'Passwords',  icon: 'fa-key',           href: '#passwords' }
     { title:  'Keyboard',   icon: 'fa-keyboard-o',    href: '#interface/keyboard' }
     { title:  'Mouse',      icon: 'fa-mouse-pointer', href: '#interface/mouse' }
     { title:  'Gamepad',    icon: 'fa-gamepad',       href: '#interface/gamepad' }

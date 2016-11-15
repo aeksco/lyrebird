@@ -1,12 +1,11 @@
 
 class PasswordForm extends Marionette.LayoutView
   className: 'row'
+  template: require './templates/form'
 
-  # template: => # TODO - template
-
-  # behaviors:
-  #   ModelEvents: {}
-  #   SubmitButton: {}
+  behaviors:
+    ModelEvents: {}
+    SubmitButton: {}
 
   onRender: ->
     Backbone.Syphon.deserialize( @, @model.attributes )
