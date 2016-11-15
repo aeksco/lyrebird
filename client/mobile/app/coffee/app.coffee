@@ -30,6 +30,7 @@ SidebarComponent = require './modules/sidebar/component'
 DeviceModule    = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
 PasswordModule  = require './modules/password/router'
+SnippetModule   = require './modules/snippet/router'
 
 # # # # #
 
@@ -38,7 +39,8 @@ $(document).on 'ready', =>
 
   # Backbone.history.start()
   # Invoked inside CordovaApp
-  new CordovaApp()
+  # new CordovaApp()
+  Backbone.history.start()
 
   # TODO - abstract elsewhere
   Backbone.Radio.channel('sidebar').trigger('initialize')

@@ -1,0 +1,13 @@
+include ../../../../../../partials/form_helpers
+
+//- Label
+.col-xs-12
+  +formInput({ label: 'Label', placeholder: 'Label', name: 'label', type: 'text' })
+
+//- Snippet
+.col-xs-12
+  +formTextArea({ label: 'Snippet', placeholder: 'Snippet', name: 'snippet', type: 'text' })
+
+//- Submit
+.col-xs-12
+  +submitButton({})
