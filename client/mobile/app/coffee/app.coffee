@@ -26,7 +26,7 @@ BluetoothService = require './services/bluetooth'
 SidebarComponent = require './modules/sidebar/component'
 
 # Modules
-# HomeModule = require './modules/home/router'
+# HomeModule      = require './modules/home/router'
 DeviceModule    = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
 PasswordModule  = require './modules/password/router'

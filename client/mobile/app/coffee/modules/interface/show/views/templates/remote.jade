@@ -1,26 +1,41 @@
 mixin remoteKey(icon, keyCode, text)
-  a.card.card-block( data-keycode=keyCode, data-haptic=true )
-    h4.card-title.text-center.m-b-0
+  .btn.btn-primary-outline.w-100( data-keycode=keyCode, data-haptic=true )
+    h4.card-title.text-center.m-b-1.m-t-1
       if icon
         i.fa.fa-fw( class=icon )
       if text
         = text
 
+//- // // // // //
 
-.row
-  .col-xs-4.col-xs-push-4
-    +remoteKey('fa-arrow-up', '24')
-
-.row
-  .col-xs-4
+.row.m-t-1
+  .col-xs-6
     +remoteKey('fa-arrow-left', '27')
 
-  .col-xs-4
-    +remoteKey(null, '32', 'Space')
-
-  .col-xs-4
+  .col-xs-6
     +remoteKey('fa-arrow-right', '26')
 
-.row
-  .col-xs-4.col-xs-push-4
+.row.m-t-1
+  .col-xs-12
+    hr
+
+.row.m-t-1
+  .col-xs-12
+    +remoteKey('fa-arrow-up', '24')
+
+.row.m-t-1
+  .col-xs-12
     +remoteKey('fa-arrow-down', '25')
+
+
+.row.m-t-1
+  .col-xs-12
+    hr
+
+.row.m-t-1
+  .col-xs-12
+    +remoteKey(null, '25', 'Enter')
+
+.row.m-t-1
+  .col-xs-12
+    +remoteKey(null, '32', 'Space')
