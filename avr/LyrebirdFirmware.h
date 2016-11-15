@@ -17,6 +17,7 @@
 
 	/* Function Prototypes: */
 		void SetupHardware(void);
+		void InitializeInputData(void);
 
 		void EVENT_USB_Device_Connect(void);
 		void EVENT_USB_Device_Disconnect(void);
@@ -29,8 +30,21 @@
 		#define BOOTLOADER_START_ADDRESS  (FLASH_SIZE_BYTES - BOOTLOADER_SEC_SIZE_BYTES)
 		void Bootloader_Jump_Check(void) ATTR_INIT_SECTION(3);
 		void EnterBootloader(void);
+		
+		size_t GetPacketDataLength(uint8_t packetType);
+		void ProcessPacket(uint8_t packetType, uint8_t* packet);
+		
 
 	/* Structs */
+	
+	/////////////
+	// GENERAL //
+	/////////////
+	
+	#define PACKET_CONTROL  0
+	#define PACKET_MOUSE    1
+	#define PACKET_KEYBOARD 2
+	#define PACKET_JOYSTICK 3
 	
 	///////////
 	// MOUSE //
@@ -53,8 +67,6 @@
 	//////////////
 	// KEYBOARD //
 	//////////////
-	
-	#define MAX_KEYS_PRESSED 6
 	
 	/**
 	* The data for a Keyboard packet.

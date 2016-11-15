@@ -67,13 +67,65 @@ USB_ClassInfo_HID_Device_t Keyboard_HID_Interface =
 				.PrevReportINBufferSize         = sizeof(PrevKeyboardHIDReportBuffer),
 			},
 	};
+	
+MouseData    mouse_data;
+KeyboardData keyboard_data;
+JoystickData joystick_data;
+
+/** Returns the length of the given packet type.
+ *  @param packetType The type of packet to get the length of
+ */
+size_t GetPacketDataLength(uint8_t packetType)
+{
+	switch (packetType)
+	{
+		case PACKET_CONTROL:
+			return 0;
+		case PACKET_MOUSE:
+			return sizeof(KeyboardData);
+		case PACKET_KEYBOARD:
+			return sizeof(MouseData);
+		case PACKET_JOYSTICK:
+			return sizeof(JoystickData);
+		default:
+			return 0;
+	}
+}
+
+/** Processes a received packet.
+ *  @packetType The type of packet received
+ *  @packetData The received packet data
+ */
+void ProcessPacket(uint8_t packetType, uint8_t* packetData)
+{
+	switch (packetType)
+	{
+		case PACKET_CONTROL:
+			break;
+		case PACKET_MOUSE:
+			memcpy(&mouse_data, packetData, sizeof(MouseData));
+			break;
+		case PACKET_KEYBOARD:
+			memcpy(&keyboard_data, packetData, sizeof(KeyboardData));
+			break;
+		case PACKET_JOYSTICK:
+			memcpy(&joystick_data, packetData, sizeof(JoystickData));
+			break;
+	}
+}
 
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */
 int main(void)
 {
+	uint8_t packetType = 0;
+	size_t bytesReceived = 0;
+	size_t packetLength = 0;
+	
+	uint8_t packetBuffer[16] = {0};
 	SetupHardware();
+	InitializeInputData();
 
 	GlobalInterruptEnable();
 
@@ -91,20 +143,37 @@ int main(void)
 	
 	for (;;)
 	{
-		int charIn;
-		
 		// Check for any data received from the paired device
 		while (Serial_IsCharReceived())
 		{
-			// Toss any data received, TODO actually use the data
-			Serial_ReceiveByte();
+			// Record the packet type
+			if (bytesReceived == 0)
+			{
+				packetType    = Serial_ReceiveByte();
+				packetLength  = GetPacketDataLength(packetType);
+			}
+			// Fill in more packet data
+			else
+			{
+				packetBuffer[bytesReceived] = Serial_ReceiveByte();
+				bytesReceived++;
+			}
+			// Full packet has been received, process it
+			if (bytesReceived >= packetLength)
+			{
+				ProcessPacket(packetType, packetBuffer);
+				
+				// Reset packet
+				packetType    = 0;
+				packetLength  = 0;
+				bytesReceived = 0;
+			}
 		}
 
-		// 
+		// Serve USB tasks
 		HID_Device_USBTask(&Mouse_HID_Interface);
 		HID_Device_USBTask(&Keyboard_HID_Interface);
 		USB_USBTask();
-		Delay_MS(500);
 	}
 }
 
@@ -121,6 +190,25 @@ void SetupHardware(void)
 	/* Hardware Initialization */
 	USB_Init();
 	Serial_Init(9600, false);
+}
+
+/** Initializes the input data being sent to the USB host. */
+void InitializeInputData(void)
+{
+	// Initialize mouse data
+	mouse_data.dx = 0;
+	mouse_data.dy = 0;
+	mouse_data.buttons = 0x00;
+	
+	// Initialize keyboard data
+	memset(keyboard_data.keys, 0, sizeof(uint8_t) * MAX_KEYS_PRESSED);
+	
+	// Initialize joystick data
+	joystick_data.lx = 0;
+	joystick_data.ly = 0;
+	joystick_data.rx = 0;
+	joystick_data.ry = 0;
+	joystick_data.buttons = 0x0000;
 }
 
 /** Event handler for the library USB Connection event. */
@@ -170,22 +258,36 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
                                          void* ReportData,
                                          uint16_t* const ReportSize)
 {
+	uint8_t i;
 	if (HIDInterfaceInfo == &Keyboard_HID_Interface)
 	{
 			USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
-			KeyboardReport->KeyCode[0] = APressed ? HID_KEYBOARD_SC_A : 0;
-			//APressed = 1 - APressed;
+			
+			for (i = 0; i < MAX_KEYS_PRESSED; i++)
+			{
+				KeyboardReport -> KeyCode[i] = keyboard_data.keys[i];
+			}
+			
 			*ReportSize = sizeof(USB_KeyboardReport_Data_t);
 			return false;
 	}
 	else if (HIDInterfaceInfo == &Mouse_HID_Interface)
 	{
 			USB_MouseReport_Data_t* MouseReport = (USB_MouseReport_Data_t*)ReportData;
+			MouseReport -> X = mouse_data.dx;
+			MouseReport -> Y = mouse_data.dy;
+			MouseReport -> Button = mouse_data.buttons;
+			
+			// Reset mouse data after mouse movement has been sent
+			mouse_data.dx = 0;
+			mouse_data.dy = 0;
+			
 			*ReportSize = sizeof(USB_MouseReport_Data_t);
+			// Force LUFA to send packet, as dx and dy not changing means the mouse should continue to move
 			return true;
 	}
 	
-	return true;
+	return false;
 }
 
 /** HID class driver callback function for the processing of HID reports from the host.

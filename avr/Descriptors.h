@@ -50,7 +50,10 @@
 
 		/** Size in bytes of each of the HID reporting IN endpoints. */
 		#define KEYBOARD_EPSIZE                8
-
+		
+		/** Max number of keys pressed simultaneously */
+		#define MAX_KEYS_PRESSED               6
+		
 		/** Size in bytes of the Mouse HID reporting IN endpoint. */
 		#define MOUSE_EPSIZE                   8
 
