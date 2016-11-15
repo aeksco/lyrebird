@@ -27,27 +27,14 @@ SidebarComponent = require './modules/sidebar/component'
 
 # Modules
 # HomeModule = require './modules/home/router'
-DeviceModule = require './modules/device/router'
+DeviceModule    = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
+PasswordModule  = require './modules/password/router'
 
 # # # # #
 
 $(document).on 'ready', =>
   console.log 'Document Ready'
-
-  # # # # #
-  # CryptoJS - basic example
-
-  # Encrypt
-  ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123')
-
-  # Decrypt
-  bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123')
-  plaintext = bytes.toString(CryptoJS.enc.Utf8)
-  console.log plaintext
-
-  #
-  # # # # #
 
   # Backbone.history.start()
   # Invoked inside CordovaApp
