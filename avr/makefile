@@ -21,7 +21,7 @@ OPTIMIZATION = s
 TARGET       = LyrebirdFirmware
 SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) $(LUFA_SRC_USBCLASS) $(LUFA_SRC_SERIAL)
 LUFA_PATH    = LUFA
-CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
+CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/ -Wall -Werror
 LD_FLAGS     =
 
 # Default target
