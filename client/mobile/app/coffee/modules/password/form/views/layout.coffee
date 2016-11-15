@@ -4,7 +4,6 @@ class PasswordForm extends Marionette.LayoutView
   template: require './templates/form'
 
   behaviors:
-    ModelEvents: {}
     SubmitButton: {}
 
   onRender: ->
@@ -12,7 +11,14 @@ class PasswordForm extends Marionette.LayoutView
 
   onSubmit: (e) ->
     attrs = Backbone.Syphon.serialize(@)
-    @model.save(attrs)
+    console.log attrs
+
+    Backbone.Radio.channel('password').request('collection')
+    .then (collection) =>
+      window.collection = collection
+      console.log collection.create(attrs, {remote: false})
+      console.log 'SAVE HERE'
+      @onSync()
 
   onRequest: ->
     console.log 'ON REQUEST'

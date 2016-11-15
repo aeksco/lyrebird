@@ -6,13 +6,4 @@
     a.btn.btn-secondary.w-100( href='#passwords/new' )
       i.fa.fa-fw.fa-plus
 
-  .col-xs-12.m-t-1
-    ul.list-group
-
-      if items.length == 0
-        li.list-group-item.list-group-item-warning.text-center
-          | No Passwords Found
-
-      each item in items
-
-        a.list-group-item( href='#passwords/' + item.id )= item.id
+  .col-xs-12.m-t-1( data-region='list' )

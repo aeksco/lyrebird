@@ -1,6 +1,6 @@
 
 class PasswordModel extends Backbone.Model
-  urlRoot: '/passwords' # TODO - this is an offline-only model
+  urlRoot: '/passwords/'
 
 # # # # #
 
