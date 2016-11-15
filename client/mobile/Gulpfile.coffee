@@ -34,6 +34,7 @@ paths =
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'crypto-js/crypto-js.js'
+      nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
     ]
 
 # Import Plugins

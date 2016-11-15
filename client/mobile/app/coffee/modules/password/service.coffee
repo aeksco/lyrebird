@@ -8,8 +8,8 @@ PasswordCollection = require './collection'
 class PasswordService extends Marionette.Service
 
   radioRequests:
-    'contact_method model':      'model'
-    'contact_method collection': 'collection'
+    'password model':      'model'
+    'password collection': 'collection'
 
   model: (id) ->
     return new Promise (resolve,reject) =>

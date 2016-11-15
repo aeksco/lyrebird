@@ -11,6 +11,7 @@
     "backbone.cocktail": "~0.5",
     "backbone.marionette": "~2.4",
     "backbone.paginator": "~2.0",
+    "backbone.dualStorage": "https://github.com/nilbus/Backbone.dualStorage",
     "backbone.radio": "~1.0",
     "backbone.syphon": "~0.6",
     "bluebird": "~3.0",
