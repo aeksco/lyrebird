@@ -1,4 +1,4 @@
-ContactMethodForm = require '../../form/views/layout'
+PasswordForm = require '../../form/views/layout'
 
 # # # # #
 
