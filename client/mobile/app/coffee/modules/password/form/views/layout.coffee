@@ -15,19 +15,26 @@ class PasswordForm extends Marionette.LayoutView
 
     Backbone.Radio.channel('password').request('collection')
     .then (collection) =>
-      window.collection = collection
-      console.log collection.create(attrs, {remote: false})
-      console.log 'SAVE HERE'
-      @onSync()
 
-  onRequest: ->
-    console.log 'ON REQUEST'
+      # CryptoJS - Encrypt
+      ciphertext = CryptoJS.AES.encrypt(attrs.password, attrs.pin)
+
+      # Save encrypted password
+      save_attrs = { label: attrs.label, password: ciphertext.toString() }
+      collection.create(save_attrs, {remote: false})
+
+      # TODO - Decrypt
+      # bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123')
+      # plaintext = bytes.toString(CryptoJS.enc.Utf8)
+      # console.log plaintext
+
+      # Invokes onSync callback
+      @onSync()
 
   onError: ->
     console.log 'ON ERROR'
 
   onSync: ->
-    console.log 'ON SYNC'
     window.location = '#passwords'
 
 # # # # #
