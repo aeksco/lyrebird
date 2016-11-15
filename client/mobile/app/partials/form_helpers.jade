@@ -1,0 +1,66 @@
+mixin formGroup(opts)
+  fieldset.form-group( class=opts.formGroupCss )
+    if opts.label
+      label.form-control-label= opts.label
+    block
+
+//- // // // // //
+
+mixin formInput(opts)
+  +formGroup(opts)
+    input.form-control( placeholder=opts.placeholder, name=opts.name, type=opts.type )&attributes(attributes)
+
+//- // // // // //
+
+mixin formTextArea(opts)
+  +formGroup(opts)
+    textarea.form-control( placeholder=opts.placeholder, name=opts.name, type=opts.type, rows=opts.rows, cols=opts.cols )&attributes(attributes)
+
+//- // // // // //
+
+mixin formSelect(opts)
+  +formGroup(opts)
+    select.form-control.c-select( name=opts.name, multiple=opts.multiple )
+      if opts.options
+        each opt in opts.options
+          option= opt
+
+//- // // // // //
+
+mixin radioButton(opts)
+  .radio
+    label
+      input( type='radio', name=opts.name, value=opts.value, checked=opts.checked || false )
+      | &nbsp;&nbsp;
+      = opts.text
+
+//- // // // // //
+
+mixin button(opts)
+  button.btn(type='button')&attributes(attributes)
+    if opts.icon
+      i.fa.fa-fw( class=opts.icon )
+      |&nbsp;
+    = opts.text
+
+//- // // // // //
+
+mixin submitButton(opts)
+  unless opts.text
+    - opts.text = 'Submit'
+
+  unless opts.icon
+    - opts.icon = 'fa-check'
+
+  +button(opts)(data-click='submit', class='btn-success w-100')&attributes(attributes)
+
+//- // // // // //
+
+mixin cancelButton(opts)
+  unless opts.text
+    - opts.text = 'Cancel'
+
+  unless opts.icon
+    - opts.icon = 'fa-times'
+
+  +button(opts)(data-click='cancel', class='btn-secondary')&attributes(attributes)

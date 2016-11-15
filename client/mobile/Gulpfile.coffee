@@ -31,6 +31,7 @@ paths =
       nodeModules + 'backbone-routing/dist/backbone-routing.js'
       nodeModules + 'backbone.radio/build/backbone.radio.js'
       nodeModules + 'marionette-service/dist/marionette-service.js'
+      nodeModules + 'backbone.syphon/lib/backbone.syphon.js'
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'crypto-js/crypto-js.js'
