@@ -2405,6 +2405,10 @@ Pogo pins- HW-11044</description>
 <part name="J2" library="LB-Connectors" deviceset="M03X2" device="SMD_MALE">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
+<part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10k">
+<attribute name="PARTNO" value="RC0402JR-074K7L"/>
+</part>
+<part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2465,6 +2469,10 @@ Pogo pins- HW-11044</description>
 <instance part="J2" gate="G$1" x="35.56" y="48.26">
 <attribute name="BOM" x="35.56" y="48.26" size="1.778" layer="96" display="off"/>
 </instance>
+<instance part="R4" gate="G$1" x="22.86" y="-35.56" rot="R90">
+<attribute name="PARTNO" x="22.86" y="-35.56" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="GND8" gate="1" x="22.86" y="-45.72"/>
 </instances>
 <busses>
 </busses>
@@ -2561,6 +2569,11 @@ Pogo pins- HW-11044</description>
 <wire x1="48.26" y1="45.72" x2="48.26" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="J2" gate="G$1" pin="6"/>
 </segment>
+<segment>
+<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="22.86" y1="-43.18" x2="22.86" y2="-40.64" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="MCU_RX" class="0">
 <segment>
@@ -2579,19 +2592,22 @@ Pogo pins- HW-11044</description>
 <net name="MCU_RTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PD6(RTS)"/>
-<wire x1="20.32" y1="-25.4" x2="25.4" y2="-25.4" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="-25.4" x2="25.4" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="-25.4" x2="22.86" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="-25.4" x2="27.94" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="CTS"/>
-<wire x1="25.4" y1="-20.32" x2="33.02" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="-20.32" x2="33.02" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MCU_CTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PD7(CTS)"/>
-<wire x1="20.32" y1="-27.94" x2="27.94" y2="-27.94" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="-27.94" x2="27.94" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="-27.94" x2="22.86" y2="-27.94" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="-27.94" x2="27.94" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="RTS"/>
 <wire x1="27.94" y1="-22.86" x2="33.02" y2="-22.86" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="22.86" y1="-30.48" x2="22.86" y2="-27.94" width="0.1524" layer="91"/>
+<junction x="22.86" y="-27.94"/>
 </segment>
 </net>
 <net name="MCU_D_P" class="0">
