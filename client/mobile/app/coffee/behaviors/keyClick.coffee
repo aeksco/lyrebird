@@ -8,7 +8,8 @@ class KeyClickBehavior extends Marionette.Behavior
     'click @ui.key': 'onKeyClicked'
 
   onKeyClicked: (e) ->
-    console.log 'SEND KEYCODE: ', @$(e.currentTarget).data('keycode')
+    keycode = @$(e.currentTarget).data('keycode')
+    window.device.writeChar(keycode) # TODO - remove window.device
 
 # # # # #
 

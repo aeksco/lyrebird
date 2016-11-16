@@ -6,11 +6,11 @@ class KeyboardInterface extends require './abstractInterface'
     'input [name=keyboard]': 'onKeyTyped'
 
   onKeyTyped: (e) ->
-    str = $(e.currentTarget).val()
+    el = @$(e.currentTarget)
+    str = el.val()
     char = str[str.length-1]
-    console.log 'SEND CHAR: ', char
-    console.log window.device
-    window.device.writePromise(char)
+    el.val('')
+    window.device.writeChar(char) # TODO - remove window.device
 
   onRender: ->
     if @options.interface == 'keyboard'
