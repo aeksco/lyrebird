@@ -8,21 +8,21 @@
     },
     "installed_plugins": {
         "cordova-plugin-velda-devicefeedback": {
-            "PACKAGE_NAME": "com.example.tack"
+            "PACKAGE_NAME": "com.example.lyrebird"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.example.tack"
+            "PACKAGE_NAME": "com.example.lyrebird"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.example.tack"
+            "PACKAGE_NAME": "com.example.lyrebird"
         },
         "cordova-plugin-ble-central": {
-            "PACKAGE_NAME": "com.example.tack"
+            "PACKAGE_NAME": "com.example.lyrebird"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.example.tack"
+            "PACKAGE_NAME": "com.example.lyrebird"
         }
     }
 }
