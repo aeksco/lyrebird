@@ -146,16 +146,18 @@ int main(void)
 		// Check for any data received from the paired device
 		while (Serial_IsCharReceived())
 		{
+			uint8_t recv = Serial_ReceiveByte();
+			
 			// Record the packet type
-			if (bytesReceived == 0)
+			if (packetType == 0)
 			{
-				packetType    = Serial_ReceiveByte();
+				packetType    = recv;
 				packetLength  = GetPacketDataLength(packetType);
 			}
 			// Fill in more packet data
 			else
 			{
-				packetBuffer[bytesReceived] = Serial_ReceiveByte();
+				packetBuffer[bytesReceived] = recv;
 				bytesReceived++;
 			}
 			// Full packet has been received, process it
@@ -169,6 +171,7 @@ int main(void)
 				bytesReceived = 0;
 			}
 		}
+		
 
 		// Serve USB tasks
 		HID_Device_USBTask(&Mouse_HID_Interface);
@@ -239,8 +242,6 @@ void EVENT_USB_Device_ControlRequest(void)
 	HID_Device_ProcessControlRequest(&Mouse_HID_Interface);
 	HID_Device_ProcessControlRequest(&Keyboard_HID_Interface);
 }
-
-int APressed = 0;
 
 /** HID class driver callback function for the creation of HID reports to the host.
  *

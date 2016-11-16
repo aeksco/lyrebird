@@ -41,10 +41,10 @@
 	// GENERAL //
 	/////////////
 	
-	#define PACKET_CONTROL  0
 	#define PACKET_MOUSE    1
 	#define PACKET_KEYBOARD 2
 	#define PACKET_JOYSTICK 3
+	#define PACKET_CONTROL  255
 	
 	///////////
 	// MOUSE //
