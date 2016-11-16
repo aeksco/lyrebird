@@ -1,0 +1,17 @@
+mixin inputItem(icon, text)
+
+  .col-xs-6
+    a.card.card-block( href='#interface/' + text.toLowerCase() )
+      h4.card-title.text-center
+        i.fa.fa-fw( class=icon )
+        br
+        br
+        = text
+
+.row
+  //- +inputItem('fa-key', 'Passwords')
+  +inputItem('fa-keyboard-o', 'Keyboard')
+  +inputItem('fa-mouse-pointer', 'Mouse')
+  +inputItem('fa-gamepad', 'Gamepad')
+  +inputItem('fa-gamepad', 'Remote')
+  //- +inputItem('fa-database', 'Thumbdrive')

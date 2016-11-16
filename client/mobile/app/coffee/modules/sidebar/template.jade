@@ -1,0 +1,14 @@
+
+mixin sidebarLink(opts)
+  a.nav-link( href=opts.href )
+    i.fa.fa-fw.fa-lg.m-r-1( class=opts.icon )
+    = opts.title
+
+  if opts.divider
+    a.nav-link.divider
+
+//- // // // // //
+
+for module in modules
+  +sidebarLink(module)
+

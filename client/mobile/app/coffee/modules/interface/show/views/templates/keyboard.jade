@@ -1,0 +1,17 @@
+mixin remoteKey(icon, keyCode, text)
+  .btn.btn-primary-outline.w-100( data-keycode=keyCode, data-haptic=true )
+    h4.card-title.text-center.m-b-1.m-t-1
+      if icon
+        i.fa.fa-fw( class=icon )
+      if text
+        = text
+
+.row
+  .col-xs-12
+    h4 Keyboard Interface
+
+    input.form-control.w-100( name='keyboard' )
+
+.row.m-t-1
+  .col-xs-12
+    +remoteKey(null, 'back', 'Backspace')

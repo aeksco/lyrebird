@@ -1,0 +1,22 @@
+mixin mouseButton(text, code)
+  .btn.btn-primary-outline.w-50( data-mouse=code, data-haptic=true )
+    i.fa.fa-fw.fa-circle
+    if code == 'right'
+      i.fa.fa-fw.fa-circle
+
+//- // // // // //
+
+.row
+  .col-xs-12
+    p.lead Mouse Interace
+    p.lead.position Mouse Position:
+    canvas.mouse( id='mouse-canvas' )
+
+  .col-xs-12
+    .btn-group.w-100
+      +mouseButton('Left', 'left')
+      +mouseButton('Right', 'right')
+
+
+
+
