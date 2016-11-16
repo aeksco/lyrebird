@@ -1,0 +1,13 @@
+# Compiled binary files
+*.o
+*.bin
+*.elf
+
+# Intel HEX files
+*.hex
+
+# Dependency files
+*.d
+
+# Debugging information
+*.map
