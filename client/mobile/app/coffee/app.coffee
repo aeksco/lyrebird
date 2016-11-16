@@ -37,10 +37,9 @@ SnippetModule   = require './modules/snippet/router'
 $(document).on 'ready', =>
   console.log 'Document Ready'
 
-  # Backbone.history.start()
-  # Invoked inside CordovaApp
-  # new CordovaApp()
-  Backbone.history.start()
+  # Backbone.history.start() Invoked inside CordovaApp
+  new CordovaApp()
+  # Backbone.history.start() # DEBUG ONLY
 
   # TODO - abstract elsewhere
   Backbone.Radio.channel('sidebar').trigger('initialize')

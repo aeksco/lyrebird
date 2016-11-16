@@ -9,6 +9,8 @@ class KeyboardInterface extends require './abstractInterface'
     str = $(e.currentTarget).val()
     char = str[str.length-1]
     console.log 'SEND CHAR: ', char
+    console.log window.device
+    window.device.writePromise(char)
 
   onRender: ->
     if @options.interface == 'keyboard'

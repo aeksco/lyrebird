@@ -34,10 +34,12 @@ class ControlsView extends Marionette.LayoutView
     disconnect: '[data-click=disconnect]'
 
   events:
-    'click @ui.connect': 'connect'
+    'click @ui.connect':    'connect'
     'click @ui.disconnect': 'disconnect'
 
   connect: ->
+    window.device = @model # TODO - remove
+
     @model.connect()
     .then (success) => @render()
     .catch (err) => console.log 'ERROR CONNECTING'
