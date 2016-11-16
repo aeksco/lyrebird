@@ -210,7 +210,7 @@ const USB_Descriptor_String_t PROGMEM ManufacturerString = USB_STRING_DESCRIPTOR
  */
 const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L"Lyrebird");
 
-const USB_Descriptor_String_t PROGMEM MouseInterfaceString = USB_STRING_DESCRIPTOR(L"Lyrebird Keyboard");
+const USB_Descriptor_String_t PROGMEM MouseInterfaceString    = USB_STRING_DESCRIPTOR(L"Lyrebird Mouse");
 const USB_Descriptor_String_t PROGMEM KeyboardInterfaceString = USB_STRING_DESCRIPTOR(L"Lyrebird Keyboard");
 
 /** This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors"
