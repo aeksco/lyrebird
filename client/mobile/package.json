@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Lyrebird Cordova application",
   "dependencies": {
-    "Backbone.dualStorage": "git+https://github.com/nilbus/Backbone.dualStorage.git",
     "backbone": "~1.2",
     "backbone-metal": "^0.6.2",
     "backbone-relational": "~0.10",
