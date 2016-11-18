@@ -56,6 +56,11 @@ class DeviceModel extends Backbone.Model
   forget: ->
     Backbone.Radio.channel('known:device').trigger('remove', @)
 
+  # write: (data) =>
+  #   success = (msg) -> return
+  #   failure = (err) -> return
+  #   ble.write(@id, "FFE0", "FFE1", data, success, failure)
+
   writePromise: (dataArray) =>
     return new Promise (resolve,reject) =>
       success = (msg) -> return resolve()
@@ -69,6 +74,16 @@ class DeviceModel extends Backbone.Model
   writeKeyup: => @writePromise([2,0,0,0,0,0,0])
 
   writeKeydown: (char) => @writePromise([2,charMap[char],0,0,0,0,0])
+
+  writeMousePos: (pos) => @writePromise([1,pos.x,pos.y,0])
+
+  writeMouseLeft: =>
+    promises = [@writePromise([1,0,0,1]), @writePromise([1,0,0,0])]
+    return Promise.all(promises)
+
+  writeMouseRight: =>
+    promises = [@writePromise([1,0,0,2]), @writePromise([1,0,0,0])]
+    return Promise.all(promises)
 
   writeChar: (char) =>
     promises = [@writeKeydown(char), @writeKeyup()]

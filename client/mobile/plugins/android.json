@@ -18,6 +18,9 @@
         },
         "cordova-plugin-ble-central": {
             "PACKAGE_NAME": "com.example.lyrebird"
+        },
+        "cordova-plugin-insomnia": {
+            "PACKAGE_NAME": "com.example.lyrebird"
         }
     },
     "dependent_plugins": {
