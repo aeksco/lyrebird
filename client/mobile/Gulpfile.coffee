@@ -34,6 +34,7 @@ paths =
       nodeModules + 'backbone.syphon/lib/backbone.syphon.js'
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
+      nodeModules + 'bootstrap-switch/dist/js/bootstrap-switch.min.js'
       nodeModules + 'crypto-js/crypto-js.js'
       nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
     ]
