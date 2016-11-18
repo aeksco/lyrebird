@@ -1,0 +1,19 @@
+mixin connectStatus(labelCss, iconCss, message)
+  h3
+    span.label.p-b-1(class=labelCss)
+      i.fa.fa-fw.fa-lg.m-t-1.m-b-1(class=iconCss)
+      br
+      = message
+
+//- // // //
+
+.col-xs-12.text-center
+
+  if status == 'searching'
+    +connectStatus('label-default', 'fa-spin fa-refresh', message)
+
+  if status == 'connecting'
+    +connectStatus('label-info', 'fa-spin fa-spinner', message)
+
+  if status == 'connected'
+    +connectStatus('label-success', 'fa-check', message)

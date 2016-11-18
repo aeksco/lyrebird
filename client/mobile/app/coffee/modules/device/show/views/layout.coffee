@@ -32,10 +32,13 @@ class ControlsView extends Marionette.LayoutView
   ui:
     connect: '[data-click=connect]'
     disconnect: '[data-click=disconnect]'
+    checkbox: 'input[type=checkbox]'
 
   events:
     'click @ui.connect':    'connect'
     'click @ui.disconnect': 'disconnect'
+    'change @ui.checkbox':  'toggleKnown'
+    'switchChange.bootstrapSwitch @ui.checkbox':  'toggleKnown'
 
   connect: ->
     window.device = @model # TODO - remove
@@ -48,6 +51,15 @@ class ControlsView extends Marionette.LayoutView
     @model.disconnect()
     .then () => @render()
     .catch () -> console.log 'ERROR DISCONNECTING'
+
+  onRender: ->
+    return unless @model.get('connected')
+    @ui.checkbox.bootstrapSwitch({ size: 'small', onText: 'Yes', offText: 'No' })
+
+  toggleKnown: (e) ->
+    e.stopPropagation()
+    return @model.forget() if @model.get('known')
+    return @model.remember()
 
 # # # # #
 

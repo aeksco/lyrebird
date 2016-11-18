@@ -49,6 +49,12 @@ class DeviceModel extends Backbone.Model
   readRSSI: =>
     Backbone.Radio.channel('bluetooth').request('read:rssi', @)
 
+  remember: ->
+    Backbone.Radio.channel('known:device').trigger('add', @)
+
+  forget: ->
+    Backbone.Radio.channel('known:device').trigger('remove', @)
+
   writePromise: (dataArray) =>
     return new Promise (resolve,reject) =>
       success = (msg) -> return resolve()

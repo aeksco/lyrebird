@@ -22,13 +22,14 @@ window.LoadingView = require './views/loading'
 
 # Services
 BluetoothService = require './services/bluetooth'
+KnownDeviceServie = require './modules/known_device/storage'
 
 # Components
 SidebarComponent = require './modules/sidebar/component'
 FlashComponent = require './modules/flash/component'
 
 # Modules
-# HomeModule      = require './modules/home/router'
+HomeModule      = require './modules/home/router'
 DeviceModule    = require './modules/device/router'
 InterfaceModule = require './modules/interface/router'
 PasswordModule  = require './modules/password/router'
