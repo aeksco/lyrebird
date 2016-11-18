@@ -1,7 +1,7 @@
 
 sendCommand = (pos) ->
   console.log 'SEND COMMAND'
-  window.device.writeMouse(pos)
+  window.device.writeMousePos(pos)
 
 throttledCommand = _.throttle(sendCommand, 50)
 
@@ -21,7 +21,11 @@ class MouseInterface extends require './abstractInterface'
   onMouseClick: (e) ->
     el = $(e.currentTarget)
     clicked = el.data('mouse')
-    console.log 'SEND MOUSE CLICK?: ', clicked
+    # console.log 'SEND MOUSE CLICK?: ', clicked
+
+    # TODO - remove window.device
+    return window.device.writeMouseLeft() if clicked == 'left'
+    return window.device.writeMouseRight()
 
   onTouchStart: (e) ->
     # console.log 'onTouchStart'
