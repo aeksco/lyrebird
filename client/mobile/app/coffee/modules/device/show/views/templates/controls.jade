@@ -1,5 +1,15 @@
-.col-xs-12
-  if connected
-    a.btn.btn-danger-outline.w-100( data-click='disconnect' ) Disconnect
-  else
+if connected
+  .col-xs-12
+    button.btn.btn-danger-outline.w-100( data-click='disconnect' ) Disconnect
+
+  .col-xs-12
+    .row.m-t-1
+      .col-xs-2
+        input(type='checkbox' name='known' checked=known)
+
+      .col-xs-10.text-xs-right
+        label Remember This Device
+
+else
+  .col-xs-12
     a.btn.btn-success-outline.w-100( data-click='connect' ) Connect

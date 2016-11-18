@@ -4,6 +4,7 @@ class AppLayout extends Marionette.LayoutView
 
   regions:
     main:     '[data-region=main]'
+    flash:    '[data-region=flash]'
     sidebar:  '[data-region=sidebar]'
 
 # # # # #

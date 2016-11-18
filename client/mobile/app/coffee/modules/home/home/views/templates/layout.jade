@@ -1,17 +1,6 @@
-mixin inputItem(icon, text)
+.row.m-t-1
+  .col-xs-12
+    .lyrebird-device
 
-  .col-xs-6
-    a.card.card-block( href='#interface/' + text.toLowerCase() )
-      h4.card-title.text-center
-        i.fa.fa-fw( class=icon )
-        br
-        br
-        = text
-
-.row
-  //- +inputItem('fa-key', 'Passwords')
-  +inputItem('fa-keyboard-o', 'Keyboard')
-  +inputItem('fa-mouse-pointer', 'Mouse')
-  +inputItem('fa-gamepad', 'Gamepad')
-  +inputItem('fa-gamepad', 'Remote')
-  //- +inputItem('fa-database', 'Thumbdrive')
+.row.m-t-2
+  .col-xs-12(data-region='status')

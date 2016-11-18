@@ -38,6 +38,7 @@ charMap = {
 class DeviceModel extends Backbone.Model
 
   connect: ->
+    window.device = @ # TODO - remove
     Backbone.Radio.channel('bluetooth').request('connect', @)
 
   disconnect: ->
@@ -48,6 +49,12 @@ class DeviceModel extends Backbone.Model
 
   readRSSI: =>
     Backbone.Radio.channel('bluetooth').request('read:rssi', @)
+
+  remember: ->
+    Backbone.Radio.channel('known:device').trigger('add', @)
+
+  forget: ->
+    Backbone.Radio.channel('known:device').trigger('remove', @)
 
   writePromise: (dataArray) =>
     return new Promise (resolve,reject) =>

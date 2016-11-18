@@ -2,13 +2,22 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
-class HomeRoute extends Backbone.Routing.Route
+class HomeRoute extends require '../../base/route'
 
-  initialize: (options={}) ->
-    @container = options.container
+  fetch: ->
+    promises = [
+      Backbone.Radio.channel('known:device').request('collection')
+      Backbone.Radio.channel('device').request('collection')
+    ]
+
+    return Promise.all(promises)
+    .then (collections) =>
+      @model      = collections[0].first() # KnownDevice
+      @collection = collections[1] # DeviceCollection
 
   render: ->
-    @container.show new LayoutView()
+    window.known = @model
+    @container.show new LayoutView({ model: @model, collection: @collection })
 
 # # # # #
 

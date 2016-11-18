@@ -12,6 +12,11 @@ class DeviceService extends Marionette.Service
     'device refresh': 'refresh'
 
   initialize: ->
+
+    # Gets currently known devices
+    Backbone.Radio.channel('known:device').request('collection')
+    .then (knownDevices) => @knownDevices = knownDevices
+
     @collectionCache = new DeviceCollection()
 
   refresh: ->
@@ -20,10 +25,15 @@ class DeviceService extends Marionette.Service
     return if @scanning
 
     # Resets collection
+    # TODO - this isn't a reliable solution
+    # Instead we must rescan for devices and reset the collection
+    # with the union of its models and the scan result
     @collectionCache.reset([])
 
     # Success callback
     onDeviceFound = (device) =>
+      return unless device.name == 'Lyrebird'
+      device.known = !!@knownDevices.get(device.id)
       @collectionCache.add device
 
     # Error callback
