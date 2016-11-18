@@ -70,6 +70,8 @@ class DeviceModel extends Backbone.Model
 
   writeKeydown: (char) => @writePromise([2,charMap[char],0,0,0,0,0])
 
+  writeMouse: (pos) => @writePromise([1,pos.x,pos.y,0])
+
   writeChar: (char) =>
     promises = [@writeKeydown(char), @writeKeyup()]
     return Promise.all(promises)
