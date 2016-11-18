@@ -25,7 +25,6 @@ class AutoConnectView extends Marionette.LayoutView
   onRender: ->
     return unless @model
     return if @model.get('connected')
-    console.log 'CONNECT TO DEVICE!'
     @model.connect()
 
 # # # # #
@@ -41,34 +40,19 @@ class HomeLayoutView extends Marionette.LayoutView
     statusRegion: '[data-region=status]'
 
   connectIfKnown: ->
+
+    # Return if no known devices are found
+    return unless @model
+
+    # Finds known device model
     @foundDevice = @collection.get(@model.id)
 
     # Return if device hasn't been found
     return if not @foundDevice
-
-    #
     @render()
 
   onRender: ->
     @statusRegion.show new AutoConnectView({ model: @foundDevice })
-
-  # initialize: ->
-  #   @startPolling()
-
-  # onDestroy: ->
-  #   @stopPolling()
-
-  # startPolling: ->
-  #   return if @interval
-  #   @interval = setInterval( @scanForDevices, 10000 )
-
-  # stopPolling: ->
-  #   return unless @interval
-  #   clearInterval(@interval)
-  #   delete @interval
-
-  # scanForDevices: ->
-  #   Backbone.Radio.channel('device').request('collection')
 
 # # # # #
 
