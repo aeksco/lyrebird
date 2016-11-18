@@ -38,6 +38,7 @@ charMap = {
 class DeviceModel extends Backbone.Model
 
   connect: ->
+    window.device = @ # TODO - remove
     Backbone.Radio.channel('bluetooth').request('connect', @)
 
   disconnect: ->

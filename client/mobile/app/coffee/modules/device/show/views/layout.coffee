@@ -41,8 +41,6 @@ class ControlsView extends Marionette.LayoutView
     'switchChange.bootstrapSwitch @ui.checkbox':  'toggleKnown'
 
   connect: ->
-    window.device = @model # TODO - remove
-
     @model.connect()
     .then (success) => @render()
     .catch (err) => console.log 'ERROR CONNECTING'
