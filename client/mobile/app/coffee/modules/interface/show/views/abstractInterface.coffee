@@ -7,6 +7,12 @@ class AbstractInterfaceView extends Marionette.LayoutView
     Haptic: {}
     KeyClick: {}
 
+  initialize: ->
+    plugins.insomnia.keepAwake()
+
+  onDestroy: ->
+    plugins.insomnia.allowSleepAgain()
+
 # # # # #
 
 module.exports = AbstractInterfaceView
