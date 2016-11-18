@@ -50,16 +50,16 @@
 	// MOUSE //
 	///////////
 	
-	#define MB_LEFT   0
-	#define MB_RIGHT  1
-	#define MB_MIDDLE 2
+	#define MB_LEFT   (1<<0)
+	#define MB_RIGHT  (1<<1)
+	#define MB_MIDDLE (1<<2)
 	
 	/**
 	* The data for a Mouse packet.
 	*/
 	typedef struct {
-		int16_t dx;
-		int16_t dy;
+		int8_t dx;
+		int8_t dy;
 		uint8_t buttons;
 	} MouseData;
 	
