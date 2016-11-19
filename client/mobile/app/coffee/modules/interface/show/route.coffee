@@ -5,16 +5,14 @@ Gamepad  = require './views/gamepad'
 
 # # # # #
 
-class InterfaceShowRoute extends Backbone.Routing.Route
-
-  initialize: (options={}) ->
-    @container = options.container
+class InterfaceShowRoute extends require '../../base/route'
 
   fetch: (id) ->
     # Debug statement
     return true unless window.plugins
 
     # Check bluetooth enabled...
+    # TODO - this should be moved elsewhere
     Backbone.Radio.channel('bluetooth').request('is:enabled')
     .then (isEnabled) => return true
     .catch (error) =>
@@ -31,6 +29,9 @@ class InterfaceShowRoute extends Backbone.Routing.Route
       when 'keyboard' then view = new Keyboard()
       when 'remote'   then view = new Remote()
       when 'gamepad'  then view = new Gamepad()
+
+    # TODO - fix this
+    localStorage.lastRoute = '#interface/' + id
 
     @container.show(view)
 

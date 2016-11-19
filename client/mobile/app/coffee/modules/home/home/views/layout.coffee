@@ -24,8 +24,13 @@ class AutoConnectView extends Marionette.LayoutView
 
   onRender: ->
     return unless @model
-    return if @model.get('connected')
+    return setTimeout( @routeOnConnected, 1000 ) if @model.get('connected')
     @model.connect()
+
+  routeOnConnected: ->
+    route = localStorage.lastRoute || '#interface/mouse'
+    window.location = route
+    return
 
 # # # # #
 
