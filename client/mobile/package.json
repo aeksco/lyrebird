@@ -22,6 +22,7 @@
     "font-awesome": "~4.6",
     "gulp-browserify": "~0.5.1",
     "gulp_tasks": "https://github.com/aeksco/gulp_tasks",
+    "hammerjs": "^2.0.8",
     "jquery": "~2.1",
     "marionette-service": "~0.0",
     "moment": "~2.10",

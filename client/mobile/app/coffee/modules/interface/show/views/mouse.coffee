@@ -1,11 +1,4 @@
 
-sendCommand = (pos) ->
-  console.log 'SEND COMMAND'
-  window.device.writeMousePos(pos)
-
-throttledCommand = _.throttle(sendCommand, 50)
-
-# # # # #
 class MouseInterface extends require './abstractInterface'
   template: require './templates/mouse'
 
@@ -24,11 +17,17 @@ class MouseInterface extends require './abstractInterface'
     # console.log 'SEND MOUSE CLICK?: ', clicked
 
     # TODO - remove window.device
-    return window.device.writeMouseLeft() if clicked == 'left'
-    return window.device.writeMouseRight()
+    return window.device.clickMouseLeft() if clicked == 'left'
+    return window.device.clickMouseRight()
 
   onTouchStart: (e) ->
-    # console.log 'onTouchStart'
+    evt = e.originalEvent
+    return unless evt.touches
+    return if evt.touches.length > 1
+    touch   = evt.touches[0] # Get the information for finger #1
+    touchX  = touch.pageX-touch.target.offsetLeft
+    touchY  = touch.pageY-touch.target.offsetTop
+    @newPos = {x: touchX, y: touchY}
 
   onTouchMove: (e) ->
 
@@ -64,7 +63,8 @@ class MouseInterface extends require './abstractInterface'
     # console.log @deltaPos
 
     # Sends mouse DX,DY to device
-    throttledCommand(@deltaPos)
+    # TODO - retire window.device
+    window.device.writeMousePos(@deltaPos)
 
     # Outputs position
     message = mode + Math.round(@deltaPos.x) + ',' + Math.round(@deltaPos.y)

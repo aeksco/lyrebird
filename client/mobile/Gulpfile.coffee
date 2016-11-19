@@ -37,6 +37,7 @@ paths =
       nodeModules + 'bootstrap-switch/dist/js/bootstrap-switch.min.js'
       nodeModules + 'crypto-js/crypto-js.js'
       nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
+      nodeModules + 'hammerjs/hammer.js'
     ]
 
 # Import Plugins
