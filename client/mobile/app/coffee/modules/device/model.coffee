@@ -56,41 +56,37 @@ class DeviceModel extends Backbone.Model
   forget: ->
     Backbone.Radio.channel('known:device').trigger('remove', @)
 
-  # write: (data) =>
-  #   success = (msg) -> return
-  #   failure = (err) -> return
-  #   ble.write(@id, "FFE0", "FFE1", data, success, failure)
+  writeFast: (data) => # TODO - use BB.Radio
+    packet = new Uint8Array(data).buffer
+    ble.writeWithoutResponse(window.device.id, "FFE0", "FFE1", packet)
 
-  writePromise: (dataArray) =>
-    return new Promise (resolve,reject) =>
-      success = (msg) -> return resolve()
-      failure = (err) -> return reject()
+  writeKeyup: =>
+    @writeFast([2,0,0,0,0,0,0])
 
-      data = new Uint8Array(dataArray).buffer
+  writeKeydown: (char) =>
+    @writeFast([2,charMap[char],0,0,0,0,0])
 
-      # Writes
-      ble.write(@id, "FFE0", "FFE1", data, success, failure)
+  clickMouseLeft: =>
+    @writeFast([1,0,0,1])
+    @writeFast([1,0,0,0])
 
-  writeKeyup: => @writePromise([2,0,0,0,0,0,0])
-
-  writeKeydown: (char) => @writePromise([2,charMap[char],0,0,0,0,0])
-
-  writeMousePos: (pos) => @writePromise([1,pos.x,pos.y,0])
-
-  writeMouseLeft: =>
-    promises = [@writePromise([1,0,0,1]), @writePromise([1,0,0,0])]
-    return Promise.all(promises)
-
-  writeMouseRight: =>
-    promises = [@writePromise([1,0,0,2]), @writePromise([1,0,0,0])]
-    return Promise.all(promises)
+  clickMouseRight: =>
+    @writeFast([1,0,0,2])
+    @writeFast([1,0,0,0])
 
   writeChar: (char) =>
-    promises = [@writeKeydown(char), @writeKeyup()]
-    return Promise.all(promises)
+    @writeKeydown(char)
+    @writeKeyup()
+
+  writeMousePos: (pos) =>
+    @writeFast([1,pos.x,pos.y,0])
 
   sendText: (text = 'lyrebird') =>
-    return Promise.each(text, (char) => return @writeChar(char))
+    for char in text
+      @writeFast([2,charMap[char],0,0,0,0,0])
+      @writeFast([2,0,0,0,0,0,0])
+
+    return true
 
 # # # # #
 
