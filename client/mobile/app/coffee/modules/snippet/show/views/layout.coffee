@@ -18,9 +18,7 @@ class SnippetShowLayout extends Marionette.LayoutView
     return data
 
   sendText: ->
-    console.log 'SEND TEXT'
     text = @model.get('snippet')
-    console.log text
     window.device.sendText(text)
 
 # # # # #
