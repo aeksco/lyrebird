@@ -82,10 +82,7 @@ class DeviceModel extends Backbone.Model
     @writeFast([1,pos.x,pos.y,0])
 
   sendText: (text = 'lyrebird') =>
-    for char in text
-      @writeFast([2,charMap[char],0,0,0,0,0])
-      @writeFast([2,0,0,0,0,0,0])
-
+    @writeChar(char) for char in text
     return true
 
 # # # # #
