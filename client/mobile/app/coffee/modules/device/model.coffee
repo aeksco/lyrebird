@@ -1,4 +1,5 @@
 # TODO - rethink this approach
+# http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
 charMap = {
   a:      4
   b:      5
@@ -75,6 +76,7 @@ class DeviceModel extends Backbone.Model
     @writeFast([1,0,0,0])
 
   writeChar: (char) =>
+    char = char.toLowerCase() # TODO - lowercase only
     @writeKeydown(char)
     @writeKeyup()
 
