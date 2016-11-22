@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Lyrebird Cordova application",
   "dependencies": {
+    "animate.css": "^3.4.0",
     "backbone": "~1.2",
     "backbone-metal": "^0.6.2",
     "backbone-relational": "~0.10",
