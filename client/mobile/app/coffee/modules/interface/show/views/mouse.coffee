@@ -56,9 +56,10 @@ class MouseInterface extends require './abstractInterface'
     # console.log @newPos
 
     # New mouse position
-    @deltaPos = { x: Math.round(@newPos.x - @oldPos.x), y: Math.round(@newPos.y - @oldPos.y) }
-    @deltaPos.x = 5*@deltaPos.x
-    @deltaPos.y = 5*@deltaPos.y
+    scalar = 5
+    @deltaPos = { x: Math.round(scalar * (@newPos.x - @oldPos.x)), y: Math.round(scalar * (@newPos.y - @oldPos.y)) }
+    @deltaPos.x = @deltaPos.x
+    @deltaPos.y = @deltaPos.y
 
     # console.log @deltaPos
 
