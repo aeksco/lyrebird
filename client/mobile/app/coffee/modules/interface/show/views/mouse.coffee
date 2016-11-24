@@ -52,16 +52,11 @@ class MouseInterface extends require './abstractInterface'
     @oldPos = _.clone(@newPos)
     @newPos = {x: touchX, y: touchY}
 
-    # console.log @oldPos
-    # console.log @newPos
-
     # New mouse position
     scalar = 5
     @deltaPos = { x: Math.round(scalar * (@newPos.x - @oldPos.x)), y: Math.round(scalar * (@newPos.y - @oldPos.y)) }
     @deltaPos.x = @deltaPos.x
     @deltaPos.y = @deltaPos.y
-
-    # console.log @deltaPos
 
     # Sends mouse DX,DY to device
     # TODO - retire window.device
