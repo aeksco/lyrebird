@@ -31,7 +31,17 @@ class DeviceModel extends Backbone.Model
     @writeFast([2,0,0,0,0,0,0])
 
   writeKeydown: (char) =>
-    @writeFast([2,0,charMap[char],0,0,0,0])
+
+    # Uppercase testing
+    @shift ||= 0
+    if char == char.toUpperCase()
+      # shift = 225 # LShift
+      @shift = 57 # Caps Lock
+    else
+      @shift = 0
+
+    char = char.toLowerCase()
+    @writeFast([2,@shift,charMap[char],0,0,0,0])
 
   clickMouseLeft: =>
     @writeFast([1,0,0,1])
@@ -42,7 +52,6 @@ class DeviceModel extends Backbone.Model
     @writeFast([1,0,0,0])
 
   writeChar: (char) =>
-    char = char.toLowerCase() # TODO - lowercase only
     @writeKeydown(char)
     @writeKeyup()
 
