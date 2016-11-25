@@ -2,17 +2,24 @@
 class KeyboardInterface extends require './abstractInterface'
   template: require './templates/keyboard'
 
+  ui:
+    send:   '[data-click=send]'
+    input:  '[name=keyboard]'
+
   events:
-    'input [name=keyboard]': 'onKeyTyped'
+    'click @ui.send': 'sendText'
 
-  onKeyTyped: (e) ->
-    el    = @$(e.currentTarget)
-    str   = el.val()
-    char  = str[str.length-1]
-    # el.val('')
-    window.device.writeChar(char) # TODO - remove window.device
+  sendText: ->
+    # Gets value
+    text = @ui.input.val()
 
-  onRender: ->
+    # Clears input
+    @ui.input.val('')
+
+    # Sends to device
+    window.device.sendText(text) # TODO - remove window.device
+
+  onRender: -> # TODO - why isn't this working?
     if @options.interface == 'keyboard'
       setTimeout( =>
         @$('input').focus()

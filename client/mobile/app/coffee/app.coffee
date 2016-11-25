@@ -32,5 +32,5 @@ SnippetModule   = require './modules/snippet/router'
 $(document).on 'ready', =>
   console.log 'Document Ready'
 
-  # Backbone.history.start() Invoked inside CordovaApp
+  # Stars app & lifecycle
   new CordovaApp()

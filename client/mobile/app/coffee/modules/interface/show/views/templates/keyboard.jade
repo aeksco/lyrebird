@@ -14,4 +14,11 @@ mixin remoteKey(icon, keyCode, text)
 
 .row.m-t-1
   .col-xs-12
+    .btn.btn-primary-outline.w-100( data-click='send' data-haptic=true )
+      h4.card-title.text-center.m-b-1.m-t-1
+        i.fa.fa-fw.fa-envelope-o
+        | Send
+
+.row.m-t-1
+  .col-xs-12
     +remoteKey(null, 'back', 'Backspace')
