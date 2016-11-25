@@ -1,13 +1,6 @@
-require './hammer-time.min' # TODO - should be node module
-window.Promise = require 'bluebird'
 
-# # # # #
-
-# Marionette behaviors configuration
-# TODO - breakout into separate configuration file
-Marionette.Behaviors.behaviorsLookup = -> require './behaviors'
-
-# # # # #
+# Application configuration
+require './config'
 
 # Cordova app & configuration
 CordovaApp = require './cordova_app'

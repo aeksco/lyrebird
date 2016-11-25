@@ -1,25 +1,27 @@
 
-# TODO - document this application, shift into a Marionette.Service?
-class CordovaApp
-
-  constructor: ->
-    @initialize()
+# CordovaApp class definition
+# Manages lifecycle and bootstraps application
+# mobile device on which the app is running
+class CordovaApp extends Marionette.Service
 
   initialize: ->
-    return @bindEvents()
 
-  bindEvents: ->
-    onDeviceReadyCallback = -> Backbone.history.start()
-    document.addEventListener 'deviceready', onDeviceReadyCallback, false
+    # Listener for 'deviceready' event
+    # fired when the Cordova framework has successfully initialized
+    document.addEventListener 'deviceready', @onDeviceReady, false
 
-  # onDeviceReady: ->
-  #   console.log 'Device ready - list Bluetooth devices.'
+    # Starts application without 'deviceready' event
+    # Used while debugging the application in-browser
+    # window.Contact is only defined when the app is running
+    # on a mobile device
+    @onDeviceReady() unless window.Contact
+    return true
 
-  #   # https://github.com/apache/cordova-plugin-contacts
-  #   # console.log navigator.contacts
-
-  # receivedEvent: (id) ->
-  #   console.log 'Received event: ', id
+  # Starts the application
+  # Starts Backbone.history (enables routing)
+  # And initializes header and sidebar modules
+  onDeviceReady: ->
+    Backbone.history.start()
 
 # # # # #
 
