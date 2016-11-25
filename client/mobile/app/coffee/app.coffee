@@ -11,15 +11,14 @@ AppLayout = require './application/layout'
 window.Container = AppLayout.main
 window.SidebarContainer = AppLayout.sidebar
 window.FlashContainer = AppLayout.flash
-window.LoadingView = require './views/loading'
 
 # Services
-BluetoothService = require './services/bluetooth'
-KnownDeviceServie = require './modules/known_device/storage'
+BluetoothService  = require './services/bluetooth'
+KnownDeviceServie = require './services/known_device'
 
 # Components
-SidebarComponent = require './modules/sidebar/component'
-FlashComponent = require './modules/flash/component'
+SidebarComponent  = require './modules/sidebar/component'
+FlashComponent    = require './modules/flash/component'
 
 # Modules
 HomeModule      = require './modules/home/router'
@@ -35,11 +34,3 @@ $(document).on 'ready', =>
 
   # Backbone.history.start() Invoked inside CordovaApp
   new CordovaApp()
-  # Backbone.history.start() # DEBUG ONLY
-
-  # TODO - abstract elsewhere
-  Backbone.Radio.channel('sidebar').trigger('initialize')
-
-  # TODO - abstract into header component
-  $('.navbar-brand').on 'click', =>
-    Backbone.Radio.channel('sidebar').trigger('toggle')

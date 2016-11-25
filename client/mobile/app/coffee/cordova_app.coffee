@@ -22,6 +22,11 @@ class CordovaApp extends Marionette.Service
   # And initializes header and sidebar modules
   onDeviceReady: ->
     Backbone.history.start()
+    Backbone.Radio.channel('sidebar').trigger('initialize')
+
+    # TODO - abstract into header component
+    $('.navbar-brand').on 'click', =>
+      Backbone.Radio.channel('sidebar').trigger('toggle')
 
 # # # # #
 
