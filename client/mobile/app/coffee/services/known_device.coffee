@@ -1,5 +1,13 @@
-KnownDeviceModel = require './model'
-KnownDeviceCollection = require './collection'
+
+class KnownDeviceModel extends Backbone.Model
+  urlRoot: '/known_devices/'
+
+# # # # #
+
+class KnownDeviceCollection extends Backbone.Collection
+  url: '/known_devices/'
+  model: KnownDeviceModel
+  local: true  # Backbone.DualStorage configuration
 
 # # # # #
 
