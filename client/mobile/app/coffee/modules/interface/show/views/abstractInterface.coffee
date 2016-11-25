@@ -7,12 +7,12 @@ class AbstractInterfaceView extends Marionette.LayoutView
     Haptic: {}
     KeyClick: {}
 
-  # FEATURE - insomnia timeout can be managed in user settings
+  # FEATURE - insomnia timeout should be managed in user settings
   initialize: ->
-    plugins.insomnia.keepAwake()
+    plugins?.insomnia.keepAwake()
 
   onDestroy: ->
-    plugins.insomnia.allowSleepAgain()
+    plugins?.insomnia.allowSleepAgain()
 
 # # # # #
 

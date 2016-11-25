@@ -8,6 +8,7 @@ class BluetoothService extends Marionette.Service
     'bluetooth disconnect':   'disconnect'
     'bluetooth is:connected': 'isConnected'
     'bluetooth read:rssi':    'readRSSI'
+    'bluetooth write':        'write'
 
   isEnabled: ->
     return new Promise (resolve, reject) =>
@@ -53,6 +54,10 @@ class BluetoothService extends Marionette.Service
         return resolve(device)
       failure = (err) -> return reject(new Error(err))
       ble.readRSSI(device.id, success, failure)
+
+  write: (device, data) ->
+    packet = new Uint8Array(data).buffer
+    ble.writeWithoutResponse(device.id, "FFE0", "FFE1", packet)
 
 # # # # #
 

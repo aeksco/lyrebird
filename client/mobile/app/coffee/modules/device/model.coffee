@@ -23,12 +23,11 @@ class DeviceModel extends Backbone.Model
   forget: ->
     Backbone.Radio.channel('known:device').trigger('remove', @)
 
-  writeFast: (data) => # TODO - use BB.Radio
-    packet = new Uint8Array(data).buffer
-    ble.writeWithoutResponse(window.device.id, "FFE0", "FFE1", packet)
+  write: (data) =>
+    Backbone.Radio.channel('bluetooth').request('write', @, data)
 
   writeKeyup: =>
-    @writeFast([2,0,0,0,0,0,0])
+    @write([2,0,0,0,0,0,0])
 
   writeKeydown: (char) =>
 
@@ -41,22 +40,22 @@ class DeviceModel extends Backbone.Model
       @shift = 0
 
     char = char.toLowerCase()
-    @writeFast([2,@shift,charMap[char],0,0,0,0])
+    @write([2,@shift,charMap[char],0,0,0,0])
 
   clickMouseLeft: =>
-    @writeFast([1,0,0,1])
-    @writeFast([1,0,0,0])
+    @write([1,0,0,1])
+    @write([1,0,0,0])
 
   clickMouseRight: =>
-    @writeFast([1,0,0,2])
-    @writeFast([1,0,0,0])
+    @write([1,0,0,2])
+    @write([1,0,0,0])
 
   writeChar: (char) =>
     @writeKeydown(char)
     @writeKeyup()
 
   writeMousePos: (pos) =>
-    @writeFast([1,pos.x,pos.y,0])
+    @write([1,pos.x,pos.y,0])
 
   sendText: (text = 'lyrebird') =>
     @writeChar(char) for char in text
