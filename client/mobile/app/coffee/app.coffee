@@ -11,7 +11,6 @@ AppLayout = require './application/layout'
 window.Container = AppLayout.main
 window.SidebarContainer = AppLayout.sidebar
 window.FlashContainer = AppLayout.flash
-window.LoadingView = require './views/loading'
 
 # Services
 BluetoothService = require './services/bluetooth'

@@ -8,8 +8,6 @@ class DeviceListRoute extends Backbone.Routing.Route
     @container = options.container
 
   fetch: ->
-    @container.show new window.LoadingView()
-
     return Backbone.Radio.channel('device').request('collection').then (devices) =>
       @collection = devices
 
