@@ -17,8 +17,8 @@ BluetoothService  = require './services/bluetooth'
 KnownDeviceServie = require './services/known_device'
 
 # Components
-SidebarComponent  = require './modules/sidebar/component'
-FlashComponent    = require './modules/flash/component'
+SidebarComponent  = require './components/sidebar/component'
+FlashComponent    = require './components/flash/component'
 
 # Modules
 HomeModule      = require './modules/home/router'
