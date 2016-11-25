@@ -12,9 +12,7 @@ class MouseInterface extends require './abstractInterface'
     y: 0
 
   onMouseClick: (e) ->
-    el = $(e.currentTarget)
-    clicked = el.data('mouse')
-    # console.log 'SEND MOUSE CLICK?: ', clicked
+    clicked = $(e.currentTarget).data('mouse')
 
     # TODO - remove window.device
     return window.device.clickMouseLeft() if clicked == 'left'
