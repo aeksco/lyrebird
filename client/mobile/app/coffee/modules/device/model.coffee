@@ -29,18 +29,24 @@ class DeviceModel extends Backbone.Model
   writeKeyup: =>
     @write([2,0,0,0,0,0,0])
 
+  canUppercase: (char) ->
+    return false  if char == charMap[' ']
+    return true   if char == char.toUpperCase()
+    return false
+
   writeKeydown: (char) =>
 
     # Uppercase testing
-    @shift ||= 0
-    if char == char.toUpperCase()
-      # shift = 225 # LShift
-      @shift = 57 # Caps Lock
+    if @canUppercase(char)
+      shift = 225 # LShift
+      # shift = 57 # Caps Lock
     else
-      @shift = 0
+      shift = 0
 
-    char = char.toLowerCase()
-    @write([2,@shift,charMap[char],0,0,0,0])
+    console.log shift
+    console.log char
+
+    @write([2,shift,charMap[char.toLowerCase()],0,0,0,0])
 
   clickMouseLeft: =>
     @write([1,0,0,1])
