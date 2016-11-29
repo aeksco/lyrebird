@@ -3,6 +3,7 @@ charMap = require './charMap' # TODO - rethink this approach
 # # # # #
 
 # Observes connection and sends leave-behind alerts
+# TODO - should this be part of the Bluetooth service?
 class ConnectionObserver extends Marionette.Object
 
   initialize: (options) =>
@@ -64,6 +65,8 @@ class DeviceModel extends Backbone.Model
   write: (data) =>
     Backbone.Radio.channel('bluetooth').request('write', @, data)
 
+  # # # # #
+  # TODO - abstract into Device.Keyboard
   writeKeyup: =>
     @write([2,0,0,0,0,0,0])
 
@@ -86,6 +89,18 @@ class DeviceModel extends Backbone.Model
 
     @write([2,shift,charMap[char.toLowerCase()],0,0,0,0])
 
+  writeChar: (char) =>
+    @writeKeydown(char)
+    @writeKeyup()
+
+  sendText: (text = 'lyrebird') =>
+    @writeChar(char) for char in text
+    return true
+  #
+  # # # # #
+
+  # # # # #
+  # TODO - abstract into Device.Mouse
   clickMouseLeft: =>
     @write([1,0,0,1])
     @write([1,0,0,0])
@@ -94,16 +109,10 @@ class DeviceModel extends Backbone.Model
     @write([1,0,0,2])
     @write([1,0,0,0])
 
-  writeChar: (char) =>
-    @writeKeydown(char)
-    @writeKeyup()
-
   writeMousePos: (pos) =>
     @write([1,pos.x,pos.y,0])
-
-  sendText: (text = 'lyrebird') =>
-    @writeChar(char) for char in text
-    return true
+  #
+  # # # # #
 
 # # # # #
 
