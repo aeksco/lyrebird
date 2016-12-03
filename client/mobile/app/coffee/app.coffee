@@ -6,8 +6,10 @@ require './config'
 CordovaApp = require './cordova_app'
 
 # Application Layout
-# TODO - get rid of references to 'window.X'
 AppLayout = require './application/layout'
+window.Layout = AppLayout
+
+# TODO - remove these references
 window.Container = AppLayout.main
 window.SidebarContainer = AppLayout.sidebar
 window.FlashContainer = AppLayout.flash
@@ -19,6 +21,7 @@ KnownDeviceServie = require './services/known_device'
 # Components
 SidebarComponent  = require './components/sidebar/component'
 FlashComponent    = require './components/flash/component'
+OverlayComponent  = require './components/overlay/component'
 
 # Modules
 HomeModule      = require './modules/home/router'

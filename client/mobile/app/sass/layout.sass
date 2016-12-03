@@ -14,8 +14,19 @@ html, body
   z-index: 100
 
 .main-region
-  transition: opacity 0.3s ease-in-out
   padding-top: 4.5rem
+
+.overlay-region
+  z-index: 0
+  width: 100%
+  height: 100%
+  position: fixed
+  background-color: #000
+  opacity: 0
+  transition: opacity .25s ease-out
+  .overlay
+    width: 100%
+    height: 100%
 
 .sidebar-region
   position: fixed
@@ -40,5 +51,51 @@ body.sidebar-active
   .sidebar-region
     margin-left: 0rem
 
+  .overlay-region
+    z-index: 80
+    opacity: 0.60
+
   .main-region
-    opacity: 0.5
+    filter: blur(10px)
+
+
+// // // // // //
+// Animated Region CSS
+// TODO - abstract into separate file
+
+@keyframes swapUp
+  0%
+    opacity: 0
+    transform: translateY(30rem)
+  100%
+    opacity: 100
+    transform: translateY(0rem)
+
+@keyframes swapDown
+  0%
+    opacity: 100
+    transform: translateY(0rem)
+  100%
+    opacity: 0
+    transform: translateY(30rem)
+
+.swap-wrapper
+  position: relative
+
+  .swap
+    width: 100%
+    position: absolute
+
+    // Up-Down is only option ATM
+    &.up-down
+
+      &.first
+        animation: swapUp .3s normal forwards
+
+      &.out
+        &.coming
+          animation: swapUp .5s normal forwards
+
+      &.in
+        &.leaving
+          animation: swapDown .5s normal forwards
