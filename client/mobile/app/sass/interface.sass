@@ -3,3 +3,33 @@ canvas.mouse
   background: grey
   width: 100%
   height: 400px
+
+
+// Numpad SASS
+.num-row
+  width: 100%
+  display: flex
+
+  &:nth-child(n+2)
+    a.numkey
+      border-top: none
+
+  a.numkey
+    height: 4rem
+    width: 25%
+    display: flex
+    justify-content: center
+
+    .text
+      align-self: center
+
+    &:nth-child(-n+3)
+      &:not(.tall)
+        border-right: none
+
+    &.tall
+      height: 8rem
+      margin-top: -4rem
+
+    &.zero
+      width: 50%

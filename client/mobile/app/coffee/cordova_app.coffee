@@ -12,16 +12,18 @@ class CordovaApp extends Marionette.Service
 
     # Starts application without 'deviceready' event
     # Used while debugging the application in-browser
-    # window.Contact is only defined when the app is running
+    # window.ble is only defined when the app is running
     # on a mobile device
-    # @onDeviceReady() unless window.ble
+    setTimeout( =>
+      @onDeviceReady() unless window.ble
+    , 1000)
+
     return true
 
   # Starts the application
   # Starts Backbone.history (enables routing)
   # And initializes header and sidebar modules
   onDeviceReady: ->
-    console.log 'ON DEVICE READY?'
     Backbone.history.start()
     Backbone.Radio.channel('sidebar').trigger('initialize')
 

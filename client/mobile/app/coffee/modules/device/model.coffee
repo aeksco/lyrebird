@@ -70,24 +70,32 @@ class DeviceModel extends Backbone.Model
   writeKeyup: =>
     @write([2,0,0,0,0,0,0])
 
+  # TODO - remove can uppercase
+  # charMap should include uppercase characters
   canUppercase: (char) ->
     return false  if char == charMap[' ']
     return true   if char == char.toUpperCase()
     return false
 
+  # TODO - gotta get uppercase working!
+  # TODO - remove this after debugging
+  # Format? [modifier, reserved, Key1, Key2, Key3, Key4, Key5, Key6]
+  # writeKeydown: (report) ->
+  #   @write(report)
+
   writeKeydown: (char) =>
 
     # Uppercase testing
-    if @canUppercase(char)
-      shift = 225 # LShift
-      # shift = 57 # Caps Lock
-    else
-      shift = 0
+    # if @canUppercase(char)
+    #   shift = 225 # LShift
+    #   # shift = 57 # Caps Lock
+    # else
+    #   shift = 0
 
-    console.log shift
-    console.log char
+    # char = charMap[char.toLowerCase()]
 
-    @write([2,shift,charMap[char.toLowerCase()],0,0,0,0])
+    char = charMap[char]
+    @write([2,0,0,char,0,0,0,0])
 
   writeChar: (char) =>
     @writeKeydown(char)
