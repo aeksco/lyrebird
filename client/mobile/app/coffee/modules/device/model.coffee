@@ -68,7 +68,7 @@ class DeviceModel extends Backbone.Model
   # # # # #
   # TODO - abstract into Device.Keyboard
   writeKeyup: =>
-    @write([2,0,0,0,0,0,0,0])
+    @write([3,0,0,0,0,0,0,0])
 
   # TODO - gotta get uppercase working!
   # TODO - remove this after debugging
@@ -79,7 +79,7 @@ class DeviceModel extends Backbone.Model
   writeKeydown: (char) =>
 
     # char = charMap[char.toLowerCase()]
-    control = [2]
+    control = [3]
     charArr = charMap[char]
     padding = [0,0,0,0,0]
 
@@ -96,18 +96,30 @@ class DeviceModel extends Backbone.Model
   #
   # # # # #
 
+  writeDual: (rp1, rp2, delay=false) =>
+
+    if delay
+      @write(rp1)
+      setTimeout( =>
+        @write(rp2)
+      , delay)
+
+    else
+      @write(rp1)
+      @write(rp2)
+
   # # # # #
   # TODO - abstract into Device.Mouse
   clickMouseLeft: =>
-    @write([1,0,0,1])
-    @write([1,0,0,0])
+    @write([2,1])
+    @write([2,0])
 
   clickMouseRight: =>
-    @write([1,0,0,2])
-    @write([1,0,0,0])
+    @write([2,2])
+    @write([2,0])
 
   writeMousePos: (pos) =>
-    @write([1,pos.x,pos.y,0])
+    @write([1,pos.x,pos.y])
   #
   # # # # #
 
