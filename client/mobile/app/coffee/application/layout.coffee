@@ -8,8 +8,10 @@ class AppLayout extends Marionette.LayoutView
     main:
       selector:     '[data-region=main]'
       regionClass:  require './regions/animatedRegion'
-      inAnimation:  'fadeInUp'
-      outAnimation: 'fadeOutDown'
+
+    modal:
+      selector:     '[data-region=modal]'
+      regionClass:  require './regions/modalRegion'
 
     flash:    '[data-region=flash]'
     overlay:  '[data-region=overlay]'
@@ -17,5 +19,4 @@ class AppLayout extends Marionette.LayoutView
 
 # # # # #
 
-# layout = new AppLayout().render()
 module.exports = new AppLayout().render()

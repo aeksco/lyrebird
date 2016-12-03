@@ -22,6 +22,7 @@ KnownDeviceServie = require './services/known_device'
 SidebarComponent  = require './components/sidebar/component'
 FlashComponent    = require './components/flash/component'
 OverlayComponent  = require './components/overlay/component'
+ConfirmComponents = require './components/confirm/component'
 
 # Modules
 HomeModule      = require './modules/home/router'
