@@ -72,6 +72,7 @@
 	* The data for a Keyboard packet.
 	*/
 	typedef struct {
+		uint8_t modifier;
 		uint8_t keys[MAX_KEYS_PRESSED];
 	} KeyboardData;
 	

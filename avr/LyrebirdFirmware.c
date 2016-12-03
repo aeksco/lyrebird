@@ -264,6 +264,8 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 	{
 			USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
 			
+			KeyboardReport -> Modifier = keyboard_data.modifier;
+			
 			for (i = 0; i < MAX_KEYS_PRESSED; i++)
 			{
 				KeyboardReport -> KeyCode[i] = keyboard_data.keys[i];
