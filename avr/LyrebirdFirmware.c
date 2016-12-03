@@ -81,10 +81,12 @@ size_t GetPacketDataLength(uint8_t packetType)
 	{
 		case PACKET_CONTROL:
 			return 0;
-		case PACKET_MOUSE:
-			return sizeof(KeyboardData);
+		case PACKET_MOUSE_MOV:
+			return sizeof(MouseMoveData);
+		case PACKET_MOUSE_BUT:
+			return sizeof(MouseButtonData);
 		case PACKET_KEYBOARD:
-			return sizeof(MouseData);
+			return sizeof(KeyboardData);
 		case PACKET_JOYSTICK:
 			return sizeof(JoystickData);
 		default:
@@ -102,8 +104,12 @@ void ProcessPacket(uint8_t packetType, uint8_t* packetData)
 	{
 		case PACKET_CONTROL:
 			break;
-		case PACKET_MOUSE:
-			memcpy(&mouse_data, packetData, sizeof(MouseData));
+		case PACKET_MOUSE_MOV:
+			mouse_data.dx = ((MouseMoveData*) packetData) -> dx;
+			mouse_data.dy = ((MouseMoveData*) packetData) -> dy;
+			break;
+		case PACKET_MOUSE_BUT:
+			mouse_data.buttons = ((MouseButtonData*) packetData) -> buttons;
 			break;
 		case PACKET_KEYBOARD:
 			memcpy(&keyboard_data, packetData, sizeof(KeyboardData));
