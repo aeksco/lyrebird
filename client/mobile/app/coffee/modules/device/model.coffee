@@ -86,13 +86,15 @@ class DeviceModel extends Backbone.Model
   writeKeydown: (char) =>
 
     # Uppercase testing
-    if @canUppercase(char)
-      shift = 225 # LShift
-      # shift = 57 # Caps Lock
-    else
-      shift = 0
+    # if @canUppercase(char)
+    #   shift = 225 # LShift
+    #   # shift = 57 # Caps Lock
+    # else
+    #   shift = 0
 
-    char = charMap[char.toLowerCase()]
+    # char = charMap[char.toLowerCase()]
+
+    char = charMap[char]
     @write([2,0,0,char,0,0,0,0])
 
   writeChar: (char) =>
