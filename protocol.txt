@@ -3,7 +3,7 @@ Packet Type   - 1 byte  (enum)
   MouseData    - 1
   KeyboardData - 2
   JoystickData - 3
-  Reserved     - 4-255  
+  Reserved     - 4-255
 Packet Data    - n bytes (data)
 
 Mouse Packet Data
@@ -18,14 +18,8 @@ buttons - 1 byte (bitmask)
 
 Keyboard Data
 -------------
-flags   - 1 byte (bitmask)
-  bit - field
-  0   - action (pressed 1, released 0)
-  1:7 - reserved
-keycode - 1 byte (unsigned int)
-
-OR
--------------
+modifier
+bitwise XOR for multiple modifier keys
 keys pressed - 6 bytes (array of unsigned 1 byte integers)
 
 Joystick Data
