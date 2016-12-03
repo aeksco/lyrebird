@@ -41,10 +41,11 @@
 	// GENERAL //
 	/////////////
 	
-	#define PACKET_MOUSE    1
-	#define PACKET_KEYBOARD 2
-	#define PACKET_JOYSTICK 3
-	#define PACKET_CONTROL  255
+	#define PACKET_MOUSE_MOV 1
+	#define PACKET_MOUSE_BUT 2
+	#define PACKET_KEYBOARD  3
+	#define PACKET_JOYSTICK  4
+	#define PACKET_CONTROL   255
 	
 	///////////
 	// MOUSE //
@@ -57,11 +58,21 @@
 	/**
 	* The data for a Mouse packet.
 	*/
+	
 	typedef struct {
 		int8_t dx;
 		int8_t dy;
 		uint8_t buttons;
 	} MouseData;
+	
+	typedef struct {
+		int8_t dx;
+		int8_t dy;
+	} MouseMoveData;
+	
+	typedef struct {
+		uint8_t buttons;
+	} MouseButtonData;
 	
 	
 	//////////////
