@@ -18,6 +18,7 @@ class SidebarView extends Backbone.Marionette.LayoutView
     { title:  'Mouse',      icon: 'fa-mouse-pointer', href: '#interface/mouse' }
     { title:  'Gamepad',    icon: 'fa-gamepad',       href: '#interface/gamepad' }
     { title:  'Remote',     icon: 'fa-gamepad',       href: '#interface/remote' }
+    { title:  'Numpad',     icon: 'fa-calculator',    href: '#interface/numpad' }
     # { title:  'Thumbdrive', icon: 'fa-database',      href: '#interface/thumbdrive' }
   ]
 

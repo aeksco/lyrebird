@@ -1,7 +1,8 @@
-Mouse    = require './views/mouse'
-Keyboard = require './views/keyboard'
-Remote   = require './views/remote'
-Gamepad  = require './views/gamepad'
+Mouse     = require './views/mouse'
+Keyboard  = require './views/keyboard'
+Remote    = require './views/remote'
+Gamepad   = require './views/gamepad'
+Numpad    = require './views/Numpad'
 
 # # # # #
 
@@ -29,6 +30,7 @@ class InterfaceShowRoute extends require '../../base/route'
       when 'keyboard' then view = new Keyboard()
       when 'remote'   then view = new Remote()
       when 'gamepad'  then view = new Gamepad()
+      when 'numpad'   then view = new Numpad()
 
     # TODO - fix this
     localStorage.lastRoute = '#interface/' + id
