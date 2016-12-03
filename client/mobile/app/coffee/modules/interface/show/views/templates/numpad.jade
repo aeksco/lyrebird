@@ -9,29 +9,29 @@ mixin numKey(num, keyCode)
 .row
   .col-xs-12
     .num-row
-      +numKey('NUM', '24')
+      +numKey('NUM', 'num')
       +numKey('/', '24')
-      +numKey('*', '85')
-      +numKey('-', '86')
+      +numKey('*', '*')
+      +numKey('-', '-')
 
     .num-row
-      +numKey('7', '95')
-      +numKey('8', '96')
-      +numKey('9', '97')
+      +numKey('7', '7')
+      +numKey('8', '8')
+      +numKey('9', '9')
 
     .num-row
-      +numKey('4', '92')
-      +numKey('5', '93')
-      +numKey('6', '94')
-      +numKey('+', '87')&attributes({ 'class': 'tall' })
+      +numKey('4', '4')
+      +numKey('5', '5')
+      +numKey('6', '6')
+      +numKey('+', '+')&attributes({ 'class': 'tall' })
 
     .num-row
-      +numKey('1', '89')
-      +numKey('2', '90')
-      +numKey('3', '91')
+      +numKey('1', '1')
+      +numKey('2', '3')
+      +numKey('3', '3')
 
     .num-row
-      +numKey('0', '98')&attributes({ 'class': 'zero' })
-      +numKey('.', '99')
-      +numKey('ENTER', '88')&attributes({ 'class': 'tall' })
+      +numKey('0', '0')&attributes({ 'class': 'zero' })
+      +numKey('.', '.')
+      +numKey('ENTER', 'enter')&attributes({ 'class': 'tall' })
 
