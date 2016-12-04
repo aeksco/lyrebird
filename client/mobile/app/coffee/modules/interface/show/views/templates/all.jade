@@ -1,7 +1,6 @@
 mixin interfaceCard(name)
-  .swiper-slide.interface-card=name
-    //- h4.card-title= name
-    //- .card-text This is a lyrebird interface.
+  .swiper-slide.interface-card
+    strong= name
 
 .row
   .col-xs-12
@@ -15,3 +14,4 @@ mixin interfaceCard(name)
 
 .row.m-t-1
   .col-xs-12(data-region='interface')
+

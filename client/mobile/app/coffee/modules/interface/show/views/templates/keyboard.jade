@@ -8,8 +8,6 @@ mixin remoteKey(icon, keyCode, text)
 
 .row
   .col-xs-12
-    //- h4 Keyboard Interface
-
     input.form-control.form-control-lg.w-100( name='keyboard', placeholder='Hello from Lyrebird!' )
 
 .row.m-t-1
@@ -19,6 +17,15 @@ mixin remoteKey(icon, keyCode, text)
         i.fa.fa-fw.fa-envelope-o
         | Send
 
+.row
+  .col-xs-12
+    hr
+
+.row
+  .col-xs-12
+    +remoteKey(null, 'enter', 'Enter')
+
 .row.m-t-1
   .col-xs-12
     +remoteKey(null, 'back', 'Backspace')
+

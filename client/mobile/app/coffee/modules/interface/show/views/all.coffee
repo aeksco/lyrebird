@@ -20,7 +20,7 @@ class InterfaceSlider extends require './abstractInterface'
     1: Mouse
     2: Remote
     3: Numpad
-    4: Gamepad
+    # 4: Gamepad
 
   onRender: ->
     @interfaceRegion.show(new Keyboard(), {animation: 'right-in'})
@@ -28,21 +28,14 @@ class InterfaceSlider extends require './abstractInterface'
 
   initSwiper: =>
     new Swiper('.interfaces', {
-      # loop: true
       onSlideChangeEnd: @onSlideChangeEnd
     })
 
   onSlideChangeEnd: (swiper) =>
     @showInterface(swiper.snapIndex)
 
-  # flag: true
   lastIndex: 0
   showInterface: (index) =>
-    # return @flag = false if @flag
-
-    # Non-zero bug
-    # index = 1 if index == 0
-
     if index > @lastIndex
       animation = 'right-in'
     else
@@ -50,8 +43,6 @@ class InterfaceSlider extends require './abstractInterface'
 
     @lastIndex = index
     View = @viewByIndex[index]
-    console.log index
-    console.log View
     @interfaceRegion.show(new View(), { animation: animation })
 
 
