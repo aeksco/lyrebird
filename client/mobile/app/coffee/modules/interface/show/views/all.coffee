@@ -48,7 +48,9 @@ class InterfaceSlider extends Marionette.LayoutView
 
     @swiper = new Swiper('.interfaces', {
       # onInit:           onInit
-      onSlideChangeEnd: @onSlideChangeEnd
+      speed: 300
+      # onSlideChangeEnd: @onSlideChangeEnd
+      onSlideChangeStart: @onSlideChangeEnd
     })
 
   onBeforeDestroy: =>
