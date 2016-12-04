@@ -41,13 +41,13 @@ class InterfaceSlider extends Marionette.LayoutView
 
     # Sets initial slider state from @options.type
     # TODO - this gets invoked twice.
-    onInit = (swiper) =>
-      @indexByView ||= _.invert(@indexMap)
-      @lastIndex = @indexByView[@options.type]
-      swiper?.slideTo(@lastIndex, null, false)
+    # onInit = (swiper) =>
+    #   @indexByView ||= _.invert(@indexMap)
+    #   @lastIndex = @indexByView[@options.type]
+    #   swiper?.slideTo(@lastIndex, null, false)
 
     swiper = new Swiper('.interfaces', {
-      onInit:           onInit
+      # onInit:           onInit
       onSlideChangeEnd: @onSlideChangeEnd
     })
 
