@@ -15,11 +15,11 @@ class SidebarView extends Backbone.Marionette.LayoutView
     { title:  'Auto-Connect', icon: 'fa-refresh',     href: '#', divider: true }
     { title:  'Passwords',  icon: 'fa-key',           href: '#passwords' }
     { title:  'Snippets',   icon: 'fa-file-text-o',   href: '#snippets', divider: true }
-    { title:  'Keyboard',   icon: 'fa-keyboard-o',    href: '#interface/keyboard' }
-    { title:  'Mouse',      icon: 'fa-mouse-pointer', href: '#interface/mouse' }
-    { title:  'Remote',     icon: 'fa-building',      href: '#interface/remote' }
-    { title:  'Numpad',     icon: 'fa-calculator',    href: '#interface/numpad' }
-    { title:  'Gamepad',    icon: 'fa-gamepad',       href: '#interface/gamepad' }
+    { title:  'Keyboard',   icon: 'fa-keyboard-o',    href: '#interface?type=keyboard' }
+    { title:  'Mouse',      icon: 'fa-mouse-pointer', href: '#interface?type=mouse' }
+    { title:  'Remote',     icon: 'fa-building',      href: '#interface?type=remote' }
+    { title:  'Numpad',     icon: 'fa-calculator',    href: '#interface?type=numpad' }
+    # { title:  'Gamepad',    icon: 'fa-gamepad',       href: '#interface?type=gamepad' }
     # { title:  'Thumbdrive', icon: 'fa-database',      href: '#interface/thumbdrive' }
   ]
 

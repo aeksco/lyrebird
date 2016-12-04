@@ -1,8 +1,4 @@
-Mouse     = require './views/mouse'
-Keyboard  = require './views/keyboard'
-Remote    = require './views/remote'
-Gamepad   = require './views/gamepad'
-Numpad    = require './views/Numpad'
+InterfaceView = require './views/all'
 
 # # # # #
 
@@ -24,18 +20,10 @@ class InterfaceShowRoute extends require '../../base/route'
       .then () => return true
       .catch (error) => return false
 
-  render: (id) ->
-    switch id
-      when 'mouse'    then view = new Mouse()
-      when 'keyboard' then view = new Keyboard()
-      when 'remote'   then view = new Remote()
-      when 'gamepad'  then view = new Gamepad()
-      when 'numpad'   then view = new Numpad()
-
-    # TODO - fix this
-    localStorage.lastRoute = '#interface/' + id
-
-    @container.show(view)
+  render: (param="type=keyboard") ->
+    type = param.split('=')[1]
+    @container.show new InterfaceView({ type: type })
+    localStorage.lastRoute = '#interface?type=' + type # TODO - fix this?
 
 # # # # #
 

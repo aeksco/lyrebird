@@ -27,7 +27,17 @@ class MouseInterface extends require './abstractInterface'
     touchY  = touch.pageY-touch.target.offsetTop
     @newPos = {x: touchX, y: touchY}
 
+    # Tap to touch
+    # TODO - should be optional
+    @touchStarted = true
+    setTimeout( =>
+      window.device.clickMouseLeft() if @touchStarted
+    , 200)
+
   onTouchMove: (e) ->
+
+    # Prevents 'tap to click'
+    @touchStarted = false
 
     evt = e.originalEvent
 

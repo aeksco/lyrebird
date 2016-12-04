@@ -23,6 +23,10 @@ class SwapView extends Marionette.LayoutView
   # Holds queued view and options until unresolved animations are finished.
   queued: null
 
+  templateHelpers: ->
+    console.log @options.animation || 'up-down'
+    return { animation: @options.animation || 'up-down' }
+
   showQueued: ->
     return unless @queued
     view    = @queued.view
@@ -55,8 +59,9 @@ class SwapView extends Marionette.LayoutView
     $('html').css({ overflow: 'hidden' })
 
     # Kicks off animation
-    prevUI.addClass('leaving')
-    nextUI.addClass('coming')
+    animation = options.animation || @options.animation || 'up-down'
+    prevUI.addClass("#{animation} leaving")
+    nextUI.addClass("#{animation} coming")
 
     # Shows new view
     nextUI.addClass('first') unless prevSlot.currentView
@@ -68,8 +73,8 @@ class SwapView extends Marionette.LayoutView
 
       # Post-animate CSS maintenance
       $('html').css({ overflow: 'auto' })
-      prevUI.addClass('out').removeClass('in coming first leaving')
-      nextUI.addClass('in').removeClass('out coming first leaving')
+      prevUI.addClass('out').removeClass("#{animation} in coming first leaving")
+      nextUI.addClass('in').removeClass("#{animation} out coming first leaving")
 
       # Empties old view and sets state
       prevSlot.empty()
@@ -85,10 +90,11 @@ class SwapView extends Marionette.LayoutView
 
 class SwapRegion extends Marionette.Region
 
-  initialize: ->
+  initialize: (options) ->
 
     # Declares throttled swap method
-    swapFuncion = (view, options) => return @swapView.swap(view, options)
+    swapFuncion = (view, options) =>
+      return @swapView.swap(view, options)
     @swap = _.throttle( swapFuncion, 250 )
 
   show: (view, options={}) ->
@@ -97,7 +103,7 @@ class SwapRegion extends Marionette.Region
     return @swap(view, options) if @swapView
 
     # If @swapView isn't defined, instantiate it and
-    @swapView = new SwapView(@swapViewOpts)
+    @swapView = new SwapView({ animation: @options.animation })
     @swapView.on 'show', => @swap(view, options)
     super(@swapView, options)
 

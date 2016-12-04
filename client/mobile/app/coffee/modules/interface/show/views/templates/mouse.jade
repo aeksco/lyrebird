@@ -6,16 +6,17 @@ mixin mouseButton(text, code)
 
 //- // // // // //
 
-.row
-  .col-xs-12
-    p.lead Mouse Interace
-    p.lead.position Mouse Position:
-    canvas.mouse( id='mouse-canvas' )
+.col-xs-12
+  .row
+    .col-xs-12
+      //- p.lead Mouse Interace
+      p.lead.position(style='display:none;') Mouse Position:
+      canvas.mouse( id='mouse-canvas' )
 
-  .col-xs-12
-    .btn-group.w-100
-      +mouseButton('Left', 'left')
-      +mouseButton('Right', 'right')
+    .col-xs-12
+      .btn-group.w-100
+        +mouseButton('Left', 'left')
+        +mouseButton('Right', 'right')
 
 
 
