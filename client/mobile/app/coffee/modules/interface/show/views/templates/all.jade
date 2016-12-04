@@ -1,17 +1,27 @@
-mixin interfaceCard(name)
+mixin interfaceCard(name, icon, leftNav, rightNav)
   .swiper-slide.interface-card
-    strong= name
+
+    if leftNav
+      .left-nav
+        i.fa.fa-fw.fa-angle-left
+
+    .name
+      i.fa.fa-fw(class=icon)
+      = name
+
+    if rightNav
+      .right-nav
+        i.fa.fa-fw.fa-angle-right
 
 .row
-  .col-xs-12
+  .col-xs-12.p-a-0
     .interfaces.swiper-container
       .swiper-wrapper
-        +interfaceCard('Keyboard')
-        +interfaceCard('Mouse')
-        +interfaceCard('Remote')
-        +interfaceCard('Numpad')
+        +interfaceCard('Keyboard', 'fa-keyboard-o', false, true)
+        +interfaceCard('Mouse', 'fa-mouse-pointer', true, true)
+        +interfaceCard('Remote', 'fa-building', true, true)
+        +interfaceCard('Numpad', 'fa-calculator', true, false)
         //- +interfaceCard('Gamepad')
 
 .row.m-t-1
   .col-xs-12(data-region='interface')
-
