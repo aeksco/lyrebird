@@ -44,27 +44,47 @@ canvas.mouse
 .interfaces
   // width: 500px
   // background: #eee
+  // @extend .card-group
   width: 100%
   height: 3rem
 
   .interface-card
-    background: #eee
+    // @extend .card
+    @extend .bg-inverse
     text-align: center
     font-size: 18px
+    // border-top: 1px solid #eee
 
     /* Center slide text vertically */
     display: -webkit-box
     display: -ms-flexbox
     display: -webkit-flex
     display: flex
+
     -webkit-box-pack: center
     -ms-flex-pack: center
     -webkit-justify-content: center
     justify-content: center
+
     -webkit-box-align: center
     -ms-flex-align: center
     -webkit-align-items: center
     align-items: center
+
+    .name
+      position: absolute
+      i.fa
+        padding-right: 1rem
+
+    .left-nav
+      position: absolute
+      left: 1rem
+      align-self: center
+
+    .right-nav
+      position: absolute
+      right: 1rem
+      align-self: center
 
 
 

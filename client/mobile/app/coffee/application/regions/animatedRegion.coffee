@@ -24,7 +24,6 @@ class SwapView extends Marionette.LayoutView
   queued: null
 
   templateHelpers: ->
-    console.log @options.animation || 'up-down'
     return { animation: @options.animation || 'up-down' }
 
   showQueued: ->
