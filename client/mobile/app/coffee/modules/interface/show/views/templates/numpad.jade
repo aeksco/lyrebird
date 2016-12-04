@@ -2,9 +2,9 @@ mixin numKey(num, keyCode)
   a.btn.btn-secondary.numkey( data-keycode=keyCode, data-haptic=true )&attributes(attributes)
     .text= num
 
-.row
-  .col-xs-12
-    h4 Numpad Interface
+//- .row
+//-   .col-xs-12
+//-     h4 Numpad Interface
 
 .row
   .col-xs-12
@@ -34,4 +34,3 @@ mixin numKey(num, keyCode)
       +numKey('0', '0')&attributes({ 'class': 'zero' })
       +numKey('.', '.')
       +numKey('ENTER', 'enter')&attributes({ 'class': 'tall' })
-

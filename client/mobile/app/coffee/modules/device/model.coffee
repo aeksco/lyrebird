@@ -110,6 +110,7 @@ class DeviceModel extends Backbone.Model
 
   # # # # #
   # TODO - abstract into Device.Mouse
+
   clickMouseLeft: =>
     @write([2,1])
     @write([2,0])
@@ -118,8 +119,13 @@ class DeviceModel extends Backbone.Model
     @write([2,2])
     @write([2,0])
 
+  clickMouseMiddle: =>
+    @write([2,4])
+    @write([2,0])
+
   writeMousePos: (pos) =>
     @write([1,pos.x,pos.y])
+
   #
   # # # # #
 

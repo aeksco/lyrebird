@@ -1,0 +1,17 @@
+mixin interfaceCard(name)
+  .swiper-slide.interface-card=name
+    //- h4.card-title= name
+    //- .card-text This is a lyrebird interface.
+
+.row
+  .col-xs-12
+    .interfaces.swiper-container
+      .swiper-wrapper
+        +interfaceCard('Keyboard')
+        +interfaceCard('Mouse')
+        +interfaceCard('Remote')
+        +interfaceCard('Numpad')
+        //- +interfaceCard('Gamepad')
+
+.row.m-t-1
+  .col-xs-12(data-region='interface')

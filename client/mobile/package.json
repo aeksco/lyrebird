@@ -28,6 +28,7 @@
     "marionette-service": "~0.0",
     "moment": "~2.10",
     "qs": "~6.0",
+    "swiper": "^3.4.0",
     "tether": "~1.1",
     "underscore": "~1.8"
   },

@@ -38,7 +38,8 @@ paths =
       nodeModules + 'crypto-js/crypto-js.js'
       nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
       nodeModules + 'bluebird/js/browser/bluebird.min.js'
-      nodeModules + 'hammerjs/hammer.js'
+      # nodeModules + 'hammerjs/hammer.js'
+      nodeModules + 'swiper/dist/js/swiper.jquery.min.js'
     ]
 
 # Import Plugins
