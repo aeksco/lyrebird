@@ -1,13 +1,14 @@
 Mouse     = require './mouse'
 Keyboard  = require './keyboard'
 Remote    = require './remote'
-Gamepad   = require './gamepad'
 Numpad    = require './Numpad'
+# Gamepad   = require './gamepad'
 
 # # # # #
 
-class InterfaceSlider extends require './abstractInterface'
+class InterfaceSlider extends Marionette.LayoutView
   template: require './templates/all'
+  className: 'container-fluid'
 
   regions:
     interfaceRegion:
@@ -15,19 +16,38 @@ class InterfaceSlider extends require './abstractInterface'
       regionClass: require '../../../../application/regions/animatedRegion'
       animation: 'right-in'
 
-  viewByIndex:
-    0: Keyboard
-    1: Mouse
-    2: Remote
-    3: Numpad
-    # 4: Gamepad
+  views:
+    keyboard: Keyboard
+    mouse:    Mouse
+    remote:   Remote
+    numpad:   Numpad
+
+  indexMap:
+    0: 'keyboard'
+    1: 'mouse'
+    2: 'remote'
+    3: 'numpad'
+    # 4: 'gamepad'
+
+  getViewByIndex: (index) ->
+    return @views[@indexMap[index]]
 
   onRender: ->
-    @interfaceRegion.show(new Keyboard(), {animation: 'right-in'})
-    setTimeout( @initSwiper, 1000)
+    View = @views[@options.type]
+    @interfaceRegion.show(new View(), {animation: 'right-in'})
+    setTimeout( @initSwiper, 10)
 
   initSwiper: =>
-    new Swiper('.interfaces', {
+
+    # Sets initial slider state from @options.type
+    # TODO - this gets invoked twice.
+    onInit = (swiper) =>
+      @indexByView ||= _.invert(@indexMap)
+      @lastIndex = @indexByView[@options.type]
+      swiper?.slideTo(@lastIndex, null, false)
+
+    swiper = new Swiper('.interfaces', {
+      onInit:           onInit
       onSlideChangeEnd: @onSlideChangeEnd
     })
 
@@ -42,7 +62,7 @@ class InterfaceSlider extends require './abstractInterface'
       animation = 'left-in'
 
     @lastIndex = index
-    View = @viewByIndex[index]
+    View = @getViewByIndex(index)
     @interfaceRegion.show(new View(), { animation: animation })
 
 

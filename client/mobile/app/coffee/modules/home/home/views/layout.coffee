@@ -28,7 +28,7 @@ class AutoConnectView extends Marionette.LayoutView
     @model.connect()
 
   routeOnConnected: ->
-    route = localStorage.lastRoute || '#interface/mouse'
+    route = localStorage.lastRoute || '#interface?type=keyboard'
     window.location = route
     return
 

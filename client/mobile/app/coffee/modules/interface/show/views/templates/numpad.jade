@@ -2,31 +2,32 @@ mixin numKey(num, keyCode)
   a.btn.btn-secondary.numkey( data-keycode=keyCode, data-haptic=true )&attributes(attributes)
     .text= num
 
-.row
-  .col-xs-12
-    .num-row
-      +numKey('NUM', 'num')
-      +numKey('/', '/')
-      +numKey('*', '*')
-      +numKey('-', '-')
+.col-xs-12
+  .row
+    .col-xs-12
+      .num-row
+        +numKey('NUM', 'num')
+        +numKey('/', '/')
+        +numKey('*', '*')
+        +numKey('-', '-')
 
-    .num-row
-      +numKey('7', '7')
-      +numKey('8', '8')
-      +numKey('9', '9')
+      .num-row
+        +numKey('7', '7')
+        +numKey('8', '8')
+        +numKey('9', '9')
 
-    .num-row
-      +numKey('4', '4')
-      +numKey('5', '5')
-      +numKey('6', '6')
-      +numKey('+', '+')&attributes({ 'class': 'tall' })
+      .num-row
+        +numKey('4', '4')
+        +numKey('5', '5')
+        +numKey('6', '6')
+        +numKey('+', '+')&attributes({ 'class': 'tall' })
 
-    .num-row
-      +numKey('1', '1')
-      +numKey('2', '2')
-      +numKey('3', '3')
+      .num-row
+        +numKey('1', '1')
+        +numKey('2', '2')
+        +numKey('3', '3')
 
-    .num-row
-      +numKey('0', '0')&attributes({ 'class': 'zero' })
-      +numKey('.', '.')
-      +numKey('ENTER', 'enter')&attributes({ 'class': 'tall' })
+      .num-row
+        +numKey('0', '0')&attributes({ 'class': 'zero' })
+        +numKey('.', '.')
+        +numKey('ENTER', 'enter')&attributes({ 'class': 'tall' })

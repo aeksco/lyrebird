@@ -20,14 +20,10 @@ class InterfaceShowRoute extends require '../../base/route'
       .then () => return true
       .catch (error) => return false
 
-  render: (id) ->
-    # TODO - switch from ID to param
-    @container.show new InterfaceView({ interface: id })
-
-    # # TODO - fix this
-    # localStorage.lastRoute = '#interface/' + id
-
-    # @container.show(view)
+  render: (param="type=keyboard") ->
+    type = param.split('=')[1]
+    @container.show new InterfaceView({ type: type })
+    localStorage.lastRoute = '#interface?type=' + type # TODO - fix this?
 
 # # # # #
 

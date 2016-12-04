@@ -1,7 +1,7 @@
 
 class AbstractInterfaceView extends Marionette.LayoutView
   template: null
-  className: 'container-fluid'
+  className: 'row'
 
   behaviors:
     Haptic: {}
