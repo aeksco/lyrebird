@@ -46,10 +46,13 @@ class InterfaceSlider extends Marionette.LayoutView
     #   @lastIndex = @indexByView[@options.type]
     #   swiper?.slideTo(@lastIndex, null, false)
 
-    swiper = new Swiper('.interfaces', {
+    @swiper = new Swiper('.interfaces', {
       # onInit:           onInit
       onSlideChangeEnd: @onSlideChangeEnd
     })
+
+  onBeforeDestroy: =>
+    @swiper.destroy(true, true)
 
   onSlideChangeEnd: (swiper) =>
     @showInterface(swiper.snapIndex)
