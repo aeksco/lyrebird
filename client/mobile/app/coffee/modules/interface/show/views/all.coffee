@@ -1,7 +1,8 @@
 Mouse     = require './mouse'
 Keyboard  = require './keyboard'
 Remote    = require './remote'
-Numpad    = require './Numpad'
+Numpad    = require './numpad'
+Chrome    = require './chrome'
 # Gamepad   = require './gamepad'
 
 # # # # #
@@ -21,12 +22,14 @@ class InterfaceSlider extends Marionette.LayoutView
     mouse:    Mouse
     remote:   Remote
     numpad:   Numpad
+    chrome:   Chrome
 
   indexMap:
     0: 'keyboard'
     1: 'mouse'
     2: 'remote'
     3: 'numpad'
+    4: 'chrome'
     # 4: 'gamepad'
 
   getViewByIndex: (index) ->
@@ -39,17 +42,9 @@ class InterfaceSlider extends Marionette.LayoutView
 
   initSwiper: =>
 
-    # Sets initial slider state from @options.type
-    # TODO - this gets invoked twice.
-    # onInit = (swiper) =>
-    #   @indexByView ||= _.invert(@indexMap)
-    #   @lastIndex = @indexByView[@options.type]
-    #   swiper?.slideTo(@lastIndex, null, false)
-
+    # Initializes Swiper
     @swiper = new Swiper('.interfaces', {
-      # onInit:           onInit
       speed: 300
-      # onSlideChangeEnd: @onSlideChangeEnd
       onSlideChangeStart: @onSlideChangeEnd
     })
 
