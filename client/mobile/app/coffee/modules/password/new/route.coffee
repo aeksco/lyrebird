@@ -2,10 +2,8 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
-class PasswordNewRoute extends Backbone.Routing.Route
-
-  initialize: (options={}) ->
-    @container = options.container
+# PasswordNewRoute class definition
+class PasswordNewRoute extends require '../base/route'
 
   fetch: ->
     return Backbone.Radio.channel('password').request('model')
