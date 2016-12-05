@@ -1,4 +1,9 @@
 
+# BluetoothService class definition
+# The BluetoothService provides an interface to manage
+# Bluetooth interactions in the applicaiton.
+# Most actions are implemented with Promises to more effectively
+# manage asynchronous actions in the application.
 class BluetoothService extends Marionette.Service
 
   radioRequests:
@@ -10,19 +15,21 @@ class BluetoothService extends Marionette.Service
     'bluetooth read:rssi':    'readRSSI'
     'bluetooth write':        'write'
 
+  # Checks if Bluetooth is enabled on the mobile device
   isEnabled: ->
     return new Promise (resolve, reject) =>
       success = -> return resolve(true)
       failure = -> return reject(new Error('Bluetooth is not enabled'))
       ble.isEnabled(success, failure)
 
+  # Forces Bluetooth-ON on the mobile device
   forceEnable: ->
     return new Promise (resolve, reject) =>
       success = -> return resolve(true)
       failure = -> return reject(new Error('Bluetooth cannot be auto-enabled'))
       ble.enable(success, failure)
 
-  # Connect to device
+  # Connect to Bluetooth device
   connect: (device) ->
     return new Promise (resolve, reject) =>
       success = (dev) ->
@@ -32,6 +39,7 @@ class BluetoothService extends Marionette.Service
       failure = (err) -> return reject(new Error(err))
       ble.connect(device.id, success, failure)
 
+  # Disconnect from Bluetooth device
   disconnect: (device) ->
     return new Promise (resolve, reject) =>
       success = (dev) ->
@@ -40,13 +48,15 @@ class BluetoothService extends Marionette.Service
       failure = -> return reject(new Error('Cannot disconnect from bluetooth device'))
       ble.disconnect(device.id, success, failure)
 
+  # Checks connection to Bluetooth device
   isConnected: (device) ->
-    console.log 'attempting to check connection...'
     return new Promise (resolve, reject) =>
       success = -> return resolve(true)
       failure = -> return reject(new Error('Device is not connected'))
       ble.isConnected(device.id, success, failure)
 
+  # Reads the RSSI from a connected device
+  # Sets the RSSI attribute on the Device model passed in
   readRSSI: (device) ->
     return new Promise (resolve, reject) =>
       success = (rssi) ->
@@ -55,6 +65,8 @@ class BluetoothService extends Marionette.Service
       failure = (err) -> return reject(new Error(err))
       ble.readRSSI(device.id, success, failure)
 
+  # Writes a packet to a connected device
+  # NOTE: does not wait for response from device
   write: (device, data) ->
     packet = new Uint8Array(data).buffer
     ble.writeWithoutResponse(device.id, "FFE0", "FFE1", packet)

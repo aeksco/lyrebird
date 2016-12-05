@@ -1,4 +1,7 @@
 
+# OverlayView class definition
+# Prevents user interactions when sidebar is engaged
+# And closes sidebar on click
 class OverlayView extends Marionette.LayoutView
   template: false
   className: 'overlay'
@@ -11,6 +14,8 @@ class OverlayView extends Marionette.LayoutView
 
 # # # # #
 
+# OverlayService class definition
+# Renders a transparent overlay when the sidebar is engaged
 class OverlayService extends Marionette.Service
 
   radioEvents:
