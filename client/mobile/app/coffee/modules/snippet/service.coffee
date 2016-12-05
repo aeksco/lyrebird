@@ -3,6 +3,9 @@ SnippetCollection = require './collection'
 
 # # # # #
 
+# SnippetService class definition
+# Defines a Marionette.Service class to act as an
+# offline storage interface for Snippets
 class SnippetService extends Marionette.Service
 
   radioRequests:

@@ -1,4 +1,7 @@
 
+# MouseInterface class definition
+# Manages mouse position and click statee
+# Much of this view's logic should be abstracted and cleaned up
 class MouseInterface extends require './abstractInterface'
   template: require './templates/mouse'
 
@@ -26,8 +29,6 @@ class MouseInterface extends require './abstractInterface'
     touchX  = touch.pageX-touch.target.offsetLeft
     touchY  = touch.pageY-touch.target.offsetTop
     @newPos = {x: touchX, y: touchY}
-
-    console.log 'ON TOUCH START'
 
     # Tap to touch
     # TODO - should be optional
