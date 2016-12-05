@@ -1,4 +1,6 @@
 
+# KeyClickBehavior class definition
+# Provides an abstracted interface for sending keystrokes in the app.
 class KeyClickBehavior extends Marionette.Behavior
 
   ui:

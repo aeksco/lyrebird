@@ -1,10 +1,10 @@
-Marionette = require 'backbone.marionette'
-_ = require 'underscore'
-
-# # # # #
 
 stillAnimating = false
 
+# SwapView class definition
+# The SwapView is a Marionette.LayoutView that animates a transition
+# between its two regions. It is used exclusively by the SwapRegion class,
+# though conceivably it could be used elsewhere without issue/
 class SwapView extends Marionette.LayoutView
   template: require './swap'
   className: 'swap-wrapper'
@@ -87,6 +87,10 @@ class SwapView extends Marionette.LayoutView
 
 # # # # #
 
+# SwapRegion class definition
+# The SwapRegion shims the default Marionette.Region class definition
+# to interface with a specialized view (SwapView) to gracefully
+# animate between two different views
 class SwapRegion extends Marionette.Region
 
   initialize: (options) ->
@@ -96,6 +100,7 @@ class SwapRegion extends Marionette.Region
       return @swapView.swap(view, options)
     @swap = _.throttle( swapFuncion, 250 )
 
+  # Overwrites Marionette.Region.prototype.show()
   show: (view, options={}) ->
 
     # Swap in new view
@@ -104,6 +109,8 @@ class SwapRegion extends Marionette.Region
     # If @swapView isn't defined, instantiate it and
     @swapView = new SwapView({ animation: @options.animation })
     @swapView.on 'show', => @swap(view, options)
+
+    # Invokes Marionette.Region.prototype.show()
     super(@swapView, options)
 
 # # # # #
