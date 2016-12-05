@@ -1,4 +1,9 @@
 
+# PasswordForm class definition
+# Defines a Marionette.LayoutView class for collecting
+# parameters used to create or update a PasswordModel
+
+# This view is a work in progress, much like the rest of the PasswordModule
 class PasswordForm extends Marionette.LayoutView
   className: 'row'
   template: require './templates/form'
@@ -11,7 +16,6 @@ class PasswordForm extends Marionette.LayoutView
 
   onSubmit: (e) ->
     attrs = Backbone.Syphon.serialize(@)
-    console.log attrs
 
     Backbone.Radio.channel('password').request('collection')
     .then (collection) =>
