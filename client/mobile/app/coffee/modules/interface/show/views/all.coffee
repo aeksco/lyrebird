@@ -1,7 +1,8 @@
 Mouse     = require './mouse'
 Keyboard  = require './keyboard'
 Remote    = require './remote'
-Numpad    = require './Numpad'
+Numpad    = require './numpad'
+Chrome    = require './chrome'
 # Gamepad   = require './gamepad'
 
 # # # # #
@@ -21,12 +22,14 @@ class InterfaceSlider extends Marionette.LayoutView
     mouse:    Mouse
     remote:   Remote
     numpad:   Numpad
+    chrome:   Chrome
 
   indexMap:
     0: 'keyboard'
     1: 'mouse'
     2: 'remote'
     3: 'numpad'
+    4: 'chrome'
     # 4: 'gamepad'
 
   getViewByIndex: (index) ->
