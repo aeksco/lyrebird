@@ -1,4 +1,7 @@
 
+# RSSIView class definition
+# Defines a Marionette.LayoutView that polls for RSSI
+# changes at a set interval and renders that updated figure in the view.
 class RSSIView extends Marionette.LayoutView
   template: require './templates/rssi'
   className: 'label label-primary'
@@ -25,6 +28,9 @@ class RSSIView extends Marionette.LayoutView
 
 # # # # #
 
+# ControlsView class definition
+# Defines a Marionette.LayoutView that acts as a control
+# interface to a Bluetooth device.
 class ControlsView extends Marionette.LayoutView
   template: require './templates/controls'
   className: 'row'
@@ -61,6 +67,10 @@ class ControlsView extends Marionette.LayoutView
 
 # # # # #
 
+# DetailsView class definition
+# Defines a Marionette.LayoutView in which the device's
+# RAW JSON structure is displayed
+# This is a debug view and will be removed in a later build
 class DetailsView extends Marionette.LayoutView
   template: require './templates/details'
   className: 'json-viewer'
@@ -75,6 +85,9 @@ class DetailsView extends Marionette.LayoutView
 
 # # # # #
 
+# DeviceShowLayout class definition
+# Defines a basic Marionette.Layoutview in which
+# the RSSIView, ControlsView, and DetailsView are rendered
 class DeviceShowLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'

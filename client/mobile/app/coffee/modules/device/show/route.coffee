@@ -2,10 +2,8 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
-class DeviceShowRoute extends Backbone.Routing.Route
-
-  initialize: (options={}) ->
-    @container = options.container
+# DeviceShowRoute class definition
+class DeviceShowRoute extends require '../../base/route'
 
   fetch: (id) ->
     return Backbone.Radio.channel('device').request('model', id).then (contact) =>

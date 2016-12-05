@@ -1,4 +1,7 @@
 
+# DeviceEmpty class definition
+# Defines a Marionette.LayoutView that's shown
+# when no Lyrebird devices are detected
 class DeviceEmpty extends Marionette.LayoutView
   template: require './templates/empty'
   className: 'list-group-item list-group-item-warning'
@@ -6,6 +9,9 @@ class DeviceEmpty extends Marionette.LayoutView
 
 # # # # #
 
+# DeviceChild class definition
+# Defines a Marionette.LayoutView to display
+# a single detected Lyrebird devices
 class DeviceChild extends Marionette.LayoutView
   template: require './templates/child'
   className: 'list-group-item'
@@ -16,6 +22,10 @@ class DeviceChild extends Marionette.LayoutView
 
 # # # # #
 
+# DeviceList class definition
+# Defines a Marionette.LayoutView to show a DeviceChild
+# view instance for each Lyrebird device detected, or display a
+# DeviceEmpty view instance when no devices are detected.
 class DeviceList extends Marionette.CollectionView
   className: 'list-group'
   tagName: 'ul'
@@ -24,6 +34,10 @@ class DeviceList extends Marionette.CollectionView
 
 # # # # #
 
+# DeviceListLayout class definition
+# Defines a Marionette.LayoutView in which the DeviceList is
+# shown. This view also has a button that can trigger a refresh
+# to scan for new devices.
 class DeviceListLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'
