@@ -1,9 +1,16 @@
 
+# KnownDeviceModel class definition
+# Defines a standard Backbone.Model class used by
+# the KnownDeviceCollection store KnownDevices offline
 class KnownDeviceModel extends Backbone.Model
   urlRoot: '/known_devices/'
 
 # # # # #
 
+# KnownDeviceCollection class definition
+# Defines a basic Backbone.Collection to store devices
+# to which the app has connected before. These are stored offline
+# in window.localStorage with Backbone.DualStorage.
 class KnownDeviceCollection extends Backbone.Collection
   url: '/known_devices/'
   model: KnownDeviceModel
@@ -11,6 +18,13 @@ class KnownDeviceCollection extends Backbone.Collection
 
 # # # # #
 
+# KnownDeviceStorage class definition
+# The KnownDeviceStorage provides an interface to manage
+# Lyrebird devices to which the app has connected before.
+# This enables the auto-connect view to connect to devices
+# that
+# Most actions are implemented with Promises to more effectively
+# manage asynchronous actions in the application.
 class KnownDeviceStorage extends Marionette.Service
 
   radioRequests:

@@ -2,10 +2,8 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
-class SnippetNewRoute extends Backbone.Routing.Route
-
-  initialize: (options={}) ->
-    @container = options.container
+# SnippetNewRoute class definition
+class SnippetNewRoute extends require '../base/route'
 
   fetch: ->
     return Backbone.Radio.channel('snippet').request('model')

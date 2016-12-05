@@ -1,12 +1,12 @@
 
-# BaseRoute class - attaches container option (Marionette.Region instance) as class property
+# BaseRoute class definition
+# The base route reduces repeated code by
+# attaching the @container property passed in from
+# the router. This property is used to display views in the app
 class BaseRoute extends Backbone.Routing.Route
-
-  routeName: null
 
   initialize: (options={}) ->
     @container = options.container
-    localStorage.lastRoute = @routeName if @routeName
 
 # # # # #
 

@@ -1,5 +1,11 @@
-# TODO - rethink this approach
+
+# USB HID Keyboard
 # http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
+
+# Defines a map of characters to the packets
+# that must be sent to the device as keystrokes
+# This is a work-in-progress and our approach may change
+# as the app continues to evolve.
 charMap = {
 
   # Lowercase

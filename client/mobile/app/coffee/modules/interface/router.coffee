@@ -2,14 +2,15 @@ ShowRoute = require './show/route'
 
 # # # # #
 
-class InterfaceRouter extends Backbone.Routing.Router
+# InterfaceRouter class definition
+class InterfaceRouter extends require '../base/router'
 
   routes:
     'interface(/)': 'show'
 
   show: (id) ->
-    new ShowRoute({ container: window.Container, id: id })
+    new ShowRoute({ container: @container, id: id })
 
 # # # # #
 
-module.exports = new InterfaceRouter()
+module.exports = new InterfaceRouter({ container: window.Layout.mainRegion })

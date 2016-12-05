@@ -1,6 +1,10 @@
 
 # # # # #
 
+# AutoConnectView class definition
+# Defines a Marionette.LayoutView that manages auto-connecting
+# to a KnownDevice when one is detected. This view manages status updates
+# during the auto-connection routine.
 class AutoConnectView extends Marionette.LayoutView
   template: require './templates/auto_connect'
   className: 'row'
@@ -34,6 +38,9 @@ class AutoConnectView extends Marionette.LayoutView
 
 # # # # #
 
+# HomeLayoutView class definition
+# Defines a Marionette.LayoutView that manages the auto-connect view.
+# This view will likely get merged with the device list view in a later build.
 class HomeLayoutView extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'

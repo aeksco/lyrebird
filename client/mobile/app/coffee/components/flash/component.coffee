@@ -40,4 +40,4 @@ class FlashService extends Backbone.Marionette.Service
 
 # # # # #
 
-module.exports = new FlashService({ container: window.FlashContainer })
+module.exports = new FlashService({ container: window.Layout.flashRegion })

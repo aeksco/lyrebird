@@ -2,6 +2,9 @@ SnippetForm = require '../../form/views/layout'
 
 # # # # #
 
+# NewSnippetLayout class definition
+# Defines a Marionette.LayoutView that acts as a wrapper
+# to the SnippetForm defined in an outside file
 class NewSnippetLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'
@@ -9,23 +12,8 @@ class NewSnippetLayout extends Marionette.LayoutView
   regions:
     formRegion: '[data-region=form]'
 
-  ui:
-    typeButton: '[data-click=type]'
-
-  events:
-    'click @ui.typeButton': 'changeFormType'
-
-  showForm: (type) ->
-    @formRegion.show new SnippetForm({ model: @model, type: type })
-
-  changeFormType: (e) ->
-    el = @$(e.currentTarget)
-    el.addClass('active').siblings('.btn').removeClass('active')
-    type = el.data('form')
-    @showForm(type)
-
   onRender: ->
-    @showForm('email')
+    @formRegion.show new SnippetForm({ model: @model, type: type })
 
 # # # # #
 

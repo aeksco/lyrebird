@@ -1,4 +1,7 @@
 
+# SnippetForm class definition
+# Defines a Marionette.LayoutView class for collecting
+# parameters used to create or update a SnippetModel
 class SnippetForm extends Marionette.LayoutView
   className: 'row'
   template: require './templates/form'
@@ -11,7 +14,6 @@ class SnippetForm extends Marionette.LayoutView
 
   onSubmit: (e) ->
     attrs = Backbone.Syphon.serialize(@)
-    console.log attrs
 
     Backbone.Radio.channel('snippet').request('collection')
     .then (collection) =>

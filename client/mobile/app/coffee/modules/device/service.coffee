@@ -2,6 +2,9 @@ DeviceCollection = require './collection'
 
 # # # # #
 
+# DeviceService class definition
+# Defines a Marionette.Service class to store
+# Bluetooth devices found during scans
 class DeviceService extends Marionette.Service
 
   radioRequests:
@@ -17,8 +20,10 @@ class DeviceService extends Marionette.Service
     Backbone.Radio.channel('known:device').request('collection')
     .then (knownDevices) => @knownDevices = knownDevices
 
+    # Caches collection instance
     @collectionCache = new DeviceCollection()
 
+  # Re-scans
   refresh: ->
 
     # Throttles multiple calls to refresh
@@ -38,16 +43,14 @@ class DeviceService extends Marionette.Service
 
     # Error callback
     onScanError = () ->
-      console.log 'ERROR FETCHING DEVICES'
+      console.log 'ERROR FETCHING DEVICES' # TODO - throw error
       return
 
     # Starts scan
     ble.startScan([], onDeviceFound, onScanError)
 
-    onScanComplete = =>
-      console.log 'Scan complete'
-      @scanning = false
-
+    # Callbacks
+    onScanComplete = => @scanning = false
     onStopFail = => console.log 'StopScan failure'
 
     # Stops scan after 5 seconds
@@ -72,4 +75,5 @@ class DeviceService extends Marionette.Service
 
 # # # # #
 
+# Exports instance of DeviceService
 module.exports = new DeviceService()

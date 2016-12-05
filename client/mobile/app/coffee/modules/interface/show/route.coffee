@@ -2,6 +2,9 @@ InterfaceView = require './views/all'
 
 # # # # #
 
+# InterfaceRouter class definition
+# This is the route that is reponsible for displaying
+# interfaces inside the application.
 class InterfaceShowRoute extends require '../../base/route'
 
   fetch: (id) ->

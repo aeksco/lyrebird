@@ -7,6 +7,10 @@ Chrome    = require './chrome'
 
 # # # # #
 
+# InterfaceSlider class defintion
+# Defines a Marionette.LayoutView that allows for swiping
+# between multiple interfaces. This view is largely experimental
+# and will see many revisions as the app's set of features expands.
 class InterfaceSlider extends Marionette.LayoutView
   template: require './templates/all'
   className: 'container-fluid'

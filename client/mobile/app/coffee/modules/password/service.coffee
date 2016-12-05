@@ -3,6 +3,9 @@ PasswordCollection = require './collection'
 
 # # # # #
 
+# PasswordService class definition
+# Defines a Marionette.Service class to act as an
+# offline storage interface for Passwords
 class PasswordService extends Marionette.Service
 
   radioRequests:

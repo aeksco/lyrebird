@@ -1,4 +1,6 @@
 
+# SnippetEmpty class definition
+# Defines a Marionette.LayoutView that's shown when no snippets are found
 class SnippetEmpty extends Marionette.LayoutView
   template: require './templates/snippet_empty'
   tagName: 'li'
@@ -6,6 +8,8 @@ class SnippetEmpty extends Marionette.LayoutView
 
 # # # # #
 
+# SnippetChild class definition
+# Defines a Marionette.LayoutView to display a single snippet
 class SnippetChild extends Marionette.LayoutView
   template: require './templates/snippet_child'
   tagName: 'a'
@@ -16,6 +20,10 @@ class SnippetChild extends Marionette.LayoutView
 
 # # # # #
 
+# SnippetList class definition
+# Defines a Marionette.LayoutView to show a SnippetChild
+# view instance for each Snippet found, or display a SnippetEmpty
+# vinew instance if none are found.
 class SnippetList extends Marionette.CollectionView
   tagName: 'ul'
   className: 'list-group'
@@ -24,6 +32,8 @@ class SnippetList extends Marionette.CollectionView
 
 # # # # #
 
+# SnippetListLayout class definition
+# Defines a Marionette.LayoutView in which the SnippetList is shown.
 class SnippetListLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'

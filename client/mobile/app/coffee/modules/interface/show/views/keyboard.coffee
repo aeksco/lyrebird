@@ -1,4 +1,8 @@
 
+# KeyboardInterface class definition
+# Defines an interface that acts as a keyboard
+# Much of this view's logic should be abstracted to pave
+# the way for more specialized keyboard interface classes
 class KeyboardInterface extends require './abstractInterface'
   template: require './templates/keyboard'
 
@@ -19,7 +23,7 @@ class KeyboardInterface extends require './abstractInterface'
     # Sends to device
     window.device.sendText(text) # TODO - remove window.device
 
-  onRender: -> # TODO - why isn't this working?
+  onRender: -> # TODO - why isn't auto-focus working?
     if @options.interface == 'keyboard'
       setTimeout( =>
         @$('input').focus()

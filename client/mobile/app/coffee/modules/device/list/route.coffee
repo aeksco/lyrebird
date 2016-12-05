@@ -2,7 +2,8 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
-class DeviceListRoute extends Backbone.Routing.Route
+# DeviceListRoute class definition
+class DeviceListRoute extends require '../../base/route'
 
   initialize: (options={}) ->
     @container = options.container
