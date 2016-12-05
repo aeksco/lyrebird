@@ -1,5 +1,5 @@
 
-class ChromeInterface extends Marionette.LayoutView
+class ChromeInterface extends require './keyboard'
   template: require './templates/chrome'
 
 # # # # #

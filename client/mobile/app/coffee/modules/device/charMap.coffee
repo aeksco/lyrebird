@@ -104,7 +104,6 @@ charMap = {
 module.exports = charMap
 
 # Keyboard modifieres
-# TODO - bitwise XOR for multiples
 # HID_KEYBOARD_MODIFIER_LEFTCTRL    = 0
 # HID_KEYBOARD_MODIFIER_LEFTSHIFT   = 1
 # HID_KEYBOARD_MODIFIER_LEFTALT     = 2
