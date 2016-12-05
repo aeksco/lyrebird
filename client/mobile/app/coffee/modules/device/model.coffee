@@ -1,101 +1,46 @@
 charMap = require './charMap' # TODO - rethink this approach
+ConnectionObserver = require './connectionObserver'
 
 # # # # #
 
-# Observes connection and sends leave-behind alerts
-# TODO - should this be part of the Bluetooth service?
-class ConnectionObserver extends Marionette.Object
-
-  initialize: (options) =>
-    @device = options.device
-    setTimeout(@checkPoll, 2000)
-
-  checkPoll: =>
-    return @startPolling() if @device.get('connected')
-    @stopPolling()
-
-  startPolling: =>
-    return if @interval
-    @interval = setInterval( @device.readRSSI, 500 )
-    setInterval(@sendAlert, 500)
-
-  # Send Alerts
-  sendAlert: =>
-    # console.log @device.get('rssi')
-
-    # TODO - RSSI threshold should be a user setting
-    if @device.get('rssi') < -80
-
-      # Leave - behind alerts
-      # TODO - different sound?
-      # TODO - haptic feedback intensity?
-      plugins.deviceFeedback.haptic()
-      plugins.deviceFeedback.acoustic()
-
-  stopPolling: =>
-    return unless @interval
-    clearInterval(@interval)
-    delete @interval
-
-# # # # #
-
+# DeviceModel class definition
+# Defines a class to interface with a Lyrebird device connected via bluetooth
 class DeviceModel extends Backbone.Model
 
+  # Connects to device
   connect: ->
     window.device = @ # TODO - remove
     Backbone.Radio.channel('bluetooth').request('connect', @)
     @connectionObserver = new ConnectionObserver({ device: @ }) # TODO - move this elsewhere?
 
+  # Disconnects from device
   disconnect: ->
     Backbone.Radio.channel('bluetooth').request('disconnect', @)
     @connectionObserver.stopPolling() # TODO - RSSI polling
 
+  # Checks device connection
   isConnected: ->
     Backbone.Radio.channel('bluetooth').request('is:connected', @)
 
+  # Reads device RSSI
   readRSSI: =>
     Backbone.Radio.channel('bluetooth').request('read:rssi', @)
 
+  # Remember device (interfaces with KnownDeviceStorage)
   remember: ->
     Backbone.Radio.channel('known:device').trigger('add', @)
 
+  # Forgets device (interfaces with KnownDeviceStorage)
   forget: ->
     Backbone.Radio.channel('known:device').trigger('remove', @)
 
+  # Writes
   write: (data) =>
     Backbone.Radio.channel('bluetooth').request('write', @, data)
 
-  # # # # #
-  # TODO - abstract into Device.Keyboard
-  writeKeyup: =>
-    @write([3,0,0,0,0,0,0,0])
-
-  # TODO - gotta get uppercase working!
-  # TODO - remove this after debugging
-  # Format? [modifier, reserved, Key1, Key2, Key3, Key4, Key5, Key6]
-  writeKeydown: (report) ->
-    @write(report)
-
-  writeKeydown: (char) =>
-
-    # char = charMap[char.toLowerCase()]
-    control = [3]
-    charArr = charMap[char]
-    padding = [0,0,0,0,0]
-
-    send = control.concat(charArr).concat(padding)
-    @write(send)
-
-  writeChar: (char) =>
-    @writeKeydown(char)
-    @writeKeyup()
-
-  sendText: (text = 'lyrebird') =>
-    @writeChar(char) for char in text
-    return true
-  #
-  # # # # #
-
+  # Writes two packets with a delay
+  # This is a debugging method and will be removed
+  # in a future build
   writeDual: (rp1, rp2, delay=false) =>
 
     if delay
@@ -108,9 +53,35 @@ class DeviceModel extends Backbone.Model
       @write(rp1)
       @write(rp2)
 
-  # # # # #
-  # TODO - abstract into Device.Mouse
+  # Keyboard commands
 
+  # Writes keyup (clears keyboard)
+  writeKeyup: =>
+    @write([3,0,0,0,0,0,0,0])
+
+  # Keydown for a character
+  writeKeydown: (char) =>
+
+    # Packet construction
+    control = [3]
+    charArr = charMap[char]
+    padding = [0,0,0,0,0]
+    packet  = control.concat(charArr).concat(padding)
+
+    # Sends packet
+    @write(packet)
+
+  # Keyup / Keydown on a single character
+  writeChar: (char) =>
+    @writeKeydown(char)
+    @writeKeyup()
+
+  # Sends a string as a series of writeChar commands
+  sendText: (text = 'lyrebird') =>
+    @writeChar(char) for char in text
+    return true
+
+  # Mouse commands
   clickMouseLeft: =>
     @write([2,1])
     @write([2,0])

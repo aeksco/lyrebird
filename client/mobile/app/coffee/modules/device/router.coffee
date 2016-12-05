@@ -4,7 +4,7 @@ ShowRoute = require './show/route'
 
 # # # # #
 
-class DeviceRouter extends Backbone.Routing.Router
+class DeviceRouter extends require '../base/router'
 
   routes:
     'devices(/)':          'list'

@@ -2,7 +2,7 @@
 # SubmitButtonBehavior class definition
 # Provides an event listener and handler, and defines
 # associated callbacks on the view to which the behavior
-# is attached. This is used in all form views.
+# is attached. This is used in the Password and Snippet forms.
 class SubmitButtonBehavior extends Marionette.Behavior
 
   ui:
