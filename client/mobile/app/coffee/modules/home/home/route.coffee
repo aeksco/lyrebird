@@ -2,6 +2,8 @@ LayoutView  = require './views/layout'
 
 # # # # #
 
+# HomeRoute class definition
+# TODO - this should be renamed to 'AutoConnectRoute'
 class HomeRoute extends require '../../base/route'
 
   fetch: ->
