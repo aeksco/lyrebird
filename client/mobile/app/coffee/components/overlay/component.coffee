@@ -21,4 +21,4 @@ class OverlayService extends Marionette.Service
 
 # # # # #
 
-module.exports = new OverlayService({ container: window.Layout.overlay })
+module.exports = new OverlayService({ container: window.Layout.overlayRegion })

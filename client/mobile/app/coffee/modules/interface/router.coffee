@@ -8,7 +8,7 @@ class InterfaceRouter extends Backbone.Routing.Router
     'interface(/)': 'show'
 
   show: (id) ->
-    new ShowRoute({ container: window.Container, id: id })
+    new ShowRoute({ container: window.Layout.mainRegion, id: id })
 
 # # # # #
 

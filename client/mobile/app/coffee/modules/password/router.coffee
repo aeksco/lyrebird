@@ -15,16 +15,16 @@ class PasswordRouter extends Backbone.Routing.Router
     'passwords/:id/edit(/)':  'edit'
 
   list: ->
-    new ListRoute({ container: window.Container })
+    new ListRoute({ container: window.Layout.mainRegion })
 
   new: ->
-    new NewRoute({ container: window.Container })
+    new NewRoute({ container: window.Layout.mainRegion })
 
   show: (id) ->
-    new ShowRoute({ container: window.Container, id: id })
+    new ShowRoute({ container: window.Layout.mainRegion, id: id })
 
   edit: (id) ->
-    new EditRoute({ container: window.Container, id: id })
+    new EditRoute({ container: window.Layout.mainRegion, id: id })
 
 # # # # #
 

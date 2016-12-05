@@ -1,34 +1,10 @@
+SidebarView = require './view'
 
-class SidebarView extends Backbone.Marionette.LayoutView
-  template: require './template'
-  className: 'nav nav-pills nav-stacked'
-  tagName: 'nav'
-
-  events:
-    'click a': 'onClicked'
-
-  onClicked: ->
-    Backbone.Radio.channel('sidebar').trigger('hide')
-
-  modules: [
-    { title:  'Devices',    icon: 'fa-bluetooth-b',   href: '#devices' }
-    { title:  'Auto-Connect', icon: 'fa-refresh',     href: '#', divider: true }
-    { title:  'Passwords',  icon: 'fa-key',           href: '#passwords' }
-    { title:  'Snippets',   icon: 'fa-file-text-o',   href: '#snippets', divider: true }
-    { title:  'Keyboard',   icon: 'fa-keyboard-o',    href: '#interface?type=keyboard' }
-    { title:  'Mouse',      icon: 'fa-mouse-pointer', href: '#interface?type=mouse' }
-    { title:  'Remote',     icon: 'fa-building',      href: '#interface?type=remote' }
-    { title:  'Numpad',     icon: 'fa-calculator',    href: '#interface?type=numpad', divider: true }
-    { title:  'Chrome',     icon: 'fa-chrome',        href: '#interface?type=chrome', divider: true  }
-    # { title:  'Gamepad',    icon: 'fa-gamepad',       href: '#interface?type=gamepad' }
-  ]
-
-  serializeData: ->
-    return { modules: @modules }
-
-# # # # #
-
-class SidebarComponent extends Backbone.Marionette.Service
+# SidebarComponent class definition
+# The SidebarComponent manages the state and accessibility
+# of the app's sidebar. The sidebar is used as the primary
+# method of navigation inside the app
+class SidebarComponent extends Marionette.Service
 
   radioEvents:
     'sidebar initialize': 'showView'
@@ -49,4 +25,4 @@ class SidebarComponent extends Backbone.Marionette.Service
 
 # # # # #
 
-module.exports = new SidebarComponent({ container: window.Layout.sidebar })
+module.exports = new SidebarComponent({ container: window.Layout.sidebarRegion })

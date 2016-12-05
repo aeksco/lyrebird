@@ -11,10 +11,10 @@ class DeviceRouter extends Backbone.Routing.Router
     'devices/:id(/)':      'show'
 
   list: ->
-    new ListRoute({ container: window.Container })
+    new ListRoute({ container: window.Layout.mainRegion })
 
   show: (id) ->
-    new ShowRoute({ container: window.Container, id: id })
+    new ShowRoute({ container: window.Layout.mainRegion, id: id })
 
 # # # # #
 

@@ -8,7 +8,7 @@ class HomeRouter extends Backbone.Routing.Router
     '(/)':  'home'
 
   home: ->
-    new HomeRoute({ container: window.Container })
+    new HomeRoute({ container: window.Layout.mainRegion })
 
 # # # # #
 
