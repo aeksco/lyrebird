@@ -1,4 +1,7 @@
 
+# PasswordShowLayout class definition
+# Defines a Marionette.LayoutView class to display a Password
+# Includes controls to Edit & Destroy the Password (TODO)
 class PasswordShowLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'

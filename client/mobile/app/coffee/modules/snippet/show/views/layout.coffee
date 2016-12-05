@@ -1,4 +1,7 @@
 
+# SnippetShowLayout class definition
+# Defines a Marionette.LayoutView class to display a snippet
+# Includes controls to Edit & Destroy the snippet (TODO)
 class SnippetShowLayout extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid'
