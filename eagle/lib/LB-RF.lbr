@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -113,6 +113,60 @@
 <wire x1="6.75" y1="-11.5" x2="6.75" y2="7" width="0.127" layer="51"/>
 <wire x1="-6.75" y1="-11.5" x2="6.75" y2="-11.5" width="0.127" layer="51"/>
 </package>
+<package name="BGM111">
+<smd name="20" x="5.65" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="19" x="3.6" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="21" x="5.65" y="2.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="22" x="5.65" y="3.35" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="23" x="5.65" y="4.55" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="24" x="5.65" y="5.75" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="25" x="5.65" y="6.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="26" x="5.65" y="8.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="27" x="5.65" y="9.35" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="28" x="5.65" y="10.55" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="29" x="5.65" y="11.75" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="30" x="5.65" y="12.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="31" x="5.65" y="14.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="18" x="2.4" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="17" x="1.2" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="16" x="0" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="15" x="-1.2" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="14" x="-2.4" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="13" x="-3.6" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100" rot="R90"/>
+<smd name="12" x="-5.65" y="0.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="11" x="-5.65" y="2.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="10" x="-5.65" y="3.35" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="9" x="-5.65" y="4.55" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="8" x="-5.65" y="5.75" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="7" x="-5.65" y="6.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="6" x="-5.65" y="8.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="5" x="-5.65" y="9.35" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="4" x="-5.65" y="10.55" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="3" x="-5.65" y="11.75" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="2" x="-5.65" y="12.95" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<smd name="1" x="-5.65" y="14.15" dx="2.4" dy="0.8" layer="1" roundness="100"/>
+<wire x1="-6.45" y1="0" x2="6.45" y2="0" width="0.127" layer="51"/>
+<wire x1="6.45" y1="0" x2="6.45" y2="15" width="0.127" layer="51"/>
+<wire x1="6.45" y1="15" x2="-6.45" y2="15" width="0.127" layer="51"/>
+<wire x1="-6.45" y1="15" x2="-6.45" y2="0" width="0.127" layer="51"/>
+<wire x1="6.45" y1="15" x2="-6.45" y2="15" width="0.127" layer="21"/>
+<wire x1="-6.45" y1="0" x2="-4.35" y2="0" width="0.127" layer="21"/>
+<wire x1="4.35" y1="0" x2="6.45" y2="0" width="0.127" layer="21"/>
+<polygon width="0.127" layer="39">
+<vertex x="-3.8" y="15"/>
+<vertex x="3.8" y="15"/>
+<vertex x="3.8" y="11.5"/>
+<vertex x="-3.8" y="11.5"/>
+</polygon>
+<polygon width="0.127" layer="40">
+<vertex x="3.8" y="15"/>
+<vertex x="-3.8" y="15"/>
+<vertex x="-3.8" y="11.5"/>
+<vertex x="3.8" y="11.5"/>
+</polygon>
+<text x="0" y="7.2" size="1.27" layer="21" align="center">BGM111</text>
+<text x="-6.45" y="-0.9" size="1.016" layer="25" align="top-left">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="HM-11">
@@ -134,6 +188,42 @@
 <text x="-12.7" y="8.128" size="1.27" layer="95">&gt;NAME</text>
 <text x="-12.7" y="-12.192" size="1.27" layer="96">&gt;VALUE</text>
 </symbol>
+<symbol name="BGM111">
+<wire x1="-17.78" y1="15.24" x2="17.78" y2="15.24" width="0.254" layer="94"/>
+<wire x1="17.78" y1="15.24" x2="17.78" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-20.32" x2="-17.78" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-20.32" x2="-17.78" y2="15.24" width="0.254" layer="94"/>
+<pin name="PD13" x="-20.32" y="12.7" length="short"/>
+<pin name="PD14" x="-20.32" y="10.16" length="short"/>
+<pin name="PD15" x="-20.32" y="7.62" length="short"/>
+<pin name="PA0" x="-20.32" y="2.54" length="short"/>
+<pin name="PA1" x="-20.32" y="0" length="short"/>
+<pin name="PA2" x="-20.32" y="-2.54" length="short"/>
+<pin name="PA3" x="-20.32" y="-5.08" length="short"/>
+<pin name="PA4" x="-20.32" y="-7.62" length="short"/>
+<pin name="PA5" x="-20.32" y="-10.16" length="short"/>
+<pin name="GND" x="-20.32" y="-17.78" length="short"/>
+<pin name="PF1" x="20.32" y="-10.16" length="short" rot="R180"/>
+<pin name="PF2" x="20.32" y="-7.62" length="short" rot="R180"/>
+<pin name="PF3" x="20.32" y="-5.08" length="short" rot="R180"/>
+<pin name="PF4" x="20.32" y="-2.54" length="short" rot="R180"/>
+<pin name="PF5" x="20.32" y="0" length="short" rot="R180"/>
+<pin name="PF6" x="20.32" y="2.54" length="short" rot="R180"/>
+<pin name="PF7" x="20.32" y="5.08" length="short" rot="R180"/>
+<pin name="VDD" x="20.32" y="10.16" length="short" rot="R180"/>
+<pin name="RESETN" x="20.32" y="12.7" length="short" rot="R180"/>
+<pin name="PB11" x="-20.32" y="-15.24" length="short"/>
+<pin name="PB13" x="-7.62" y="-22.86" length="short" rot="R90"/>
+<pin name="PC6" x="-5.08" y="-22.86" length="short" rot="R90"/>
+<pin name="PC7" x="-2.54" y="-22.86" length="short" rot="R90"/>
+<pin name="PC8" x="0" y="-22.86" length="short" rot="R90"/>
+<pin name="PC9" x="2.54" y="-22.86" length="short" rot="R90"/>
+<pin name="PC10" x="5.08" y="-22.86" length="short" rot="R90"/>
+<pin name="PC11" x="7.62" y="-22.86" length="short" rot="R90"/>
+<pin name="PF0" x="20.32" y="-12.7" length="short" rot="R180"/>
+<text x="0" y="0" size="1.778" layer="94" align="center">BGM111</text>
+<text x="-17.78" y="15.748" size="1.778" layer="95">&gt;NAME</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="HM-11">
@@ -154,6 +244,48 @@
 <connect gate="G$1" pin="RX" pad="4"/>
 <connect gate="G$1" pin="TX" pad="2"/>
 <connect gate="G$1" pin="VCC" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BGM111">
+<gates>
+<gate name="G$1" symbol="BGM111" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="BGM111">
+<connects>
+<connect gate="G$1" pin="GND" pad="1 12 20 31"/>
+<connect gate="G$1" pin="PA0" pad="5"/>
+<connect gate="G$1" pin="PA1" pad="6"/>
+<connect gate="G$1" pin="PA2" pad="7"/>
+<connect gate="G$1" pin="PA3" pad="8"/>
+<connect gate="G$1" pin="PA4" pad="9"/>
+<connect gate="G$1" pin="PA5" pad="10"/>
+<connect gate="G$1" pin="PB11" pad="11"/>
+<connect gate="G$1" pin="PB13" pad="13"/>
+<connect gate="G$1" pin="PC10" pad="18"/>
+<connect gate="G$1" pin="PC11" pad="19"/>
+<connect gate="G$1" pin="PC6" pad="14"/>
+<connect gate="G$1" pin="PC7" pad="15"/>
+<connect gate="G$1" pin="PC8" pad="16"/>
+<connect gate="G$1" pin="PC9" pad="17"/>
+<connect gate="G$1" pin="PD13" pad="2"/>
+<connect gate="G$1" pin="PD14" pad="3"/>
+<connect gate="G$1" pin="PD15" pad="4"/>
+<connect gate="G$1" pin="PF0" pad="21"/>
+<connect gate="G$1" pin="PF1" pad="22"/>
+<connect gate="G$1" pin="PF2" pad="23"/>
+<connect gate="G$1" pin="PF3" pad="24"/>
+<connect gate="G$1" pin="PF4" pad="25"/>
+<connect gate="G$1" pin="PF5" pad="26"/>
+<connect gate="G$1" pin="PF6" pad="27"/>
+<connect gate="G$1" pin="PF7" pad="28"/>
+<connect gate="G$1" pin="RESETN" pad="30"/>
+<connect gate="G$1" pin="VDD" pad="29"/>
 </connects>
 <technologies>
 <technology name=""/>
