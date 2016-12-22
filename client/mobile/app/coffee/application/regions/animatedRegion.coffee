@@ -23,9 +23,7 @@ class SwapView extends Marionette.LayoutView
   # Holds queued view and options until unresolved animations are finished.
   queued: null
 
-  templateHelpers: ->
-    return { animation: @options.animation || 'up-down' }
-
+  # Shows last view added to @queue
   showQueued: ->
     return unless @queued
     view    = @queued.view
@@ -33,6 +31,7 @@ class SwapView extends Marionette.LayoutView
     @queued = null
     @swap(view, options)
 
+  # Swaps the two regions using a custom CSS animation
   swap: (view, options={}) ->
 
     # Queues if currently animating between two views
@@ -66,6 +65,7 @@ class SwapView extends Marionette.LayoutView
     nextUI.addClass('first') unless prevSlot.currentView
     nextSlot.show(view, options)
 
+    # Animates the view transition
     animate = =>
       # Trigger onAnimationDone callback on view
       view.triggerMethod('animation:done')
