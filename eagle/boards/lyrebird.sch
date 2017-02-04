@@ -2305,10 +2305,10 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 <part name="S1" library="LB-Electromech" deviceset="SPST" device="_PTS840GKP">
 <attribute name="PARTNO" value="PTS840 GKP SMTR LFS"/>
 </part>
+<part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10k">
 <attribute name="PARTNO" value="RC0402JR-074K7L"/>
 </part>
-<part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2365,10 +2365,10 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 <instance part="GND6" gate="1" x="-38.1" y="27.94"/>
 <instance part="SUPPLY6" gate="G$1" x="-22.86" y="55.88"/>
 <instance part="S1" gate="G$1" x="-30.48" y="38.1" rot="MR0"/>
+<instance part="GND7" gate="1" x="22.86" y="-45.72"/>
 <instance part="R4" gate="G$1" x="22.86" y="-35.56" rot="R90">
 <attribute name="PARTNO" x="22.86" y="-35.56" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="GND8" gate="1" x="22.86" y="-45.72"/>
 </instances>
 <busses>
 </busses>
@@ -2460,8 +2460,8 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 <wire x1="-35.56" y1="38.1" x2="-38.1" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
+<pinref part="GND7" gate="1" pin="GND"/>
 <pinref part="R4" gate="G$1" pin="1"/>
-<pinref part="GND8" gate="1" pin="GND"/>
 <wire x1="22.86" y1="-43.18" x2="22.86" y2="-40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -2482,17 +2482,18 @@ Standard 3.3V and 5V 500mA LDO voltage regulator in SOT-23 layout. Micrel part M
 <net name="MCU_RTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PD6(RTS)"/>
-<wire x1="20.32" y1="-25.4" x2="22.86" y2="-25.4" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="-25.4" x2="27.94" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="-25.4" x2="25.4" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-25.4" x2="25.4" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="CTS"/>
-<wire x1="27.94" y1="-20.32" x2="33.02" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-20.32" x2="33.02" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MCU_CTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PD7(CTS)"/>
 <wire x1="20.32" y1="-27.94" x2="22.86" y2="-27.94" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="-27.94" x2="27.94" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="-27.94" x2="27.94" y2="-27.94" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="-27.94" x2="27.94" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="RTS"/>
 <wire x1="27.94" y1="-22.86" x2="33.02" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="2"/>
