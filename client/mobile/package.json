@@ -27,6 +27,7 @@
     "jquery": "~2.1",
     "marionette-service": "~0.0",
     "moment": "~2.10",
+    "onsenui": "^2.2.4",
     "qs": "~6.0",
     "swiper": "^3.4.0",
     "tether": "~1.1",

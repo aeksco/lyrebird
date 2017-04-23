@@ -5,19 +5,36 @@ html
     meta( name='viewport', content='width=device-width' )
     meta( charset='utf-8' )
 
-    script( src='cordova.js' )
-    script( src='js/vendor.js' )
-    script( src='js/app.js' )
-    link( rel='stylesheet', type='text/css', href='css/app.min.css' )
+    //- script( src='cordova.js' )
+    //- link( rel='stylesheet', type='text/css', href='css/app.min.css' )
+    //- script( src='js/vendor.js' )
+    //- script( src='js/app.js' )
 
-    title Lyrebird
+    link( rel='stylesheet', type='text/css', href="css/onsenui.css")
+    link( rel='stylesheet', type='text/css', href="css/onsen-css-components.css")
+
+    title Lyrebird (Onsen UI)
   body
 
-    .sidebar-region( data-region='sidebar' )
-    .header-region( data-region='header' )
-      include ./partials/header
+    ons-page
+      ons-toolbar
+        .left
+          ons-back-button Back
+        .center Title
+        .right
+          ons-toolbar-button
+            ons-icon(icon='md-menu')
+      |   Some other content...
 
-    .overlay-region( data-region='overlay' )
-    .main-region( data-region='main' )
-    .flash-region( data-region='flash' )
-    .modal-region( data-region='modal' )
+
+    //- .sidebar-region( data-region='sidebar' )
+    //- .header-region( data-region='header' )
+    //-   include ./partials/header
+
+    //- .overlay-region( data-region='overlay' )
+    //- .main-region( data-region='main' )
+    //- .flash-region( data-region='flash' )
+    //- .modal-region( data-region='modal' )
+
+  script( src='js/vendor.js' )
+  script( src='js/app.js' )

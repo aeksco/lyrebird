@@ -22,24 +22,25 @@ paths =
     dest: 'vendor.js'
     src: [
       nodeModules + 'jquery/dist/jquery.js'
-      nodeModules + 'underscore/underscore.js'
-      nodeModules + 'backbone/backbone.js'
-      nodeModules + 'backbone.babysitter/lib/backbone.babysitter.js'
-      nodeModules + 'backbone.wreqr/lib/backbone.wreqr.js'
-      nodeModules + 'backbone.marionette/lib/core/backbone.marionette.js'
-      nodeModules + 'backbone-metal/dist/backbone-metal.js'
-      nodeModules + 'backbone-routing/dist/backbone-routing.js'
-      nodeModules + 'backbone.radio/build/backbone.radio.js'
-      nodeModules + 'marionette-service/dist/marionette-service.js'
-      nodeModules + 'backbone.syphon/lib/backbone.syphon.js'
-      nodeModules + 'tether/dist/js/tether.min.js'
-      nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
-      nodeModules + 'bootstrap-switch/dist/js/bootstrap-switch.min.js'
-      nodeModules + 'crypto-js/crypto-js.js'
-      nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
-      nodeModules + 'bluebird/js/browser/bluebird.min.js'
-      nodeModules + 'hammerjs/hammer.js'
-      nodeModules + 'swiper/dist/js/swiper.jquery.min.js'
+      # nodeModules + 'underscore/underscore.js'
+      # nodeModules + 'backbone/backbone.js'
+      # nodeModules + 'backbone.babysitter/lib/backbone.babysitter.js'
+      # nodeModules + 'backbone.wreqr/lib/backbone.wreqr.js'
+      # nodeModules + 'backbone.marionette/lib/core/backbone.marionette.js'
+      # nodeModules + 'backbone-metal/dist/backbone-metal.js'
+      # nodeModules + 'backbone-routing/dist/backbone-routing.js'
+      # nodeModules + 'backbone.radio/build/backbone.radio.js'
+      # nodeModules + 'marionette-service/dist/marionette-service.js'
+      # nodeModules + 'backbone.syphon/lib/backbone.syphon.js'
+      # nodeModules + 'tether/dist/js/tether.min.js'
+      # nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
+      # nodeModules + 'bootstrap-switch/dist/js/bootstrap-switch.min.js'
+      # nodeModules + 'crypto-js/crypto-js.js'
+      # nodeModules + 'backbone.dualStorage/backbone.dualStorage.js'
+      # nodeModules + 'bluebird/js/browser/bluebird.min.js'
+      # nodeModules + 'hammerjs/hammer.js'
+      # nodeModules + 'swiper/dist/js/swiper.jquery.min.js'
+      nodeModules + 'onsenui/js/onsenui.js'
     ]
 
 # Import Plugins
@@ -68,7 +69,7 @@ gulp.task 'watch', ->
 gulp.task 'default', ['dev']
 
 gulp.task 'dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy', 'sass', 'jade', 'concat', 'bundle', 'watch', 'webserver')
+  plugins.runSequence.use(gulp)('env_dev', 'sass', 'jade', 'concat', 'bundle', 'watch', 'webserver')
 
 gulp.task 'release', =>
-  plugins.runSequence.use(gulp)('env_prod', 'copy', 'sass', 'jade', => console.log 'release completed.' )
+  plugins.runSequence.use(gulp)('env_prod', 'sass', 'jade', => console.log 'release completed.' )
