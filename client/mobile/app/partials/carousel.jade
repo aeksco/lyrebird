@@ -1,0 +1,101 @@
+//- // First navigation component: Navigator. This will remain always on top of the app.
+ons-navigator#myNavigator(page='splitter.html')
+
+//- // Second navigation component: Splitter. This will disappear if the first component changes its content.
+ons-template(id='splitter.html')
+  ons-splitter#mySplitter
+    ons-splitter-side(page='menupage.html', swipeable='', width='250px', collapse='', swipe-target-width='50px')
+    ons-splitter-content(page='tabbar.html')
+
+//- Sidebar menu
+ons-template(id='menupage.html')
+
+  ons-page#menuPage
+
+    ons-list#default-category-list
+      ons-list-header LYREBIRD
+      ons-list-item(tappable='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-all', checked='')
+        label.center(for='r-all') Devices
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Auto-Connect
+
+    ons-list#interface-list
+      //- // <ons-list-header>Interfaces</ons-list-header>
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Passwords
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Snippets
+    ons-list#interface-list
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Keyboard
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Mouse
+      ons-list-item(tappable='', category-id='')
+        .left
+          ons-input(type='radio', name='categoryGroup', input-id='r-no')
+        label.center(for='r-no') Remote
+
+//- // Third navigation component: Tabbar. This will disappear if the first or second components change their content.
+ons-template(id='tabbar.html')
+  ons-page#tabbarPage
+    ons-toolbar
+
+      .left
+        //- // Toolbar-button with different icons depending on the platform.
+        ons-toolbar-button(component='button/menu')
+          ons-icon(icon='ion-navicon, material:md-menu', size='32px, material:24px')
+
+      .center Lyrebird
+
+      .right
+
+        //- // Toolbar-button  only visible for iOS/other.
+        ons-if(platform='ios other')
+          ons-toolbar-button(component='button/new-task') New
+
+    //- // Floating Action Button only visible for Android.
+    ons-if(platform='android')
+      ons-fab(position='right bottom', component='button/new-task')
+        ons-icon(icon='md-edit')
+
+    //- // Auto-positioned Tabbar: top on Android, bottom on iOS/other.
+    ons-tabbar#myTabbar(position='auto')
+      ons-tab(page='carousel.html', label='Interfaces', active='')
+
+
+ons-template(id='carousel.html')
+  ons-page
+    ons-carousel#carousel(swipeable='', auto-scroll='', overscrollable='', style="height: 80px;")
+      ons-carousel-item(style='background-color: #085078;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Keyboard
+          //- div(style='text-align: center; margin-top: 30px;')
+          //-   p
+          //-     ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
+          //-   p(style='margin-top: 30px;')
+          //-     ons-button(onclick='login()') SEND
+      ons-carousel-item(style='background-color: #373B44;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Mouse
+          //- p(style='margin-top: 30px;')
+          //-   ons-button(onclick='login()') L
+          //-   ons-button(onclick='login()') R
+      ons-carousel-item(style='background-color: #D38312;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Remote
+          //- ons-button(onclick='login()') LEFT
+          //- ons-button(onclick='login()') UP
+          //- ons-button(onclick='login()') RIGHT
+          //- ons-button(onclick='login()') DOWN

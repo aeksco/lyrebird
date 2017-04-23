@@ -7,17 +7,17 @@
 # Application configuration manifest
 # require './config'
 
-# # Application
-# CordovaApp = require './cordova_app'
+# Application
+CordovaApp = require './cordova_app'
 
-# # Application Layout
+# Application Layout
 # window.Layout = require './application/layout'
 
-# # Services are routeless, viewless background workers
-# # We currently use a single service to manage sending SMS
-# # and requesting requisite permissions
-# BluetoothService  = require './services/bluetooth'
-# KnownDeviceServie = require './services/known_device'
+# Services are routeless, viewless background workers
+# We currently use a single service to manage sending SMS
+# and requesting requisite permissions
+BluetoothService  = require './services/bluetooth'
+KnownDeviceServie = require './services/known_device'
 
 # # Components are routeless services with views that are
 # # accessible anywhere in the application
@@ -32,6 +32,8 @@
 # # Each route represents an endpoint, or 'page' in the app.
 # HomeModule      = require './modules/home/router'
 # DeviceModule    = require './modules/device/router'
+DeviceService = require './modules/device/service'
+
 # InterfaceModule = require './modules/interface/router'
 # PasswordModule  = require './modules/password/router'
 # SnippetModule   = require './modules/snippet/router'
@@ -48,6 +50,7 @@
 # $(document).on 'ready', =>
 #   console.log 'ONSEN UI START'
 
+# // Onsen UI is now initialized
 ons.ready =>
-  # // Onsen UI is now initialized
-  ons.notification.alert('Welcome to Onsen UI!')
+  new CordovaApp()
+  # ons.notification.alert('Welcome to Onsen UI!')

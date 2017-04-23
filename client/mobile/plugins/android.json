@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-velda-devicefeedback": {
-            "PACKAGE_NAME": "com.example.lyrebird"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.example.lyrebird"
         },
@@ -19,7 +16,7 @@
         "cordova-plugin-ble-central": {
             "PACKAGE_NAME": "com.example.lyrebird"
         },
-        "cordova-plugin-insomnia": {
+        "cordova-plugin-velda-devicefeedback": {
             "PACKAGE_NAME": "com.example.lyrebird"
         }
     },
