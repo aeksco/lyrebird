@@ -1,0 +1,28 @@
+mixin item(text)
+  ons-list-item(tappable='')
+    //- .left
+    //-   ons-input(type='radio', name='categoryGroup', input-id='r-all', checked='')
+    //- label.center(for='r-all')= text
+    label(for='r-all')= text
+
+
+//- Sidebar menu
+ons-template(id='menupage.html')
+
+  ons-page#menuPage
+
+    ons-list
+      ons-list-header LYREBIRD
+      +item('Devices')
+
+    ons-list
+      +item('Keychain')
+      +item('Snippets')
+
+    ons-list
+      +item('Settings')
+
+    //- ons-list#interface-list
+    //-     +item('Keyboard')
+    //-     +item('Mouse')
+    //-     +item('Remote')

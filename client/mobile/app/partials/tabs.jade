@@ -1,0 +1,28 @@
+//- // Third navigation component: Tabbar. This will disappear if the first or second components change their content.
+ons-template(id='tabbar.html')
+  ons-page#tabbarPage
+    ons-toolbar
+
+      .left
+        //- // Toolbar-button with different icons depending on the platform.
+        ons-toolbar-button(component='button/menu')
+          ons-icon(icon='ion-navicon, material:md-menu', size='32px, material:24px')
+
+      .center LYREBIRD
+
+      .right
+
+        //- // Toolbar-button  only visible for iOS/other.
+        //- ons-if(platform='ios other')
+        //-   ons-toolbar-button(component='button/new-task')
+        //-     ons-icon(icon='ion-plus, material:md-menu', size='32px, material:24px')
+
+
+    //- // Floating Action Button only visible for Android.
+    //- ons-if(platform='android')
+    //-   ons-fab(position='right bottom', component='button/new-task')
+    //-     ons-icon(icon='md-edit')
+
+    //- // Auto-positioned Tabbar: top on Android, bottom on iOS/other.
+    ons-tabbar#myTabbar(position='auto')
+      ons-tab(page='app.html', label='Device Name', active='')

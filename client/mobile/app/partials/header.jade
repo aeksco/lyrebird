@@ -1,5 +1,10 @@
-nav.navbar.navbar-dark.bg-inverse.navbar-static-top
+//- // First navigation component: Navigator. This will remain always on top of the app.
+ons-navigator#myNavigator(page='splitter.html')
 
-  a.navbar-brand
-    .lyrebird-icon
-    | LYREBIRD
+div(data-region='main')
+
+//- // Second navigation component: Splitter. This will disappear if the first component changes its content.
+ons-template(id='splitter.html')
+  ons-splitter#mySplitter
+    ons-splitter-side(page='menupage.html', swipeable='', width='250px', collapse='', swipe-target-width='50px')
+    ons-splitter-content#splitContent(page='tabbar.html')

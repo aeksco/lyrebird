@@ -16,8 +16,8 @@ window.Layout = require './application/layout'
 # Services are routeless, viewless background workers
 # We currently use a single service to manage sending SMS
 # and requesting requisite permissions
-# BluetoothService  = require './services/bluetooth'
-BluetoothService  = require './services/bluetooth_dev'
+BluetoothService  = require './services/bluetooth'
+# BluetoothService  = require './services/bluetooth_dev'
 KnownDeviceServie = require './services/known_device'
 
 # # Components are routeless services with views that are
@@ -49,12 +49,11 @@ InterfaceModule = require './modules/interface/router'
 
 OnsenView = require './onsen_tests/view'
 
-# Page has loaded, document is ready
-# $(document).on 'ready', =>
-#   console.log 'ONSEN UI START'
+
 
 # // Onsen UI is now initialized
 ons.ready =>
+  console.log 'ONSEN UI READY'
   new CordovaApp()
 
   # ons.notification.alert('Welcome to Onsen UI!')
@@ -94,6 +93,9 @@ ons.ready =>
 
   # , 2000 )
 
+# Page has loaded, document is ready
+# $(document).on 'ready', =>
+#   console.log 'ONSEN UI START'
 
 # TODO - bluetooth service mock should return array of:
 # {
