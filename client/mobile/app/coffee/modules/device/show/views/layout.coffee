@@ -51,7 +51,7 @@ class ControlsView extends Marionette.LayoutView
   connect: ->
     @model.connect()
     .then (success) => @render()
-    .catch (err) => console.log 'ERROR CONNECTING'
+    .catch (err) => console.log 'ERROR CONNECTING' # TODO - this erroneously fires, what the hell?
 
   disconnect: ->
     @model.disconnect()

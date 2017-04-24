@@ -8,6 +8,14 @@ mixin ons_toolbar(name)
         ons-icon(icon='md-menu')
     .center= name
 
+//- Keys for remote
+mixin remoteKey(icon, keyCode, text)
+  ons-button(data-keycode=keyCode)
+    if icon
+      ons-icon(icon=icon)
+    if text
+      = text
+
 //-
 +ons_toolbar('Interfaces')
 ons-carousel#carousel(fullscreen swipeable auto-scroll overscrollable)
@@ -19,18 +27,53 @@ ons-carousel#carousel(fullscreen swipeable auto-scroll overscrollable)
           ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
 
         p(style='margin-top: 30px;')
-          ons-button.send(data-click='send') SEND
+          ons-button(data-click='send') SEND
 
   ons-carousel-item(style='background-color: #373B44;')
     div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
       | Mouse
-      //- p(style='margin-top: 30px;')
-      //-   ons-button(onclick='login()') L
-      //-   ons-button(onclick='login()') R
+      p.position(style='display:none;') Mouse Position:
+
+      canvas( id='mouse-canvas', style='background: grey; width: 100%; height: 400px;' )
+
+      p(style='margin-top: 30px;')
+        ons-button(data-click='left') LEFT
+        ons-button(data-mouse='right') RIGHT
+
   ons-carousel-item(style='background-color: #D38312;')
     div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
       | Remote
-      //- ons-button(onclick='login()') LEFT
-      //- ons-button(onclick='login()') UP
-      //- ons-button(onclick='login()') RIGHT
-      //- ons-button(onclick='login()') DOWN
+
+      .col-xs-12
+        .row.m-t-1
+          .col-xs-6
+            +remoteKey('arrow-left', 'left')
+
+          .col-xs-6
+            +remoteKey('arrow-right', 'right')
+
+        .row.m-t-1
+          .col-xs-12
+            hr
+
+        .row.m-t-1
+          .col-xs-12
+            +remoteKey('arrow-up', 'up')
+
+        .row.m-t-1
+          .col-xs-12
+            +remoteKey('arrow-down', 'down')
+
+
+        .row.m-t-1
+          .col-xs-12
+            hr
+
+        .row.m-t-1
+          .col-xs-12
+            +remoteKey(null, 'enter', 'Enter')
+
+        .row.m-t-1
+          .col-xs-12
+            +remoteKey(null, ' ', 'Space')
+

@@ -15,6 +15,18 @@ class BluetoothService extends Marionette.Service
     'bluetooth read:rssi':    'readRSSI'
     'bluetooth write':        'write'
 
+  radioEvents:
+    'bluetooth start:scan': 'startScan'
+    'bluetooth stop:scan':  'stopScan'
+
+  startScan: (success, error) ->
+    console.log 'Bluetooth - start scan'
+    ble.startScan([], success, error)
+
+  stopScan: (success, error) ->
+    console.log 'Bluetooth - stop scan'
+    ble.stopScan(success, error)
+
   # Checks if Bluetooth is enabled on the mobile device
   isEnabled: ->
     return new Promise (resolve, reject) =>

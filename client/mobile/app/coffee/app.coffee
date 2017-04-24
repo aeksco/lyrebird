@@ -1,6 +1,6 @@
 
 # Application configuration manifest
-# require './config'
+require './config'
 
 # Application & Router & Layout
 CordovaApp  = require './cordova_app'
@@ -26,9 +26,6 @@ PasswordService = require './modules/password/service'
 # Onsen UI is now initialized
 ons.ready =>
   console.log 'ONSEN READY'
-
-  # TODO - is CordovaApp still needed?
-  new CordovaApp()
 
   # # # # # # # # # # # # # # # # # # # #
   # # # # # # # # # # # # # # # # # # # #
@@ -84,3 +81,7 @@ ons.ready =>
     return
 
   # # # # #
+
+  # TODO - is CordovaApp still needed?
+  new CordovaApp()
+

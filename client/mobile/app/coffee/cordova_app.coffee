@@ -16,7 +16,7 @@ class CordovaApp extends Marionette.Service
     # on a mobile device
     setTimeout( =>
       @onDeviceReady() unless window.ble
-    , 1000)
+    , 500)
 
     return true
 
@@ -25,6 +25,7 @@ class CordovaApp extends Marionette.Service
   # And initializes header and sidebar modules
   onDeviceReady: ->
     console.log 'STARTED CORDOVA APP'
+    # window.fn.load('main:autoconnect')
     # Backbone.history.start()
 
 # # # # #

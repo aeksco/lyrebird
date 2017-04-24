@@ -2,6 +2,8 @@
 AbstractAppRouter = require '../modules/base/abstractAppRouter'
 
 # Routes
+Main =
+  Autoconnect: require '../modules/home/home/route'
 
 # Device
 Device =
@@ -32,6 +34,9 @@ class AppRouter extends AbstractAppRouter
 
   radioEvents:
 
+    # Home
+    'router main:autoconnect': 'mainAutoconnect'
+
     # Device
     'router device:list': 'deviceList'
     'router device:show': 'deviceShow'
@@ -50,6 +55,11 @@ class AppRouter extends AbstractAppRouter
     'router password:new':  'passwordNew'
     'router password:show': 'passwordShow'
     'router password:edit': 'passwordEdit'
+
+  # Main
+  mainAutoconnect: ->
+    console.log 'AUTO CONNECT??'
+    @invokeRoute(new Main.Autoconnect({ container: @container }))
 
   # Device
   deviceList: ->

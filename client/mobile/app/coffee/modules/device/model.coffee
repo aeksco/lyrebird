@@ -10,14 +10,13 @@ class DeviceModel extends Backbone.Model
   # Connects to device
   connect: ->
     window.device = @ # TODO - remove
-    @connectionObserver = new ConnectionObserver({ device: @ }) # TODO - move this elsewhere?
-    return Backbone.Radio.channel('bluetooth').request('connect', @)
     # @connectionObserver = new ConnectionObserver({ device: @ }) # TODO - move this elsewhere?
+    return Backbone.Radio.channel('bluetooth').request('connect', @)
 
   # Disconnects from device
   disconnect: ->
     Backbone.Radio.channel('bluetooth').request('disconnect', @)
-    @connectionObserver.stopPolling() # TODO - RSSI polling
+    # @connectionObserver.stopPolling() # TODO - RSSI polling
 
   # Checks device connection
   isConnected: ->

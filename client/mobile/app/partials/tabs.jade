@@ -27,6 +27,8 @@
 //-     ons-tabbar#myTabbar(position='auto')
 //-         ons-tab(page='app.html', label='Device Name', active='')
 
+
+//- TODO - all of this file should be refactored into a Mn.View that's shown when the app has loaded.
 mixin ons_toolbar(name)
   ons-toolbar
     .left
@@ -55,14 +57,13 @@ ons-template(id='tabbar.html')
           +sidebar_item('Interfaces', 'interface:show')
           +sidebar_item('Snippets', 'snippet:list')
           //- +sidebar_item('Keychain', 'keychain.html')
-          //- +sidebar_item('Snippets', 'snippets.html')
           //- +sidebar_item('Settings', 'settings.html')
           //- +sidebar_item('About', 'about.html')
 
     //- Main
     ons-splitter-content#content(page='home.html')
 
-//- Devices
+//- HELLO
 ons-template(id='home.html')
   ons-page
     +ons_toolbar('LYREBIRD')
@@ -70,32 +71,3 @@ ons-template(id='home.html')
       ons-carousel-item(style='background-color: #085078;')
         div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
           | Welcome to Lyrebird!
-          //- div(style='text-align: center; margin-top: 30px;')
-          //-   p
-          //-     ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
-          //-   p(style='margin-top: 30px;')
-          //-     ons-button(onclick='login()') SEND
-
-//- Keychain
-ons-template(id='keychain.html')
-  ons-page
-    +ons_toolbar('Keychain')
-    +page_content('Keychain')
-
-//- Snippets
-ons-template(id='snippets.html')
-  ons-page
-    +ons_toolbar('Snippets')
-    +page_content('Snippets')
-
-//- Settings
-ons-template(id='settings.html')
-  ons-page
-    +ons_toolbar('Settings')
-    +page_content('Settings')
-
-//- About
-ons-template(id='about.html')
-  ons-page
-    +ons_toolbar('About')
-    +page_content('About')

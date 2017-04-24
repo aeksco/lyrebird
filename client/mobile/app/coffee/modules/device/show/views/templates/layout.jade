@@ -1,3 +1,13 @@
+//- TODO - abstract into a helper file
+mixin ons_toolbar(name)
+  ons-toolbar
+    .left
+      ons-toolbar-button(onclick='fn.open()')
+        ons-icon(icon='md-menu')
+    .center= name
+
++ons_toolbar(name)
+
 ons-row
   ons-col= name
 
