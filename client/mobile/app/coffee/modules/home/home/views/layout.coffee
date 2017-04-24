@@ -7,7 +7,8 @@
 # during the auto-connection routine.
 class AutoConnectView extends Marionette.LayoutView
   template: require './templates/auto_connect'
-  className: 'row'
+  # className: 'row'
+  tagName: 'ons-row'
 
   statuses:
     searching:  'Searching for devices...'
@@ -43,7 +44,9 @@ class AutoConnectView extends Marionette.LayoutView
 # This view will likely get merged with the device list view in a later build.
 class HomeLayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid'
+  # className: 'container-fluid'
+
+  tagName: 'ons-template'
 
   collectionEvents:
     'add': 'connectIfKnown'
@@ -64,6 +67,8 @@ class HomeLayoutView extends Marionette.LayoutView
     @render()
 
   onRender: ->
+    console.log 'RENDERED'
+    console.log @foundDevice
     @statusRegion.show new AutoConnectView({ model: @foundDevice })
 
 # # # # #

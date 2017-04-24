@@ -11,7 +11,7 @@
 CordovaApp = require './cordova_app'
 
 # Application Layout
-# window.Layout = require './application/layout'
+window.Layout = require './application/layout'
 
 # Services are routeless, viewless background workers
 # We currently use a single service to manage sending SMS
@@ -30,9 +30,9 @@ KnownDeviceServie = require './services/known_device'
 # # Modules represent collections of endpoints in the application.
 # # They have routes and entities (models and collections)
 # # Each route represents an endpoint, or 'page' in the app.
-# HomeModule      = require './modules/home/router'
-# DeviceModule    = require './modules/device/router'
-DeviceService = require './modules/device/service'
+HomeModule      = require './modules/home/router'
+DeviceModule    = require './modules/device/router'
+# DeviceService = require './modules/device/service'
 
 # InterfaceModule = require './modules/interface/router'
 # PasswordModule  = require './modules/password/router'
@@ -46,11 +46,47 @@ DeviceService = require './modules/device/service'
 
 # # # # # #
 
+OnsenView = require './onsen_tests/view'
+
 # Page has loaded, document is ready
 # $(document).on 'ready', =>
 #   console.log 'ONSEN UI START'
 
 # // Onsen UI is now initialized
 ons.ready =>
-  new CordovaApp()
+  # new CordovaApp()
+
   # ons.notification.alert('Welcome to Onsen UI!')
+
+  # console.log 'NEW ONSEN VIEW'
+
+  view = new OnsenView()
+  view.render()
+
+  navigator = document.getElementById('myNavigator')
+
+  setTimeout( =>
+
+    navigator.pushPage('region', { pageHTML: view.$el.html() })
+    view.setElement(view.elName)
+
+  , 1000)
+
+  # navigator = document.getElementById("myNavigator")
+  # navigator.pushPage('foo', { page: view.el })
+
+  # setTimeout( =>
+
+  #   # TODO - this should be abstracted into a region?
+  #   # navigator.pushPage('foo', { pageHTML: view.el })
+  #   # console.log view.isRendered()
+  #   # console.log view.isAttached()
+  #   # navigator.pushPage('foo', { pageHTML: view.$el.html() })
+
+  # , 2000 )
+
+
+
+
+
+# # # # #

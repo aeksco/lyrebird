@@ -1,13 +1,16 @@
 mixin connectStatus(labelCss, iconCss, message)
-  h3
-    span.label.p-b-1(class=labelCss)
-      i.fa.fa-fw.fa-lg.m-t-1.m-b-1(class=iconCss)
-      br
-      = message
+  ons-progress-circular(indeterminate)
+  = message
+
+  //- h3
+  //-   span.label.p-b-1(class=labelCss)
+  //-     i.fa.fa-fw.fa-lg.m-t-1.m-b-1(class=iconCss)
+  //-     br
+  //-     = message
 
 //- // // //
 
-.col-xs-12.text-center
+ons-col
 
   if status == 'searching'
     +connectStatus('label-default', 'fa-spin fa-refresh', message)
@@ -17,3 +20,6 @@ mixin connectStatus(labelCss, iconCss, message)
 
   if status == 'connected'
     +connectStatus('label-success', 'fa-check', message)
+
+//- ons-page
+//-   ons-progress-circular(indeterminate)
