@@ -1,9 +1,18 @@
-.row
-  .col-xs-12
-    h4 Snippets
+//- TODO - abstract into a helper file
+mixin ons_toolbar(name)
+  ons-toolbar
+    .left
+      ons-toolbar-button(onclick='fn.open()')
+        ons-icon(icon='md-menu')
+    .center= name
 
-  .col-xs-12
-    a.btn.btn-secondary.w-100( href='#snippets/new' )
-      i.fa.fa-fw.fa-plus
+    .right
+      //- TODO - cross platform button
+      ons-toolbar-button(component='button/new-task')
+        ons-icon(icon='ion-plus, material:md-menu', size='32px, material:24px')
 
-  .col-xs-12.m-t-1( data-region='list' )
++ons_toolbar('Snippets')
+ons-row
+  ons-col( data-region='list' )
+
+
