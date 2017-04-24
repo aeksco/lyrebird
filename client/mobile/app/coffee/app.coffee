@@ -11,8 +11,9 @@
 CordovaApp = require './cordova_app'
 
 # Application Layout
-window.Layout = require './application/layout'
+window.Layout = require './application/layout' # TODO - decomission this view
 AppRouter = require './application/router'
+AppLayout = require './onsen_tests/app_layout'
 
 # Services are routeless, viewless background workers
 # We currently use a single service to manage sending SMS
@@ -48,23 +49,6 @@ InterfaceModule = require './modules/interface/router'
 
 # # # # # #
 
-LayoutView = require './onsen_tests/view'
-CollectionView = require './onsen_tests/collectionView'
-
-models = [
-  { name: 'Alex' }
-  { name: 'Alaina' }
-  { name: 'Django' }
-]
-
-# models = []
-collection = new Backbone.Collection(models)
-# # # # #
-
-AppLayout = require './onsen_tests/app_layout'
-
-# # # # #
-
 # // Onsen UI is now initialized
 ons.ready =>
 
@@ -85,49 +69,14 @@ ons.ready =>
 
   # # # # #
 
-  # TODO - remove - this has been abstracted
-  window.fn.showView = (view) ->
-    menu = document.getElementById('menu')
-    view.on 'render', => menu.close()
-    window.AppLayout.layoutRegion.show(view)
-
-  # # # # #
-
   # TODO - this should be attached to the Application class instance
-  window.fn.loadPage = (page, id) ->
-
-    # Cache menu
-    menu = document.getElementById('menu')
-
-    # Testing Mn.CollectionView + Events
-    if page == 'keychain.html'
-
-      view = new LayoutView()
-      return window.fn.showView(view)
-
-    if page == 'snippets.html'
-
-      view = new CollectionView({ collection: collection })
-      return window.fn.showView(view)
-
-    # TODO - all pages should function this way
-    if page == 'device:list' || page == 'device:show'
-      return Backbone.Radio.channel('router').trigger(page, id)
-
-    else
-
-      console.log 'NOT BACKBONE VIEW'
-      # Static view?
-      # content = document.getElementById('content')
-      # menu = document.getElementById('menu')
-      # content.load(page).then menu.close.bind(menu)
-
-    return
+  window.fn.loadPage = (page, args...) ->
+    return Backbone.Radio.channel('router').trigger(page, args)
 
   # # # # # #
 
   # Initializes AppLayout, handles page loading
-  # TODO - this should be attached to the Application class instance
+  # TODO - this should be attached to the Application class instance (and it should be cleaned up a lot!)
   window.fn.load = (page, id) ->
 
     if window.AppLayout

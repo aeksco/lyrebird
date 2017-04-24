@@ -1,4 +1,15 @@
 //- ons-carousel#carousel(fullscreen swipeable='', auto-scroll='', overscrollable='', style="height: 80px;")
+
+//- TODO - abstract
+mixin ons_toolbar(name)
+  ons-toolbar
+    .left
+      ons-toolbar-button(onclick='fn.open()')
+        ons-icon(icon='md-menu')
+    .center= name
+
+//-
++ons_toolbar('Interfaces')
 ons-carousel#carousel(fullscreen swipeable auto-scroll overscrollable)
   ons-carousel-item(style='background-color: #085078;')
     div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')

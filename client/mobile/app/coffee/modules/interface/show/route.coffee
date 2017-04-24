@@ -27,7 +27,9 @@ class InterfaceShowRoute extends require '../../base/route'
   render: (param="type=keyboard") ->
     console.log 'RENDER InterfaceView'
     # type = param.split('=')[1]
+    type = 'null'
     @container.show new InterfaceView({ type: type })
+    @hideMenu()
     # localStorage.lastRoute = '#interface?type=' + type # TODO - fix this?
 
 # # # # #
