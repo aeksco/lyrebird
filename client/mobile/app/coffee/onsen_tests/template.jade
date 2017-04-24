@@ -16,10 +16,7 @@ mixin ons_toolbar(name)
 +ons_toolbar('Snippets')
 
 ons-row
-  ons-col
+  ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
 
-    p
-      ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
-
-    p(style='margin-top: 30px;')
-      ons-button.send(data-click='send') SEND
+ons-row
+  ons-button.send(data-click='send') SEND

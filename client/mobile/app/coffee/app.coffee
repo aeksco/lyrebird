@@ -65,9 +65,14 @@ AppLayout = require './onsen_tests/app_layout'
 
 # // Onsen UI is now initialized
 ons.ready =>
+
   console.log 'ONSEN UI READY'
+
+  # TODO - is CordovaApp still needed?
   new CordovaApp()
 
+  # TODO - rename window.fn to window.App
+  # Use for things like loadPage, hide/show menu?
   window.fn = {}
 
   window.fn.open = ->
