@@ -12,16 +12,20 @@ class OnsenRegion extends Marionette.Region
     # Swap in new view
     # return @swap(view, options) if @swapView
 
-    view.render()
-    @navigator.pushPage('foo', { pageHTML: view.$el.html() })
-    return view
+    # TODO - show views only
+    # view.render()
+    # @navigator.pushPage('foo', { pageHTML: view.$el.html() })
+    # setTimeout( =>
+    #   view.setElement(view.elName)
+    # , 250 )
+    # return view
 
     # If @swapView isn't defined, instantiate it and
     # @swapView = new SwapView({ animation: @options.animation })
     # @swapView.on 'show', => @swap(view, options)
 
     # # Invokes Marionette.Region.prototype.show()
-    # super(@swapView, options)
+    super(view, options)
 
 # # # # #
 

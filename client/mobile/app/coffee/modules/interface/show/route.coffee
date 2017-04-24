@@ -1,4 +1,5 @@
-InterfaceView = require './views/all'
+# InterfaceView = require './views/all'
+InterfaceView = require './views/onsen'
 
 # # # # #
 
@@ -24,6 +25,7 @@ class InterfaceShowRoute extends require '../../base/route'
       .catch (error) => return false
 
   render: (param="type=keyboard") ->
+    console.log 'RENDER InterfaceView'
     type = param.split('=')[1]
     @container.show new InterfaceView({ type: type })
     localStorage.lastRoute = '#interface?type=' + type # TODO - fix this?

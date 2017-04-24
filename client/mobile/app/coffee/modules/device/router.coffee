@@ -8,6 +8,7 @@ ShowRoute = require './show/route'
 class DeviceRouter extends require '../base/router'
 
   routes:
+    '(/)':                 'list'
     'devices(/)':          'list'
     'devices/:id(/)':      'show'
 

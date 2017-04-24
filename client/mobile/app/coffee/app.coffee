@@ -16,7 +16,8 @@ window.Layout = require './application/layout'
 # Services are routeless, viewless background workers
 # We currently use a single service to manage sending SMS
 # and requesting requisite permissions
-BluetoothService  = require './services/bluetooth'
+# BluetoothService  = require './services/bluetooth'
+BluetoothService  = require './services/bluetooth_dev'
 KnownDeviceServie = require './services/known_device'
 
 # # Components are routeless services with views that are
@@ -34,7 +35,7 @@ HomeModule      = require './modules/home/router'
 DeviceModule    = require './modules/device/router'
 # DeviceService = require './modules/device/service'
 
-# InterfaceModule = require './modules/interface/router'
+InterfaceModule = require './modules/interface/router'
 # PasswordModule  = require './modules/password/router'
 # SnippetModule   = require './modules/snippet/router'
 
@@ -54,7 +55,7 @@ OnsenView = require './onsen_tests/view'
 
 # // Onsen UI is now initialized
 ons.ready =>
-  # new CordovaApp()
+  new CordovaApp()
 
   # ons.notification.alert('Welcome to Onsen UI!')
 
@@ -62,10 +63,10 @@ ons.ready =>
 
   # NOTE - views rendered into an element (i.e. standard region.show behavior)
   # Do not require any additional configuration for event bidings
-  setTimeout( =>
-    view = new OnsenView({ el: '#splitContent' })
-    view.render()
-  , 1000)
+  # setTimeout( =>
+  #   view = new OnsenView({ el: '#splitContent' })
+  #   view.render()
+  # , 1000)
 
 
   # However, views rendered into the application with naviagor.pushPage() do require some additional configuration
@@ -94,7 +95,12 @@ ons.ready =>
   # , 2000 )
 
 
-
-
+# TODO - bluetooth service mock should return array of:
+# {
+# id:     "04:A3:16:0A:66:4A"
+# known:  false
+# name:   "Lyrebird"
+# rssi:   -75
+# }
 
 # # # # #

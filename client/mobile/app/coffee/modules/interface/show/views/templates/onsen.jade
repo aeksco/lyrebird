@@ -1,0 +1,25 @@
+//- ons-carousel#carousel(fullscreen swipeable='', auto-scroll='', overscrollable='', style="height: 80px;")
+ons-carousel#carousel(fullscreen swipeable auto-scroll overscrollable)
+  ons-carousel-item(style='background-color: #085078;')
+    div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+      | Keyboard
+      div(style='text-align: center; margin-top: 30px;')
+        p
+          ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
+
+        p(style='margin-top: 30px;')
+          ons-button.send(data-click='send') SEND
+
+  ons-carousel-item(style='background-color: #373B44;')
+    div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+      | Mouse
+      //- p(style='margin-top: 30px;')
+      //-   ons-button(onclick='login()') L
+      //-   ons-button(onclick='login()') R
+  ons-carousel-item(style='background-color: #D38312;')
+    div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+      | Remote
+      //- ons-button(onclick='login()') LEFT
+      //- ons-button(onclick='login()') UP
+      //- ons-button(onclick='login()') RIGHT
+      //- ons-button(onclick='login()') DOWN

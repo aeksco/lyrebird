@@ -47,7 +47,8 @@ class DeviceService extends Marionette.Service
       return
 
     # Starts scan
-    ble.startScan([], onDeviceFound, onScanError)
+    Backbone.Radio.channel('bluetooth').trigger('start:scan', onDeviceFound, onScanError)
+    # ble.startScan([], onDeviceFound, onScanError)
 
     # Callbacks
     onScanComplete = => @scanning = false
@@ -55,7 +56,11 @@ class DeviceService extends Marionette.Service
 
     # Stops scan after 5 seconds
     @scanning = true
-    setTimeout(ble.stopScan, 5000, onScanComplete, onStopFail)
+
+    setTimeout( =>
+      Backbone.Radio.channel('bluetooth').trigger('stop:scan', onScanComplete, onStopFail)
+    , 5000)
+    # setTimeout(ble.stopScan, 5000, onScanComplete, onStopFail)
 
 
   model: (id) ->

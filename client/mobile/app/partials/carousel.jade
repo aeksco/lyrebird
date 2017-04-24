@@ -1,6 +1,8 @@
 //- // First navigation component: Navigator. This will remain always on top of the app.
 ons-navigator#myNavigator(page='splitter.html')
 
+div(data-region='main')
+
 //- // Second navigation component: Splitter. This will disappear if the first component changes its content.
 ons-template(id='splitter.html')
   ons-splitter#mySplitter

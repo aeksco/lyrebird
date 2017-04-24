@@ -1,15 +1,16 @@
+ons-list-header Controls
+
 if connected
-  .col-xs-12
-    button.btn.btn-danger-outline.w-100( data-click='disconnect' ) Disconnect
 
-  .col-xs-12
-    .row.m-t-1
-      .col-xs-2
-        input(type='checkbox' name='known' checked=known)
+  ons-list-item
+    ons-button( modifier="large" data-click='disconnect' ) Disconnect
 
-      .col-xs-10.text-xs-right
-        label Remember This Device
+  ons-list-item
+    .center
+      | Auto Connect
+    .right
+      ons-switch(checked=known)
 
 else
-  .col-xs-12
-    a.btn.btn-success-outline.w-100( data-click='connect' ) Connect
+  ons-list-item
+    ons-button( modifier="large" data-click='connect' ) Connect

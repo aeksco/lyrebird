@@ -25,7 +25,7 @@ class CordovaApp extends Marionette.Service
   # And initializes header and sidebar modules
   onDeviceReady: ->
     console.log 'STARTED CORDOVA APP'
-    # Backbone.history.start()
+    Backbone.history.start()
 
 # # # # #
 

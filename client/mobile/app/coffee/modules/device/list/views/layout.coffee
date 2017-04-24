@@ -19,8 +19,15 @@ class DeviceChild extends Marionette.LayoutView
   # tagName: 'a'
   tagName: 'ons-list-item'
 
-  attributes: ->
-    return { href: '#devices/' + @model.id }
+  events:
+    'click': 'onClick'
+
+  # attributes: ->
+  #   return { href: '#devices/' + @model.id }
+
+  onClick: ->
+    window.location.href = '#devices/' + @model.id
+    console.log 'ON CLICK!'
 
 # # # # #
 
@@ -45,7 +52,7 @@ class DeviceListLayout extends Marionette.LayoutView
   template: require './templates/layout'
   # className: 'container-fluid'
 
-  tagName: 'ons-template'
+  tagName: 'ons-page'
 
   regions:
     listRegion: '[data-region=list]'
@@ -55,9 +62,14 @@ class DeviceListLayout extends Marionette.LayoutView
 
   events:
     'click @ui.refresh': 'refreshDevices'
+    'click .interfaces': 'interfaces'
 
   onRender: ->
     @listRegion.show new DeviceList({ collection: @collection })
+
+  interfaces: ->
+    console.log 'interfaces!'
+    window.location.href = '#interface'
 
   refreshDevices: ->
     console.log 'REFRESH DEVICES'

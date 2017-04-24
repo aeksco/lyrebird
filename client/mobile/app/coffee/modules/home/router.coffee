@@ -5,11 +5,11 @@ HomeRoute = require './home/route'
 # HomeRouter class definition
 class HomeRouter extends require '../base/router'
 
-  routes:
-    '(/)':  'home'
+  # routes:
+  #   '(/)':  'home'
 
-  home: ->
-    new HomeRoute({ container: @container })
+  # home: ->
+  #   new HomeRoute({ container: @container })
 
 # # # # #
 

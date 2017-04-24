@@ -47,6 +47,7 @@ class HomeLayoutView extends Marionette.LayoutView
   # className: 'container-fluid'
 
   tagName: 'ons-template'
+  elName: '#autoConnect'
 
   collectionEvents:
     'add': 'connectIfKnown'

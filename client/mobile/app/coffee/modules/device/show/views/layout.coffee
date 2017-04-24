@@ -33,7 +33,9 @@ class RSSIView extends Marionette.LayoutView
 # interface to a Bluetooth device.
 class ControlsView extends Marionette.LayoutView
   template: require './templates/controls'
-  className: 'row'
+  # className: 'row'
+
+  tagName: 'ons-list'
 
   ui:
     connect: '[data-click=connect]'
@@ -90,17 +92,21 @@ class DetailsView extends Marionette.LayoutView
 # the RSSIView, ControlsView, and DetailsView are rendered
 class DeviceShowLayout extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid'
+  # className: 'container-fluid'
+
+  tagName: 'ons-page'
 
   regions:
-    rssiRegion: '[data-region=rssi]'
+    # rssiRegion: '[data-region=rssi]'
     controlsRegion: '[data-region=controls]'
-    detailsRegion: '[data-region=details]'
+    # detailsRegion: '[data-region=details]'
+
 
   onRender: ->
-    @rssiRegion.show new RSSIView({ model: @model })
+    console.log @model
+    # @rssiRegion.show new RSSIView({ model: @model })
     @controlsRegion.show new ControlsView({ model: @model })
-    @detailsRegion.show new DetailsView({ model: @model })
+    # @detailsRegion.show new DetailsView({ model: @model })
 
 # # # # #
 
