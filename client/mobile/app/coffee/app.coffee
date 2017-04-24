@@ -60,17 +60,25 @@ ons.ready =>
 
   # console.log 'NEW ONSEN VIEW'
 
-  view = new OnsenView()
-  view.render()
-
-  navigator = document.getElementById('myNavigator')
-
+  # NOTE - views rendered into an element (i.e. standard region.show behavior)
+  # Do not require any additional configuration for event bidings
   setTimeout( =>
-
-    navigator.pushPage('region', { pageHTML: view.$el.html() })
-    view.setElement(view.elName)
-
+    view = new OnsenView({ el: '#splitContent' })
+    view.render()
   , 1000)
+
+
+  # However, views rendered into the application with naviagor.pushPage() do require some additional configuration
+  # Figure out which views will use this, and ensure that functionality will be consistent
+
+  # navigator = document.getElementById('myNavigator')
+
+  # setTimeout( =>
+
+  #   navigator.pushPage('region', { pageHTML: view.$el.html() })
+  #   view.setElement(view.elName)
+
+  # , 1000)
 
   # navigator = document.getElementById("myNavigator")
   # navigator.pushPage('foo', { page: view.el })
