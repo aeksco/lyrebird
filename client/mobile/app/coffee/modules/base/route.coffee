@@ -5,8 +5,15 @@
 # the router. This property is used to display views in the app
 class BaseRoute extends Backbone.Routing.Route
 
+
+
   initialize: (options={}) ->
+
+    # Attaches container
     @container = options.container
+
+    # Hides menu on render
+    @on 'render', @hideMenu
 
   hideMenu: ->
     menu = document.getElementById('menu')

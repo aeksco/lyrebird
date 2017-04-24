@@ -29,7 +29,6 @@ class InterfaceShowRoute extends require '../../base/route'
     # type = param.split('=')[1]
     type = 'null'
     @container.show new InterfaceView({ type: type })
-    @hideMenu()
     # localStorage.lastRoute = '#interface?type=' + type # TODO - fix this?
 
 # # # # #

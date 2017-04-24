@@ -22,6 +22,7 @@ AppLayout = require './onsen_tests/app_layout'
 BluetoothDevService   = require './services/bluetooth_dev'
 KnownDeviceServie = require './services/known_device'
 
+# TODO - all of these components can be phased out, methinks
 # # Components are routeless services with views that are
 # # accessible anywhere in the application
 # # Used to manage the header, sidebar, flash, and confirm UI elements
@@ -30,14 +31,14 @@ KnownDeviceServie = require './services/known_device'
 # OverlayComponent  = require './components/overlay/component'
 # ConfirmComponents = require './components/confirm/component'
 
-# # Modules represent collections of endpoints in the application.
-# # They have routes and entities (models and collections)
-# # Each route represents an endpoint, or 'page' in the app.
+# Modules represent collections of endpoints in the application.
+# They have routes and entities (models and collections)
+# Each route represents an endpoint, or 'page' in the app.
+
+# TODO - routers should get phased out
+# Modules should only really only expose factories
 HomeModule      = require './modules/home/router'
 DeviceModule    = require './modules/device/router'
-DeviceListRoute = require './modules/device/list/route'
-DeviceService = require './modules/device/service'
-
 InterfaceModule = require './modules/interface/router'
 # PasswordModule  = require './modules/password/router'
 # SnippetModule   = require './modules/snippet/router'
@@ -86,6 +87,7 @@ ons.ready =>
 
     else
 
+      # TODO - this needs to be managed as part of the application lifecycle
       console.log 'INIT LAYOUT VIEW'
       window.AppLayout = new AppLayout({ el: '#content' })
 
