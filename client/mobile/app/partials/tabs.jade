@@ -53,6 +53,7 @@ ons-template(id='tabbar.html')
           ons-list-header LYREBIRD
           +sidebar_item('Devices', 'device:list')
           +sidebar_item('Interfaces', 'interface:show')
+          +sidebar_item('Snippets', 'snippet:list')
           //- +sidebar_item('Keychain', 'keychain.html')
           //- +sidebar_item('Snippets', 'snippets.html')
           //- +sidebar_item('Settings', 'settings.html')
@@ -64,26 +65,16 @@ ons-template(id='tabbar.html')
 //- Devices
 ons-template(id='home.html')
   ons-page
-    +ons_toolbar('Devices')
-    //- +page_content('Devices')
+    +ons_toolbar('LYREBIRD')
     ons-carousel#carousel(swipeable='', auto-scroll='', overscrollable='', style="height: 80px;")
       ons-carousel-item(style='background-color: #085078;')
         div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
-          | Keyboard
+          | Welcome to Lyrebird!
           //- div(style='text-align: center; margin-top: 30px;')
           //-   p
           //-     ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
           //-   p(style='margin-top: 30px;')
           //-     ons-button(onclick='login()') SEND
-      ons-carousel-item(style='background-color: #373B44;')
-        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
-          | Mouse
-          //- p(style='margin-top: 30px;')
-          //-   ons-button(onclick='login()') L
-          //-   ons-button(onclick='login()') R
-      ons-carousel-item(style='background-color: #D38312;')
-        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
-          | Remote
 
 //- Keychain
 ons-template(id='keychain.html')

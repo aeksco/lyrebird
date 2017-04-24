@@ -8,8 +8,8 @@ AppRouter   = require './application/router'
 AppLayout   = require './onsen_tests/app_layout'
 
 # Services
-# BluetoothService      = require './services/bluetooth'
-BluetoothDevService   = require './services/bluetooth_dev'
+BluetoothService      = require './services/bluetooth'
+# BluetoothDevService   = require './services/bluetooth_dev'
 KnownDeviceServie = require './services/known_device'
 
 # Module Services
