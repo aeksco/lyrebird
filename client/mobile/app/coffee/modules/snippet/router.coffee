@@ -1,8 +1,8 @@
 Service = require './service'
-ListRoute = require './list/route'
-NewRoute = require './new/route'
-ShowRoute = require './show/route'
-EditRoute = require './edit/route'
+ListRoute = require './modules/snippet/list/route'
+NewRoute = require './modules/snippet/new/route'
+ShowRoute = require './modules/snippet/show/route'
+EditRoute = require './modules/snippet/edit/route'
 
 # # # # #
 

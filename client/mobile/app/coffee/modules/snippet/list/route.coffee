@@ -3,7 +3,7 @@ LayoutView  = require './views/layout'
 # # # # #
 
 # SnippetListRoute class definition
-class SnippetListRoute extends require '../base/route'
+class SnippetListRoute extends require '../../base/route'
 
   fetch: ->
     return Backbone.Radio.channel('snippet').request('collection')

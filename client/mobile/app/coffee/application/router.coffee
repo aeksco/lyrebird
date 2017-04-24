@@ -7,6 +7,18 @@ DeviceShowRoute = require '../modules/device/show/route'
 
 InterfaceRoute = require '../modules/interface/show/route'
 
+# Snippet
+SnippetListRoute = require '../modules/snippet/list/route'
+SnippetNewRoute = require '../modules/snippet/new/route'
+SnippetShowRoute = require '../modules/snippet/show/route'
+SnippetEditRoute = require '../modules/snippet/edit/route'
+
+# Password (TODO - rename to Keychain?)
+ListRoute = require '../modules/password/list/route'
+NewRoute = require '../modules/password/new/route'
+ShowRoute = require '../modules/password/show/route'
+EditRoute = require '../modules/password/edit/route'
+
 # # # # #
 
 class AppRouter extends AbstractAppRouter

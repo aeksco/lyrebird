@@ -35,13 +35,11 @@ KnownDeviceServie = require './services/known_device'
 # They have routes and entities (models and collections)
 # Each route represents an endpoint, or 'page' in the app.
 
-# TODO - routers should get phased out
-# Modules should only really only expose factories
-HomeModule      = require './modules/home/router'
-DeviceModule    = require './modules/device/router'
-InterfaceModule = require './modules/interface/router'
-# PasswordModule  = require './modules/password/router'
-# SnippetModule   = require './modules/snippet/router'
+# Module Services
+# TODO - rename to factories?
+DeviceService   = require './modules/device/service'
+SnippetService  = require './modules/snippet/service'
+PasswordService = require './modules/password/service'
 
 # # # # # #
 

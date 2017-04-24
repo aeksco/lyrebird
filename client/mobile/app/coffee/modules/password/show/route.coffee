@@ -3,7 +3,7 @@ LayoutView  = require './views/layout'
 # # # # #
 
 # PasswordShowRoute class definition
-class PasswordShowRoute extends require '../base/route'
+class PasswordShowRoute extends require '../../base/route'
 
   fetch: (id) ->
     return Backbone.Radio.channel('password').request('model', id)
