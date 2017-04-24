@@ -44,18 +44,107 @@ InterfaceModule = require './modules/interface/router'
 # # Page has loaded, document is ready
 # $(document).on 'ready', => new CordovaApp()
 
-
 # # # # # #
 
-OnsenView = require './onsen_tests/view'
+LayoutView = require './onsen_tests/view'
+CollectionView = require './onsen_tests/collectionView'
 
+models = [
+  { name: 'Alex' }
+  { name: 'Alaina' }
+  { name: 'Django' }
+]
 
+# models = []
+collection = new Backbone.Collection(models)
+# # # # #
+
+AppLayout = require './onsen_tests/app_layout'
+
+# # # # #
 
 # // Onsen UI is now initialized
 ons.ready =>
   console.log 'ONSEN UI READY'
   new CordovaApp()
 
+  window.fn = {}
+
+  window.fn.open = ->
+    menu = document.getElementById('menu')
+    menu.open()
+    return
+
+  # # # # #
+
+  # TODO - this should be an AbstractController method
+  window.fn.showView = (view) ->
+    menu = document.getElementById('menu')
+    view.on 'render', => menu.close()
+    window.AppLayout.layoutRegion.show(view)
+
+  # # # # #
+
+  # TODO - there should be an object that maps
+  # pageName: ControllerInstance
+  window.fn.loadPage = (page) ->
+
+    # Cache menu
+    menu = document.getElementById('menu')
+
+    # Testing Mn.CollectionView + Events
+    if page == 'keychain.html'
+
+      view = new LayoutView()
+      window.fn.showView(view)
+
+    if page == 'snippets.html'
+
+      view = new CollectionView({ collection: collection })
+      window.fn.showView(view)
+
+    else
+
+      console.log 'NOT BACKBONE VIEW'
+      # Static view?
+      # content = document.getElementById('content')
+      # menu = document.getElementById('menu')
+      # content.load(page).then menu.close.bind(menu)
+
+    return
+
+  # # # # # #
+
+  # Initializes AppLayout, handles page loading
+  window.fn.load = (page) ->
+
+    if window.AppLayout
+
+      console.log 'LOAG PAGE'
+      window.fn.loadPage(page)
+
+    else
+
+      console.log 'INIT LAYOUT VIEW'
+      window.AppLayout = new AppLayout({ el: '#content' })
+
+      # AppLayout has been rendered - app is now ready for views to be inserted in
+      window.AppLayout.on 'render', =>
+
+        console.log 'LAYOUT RENDERED'
+
+        # Loads the selected page
+        window.fn.loadPage(page)
+
+      # Renders AppLayout
+      window.AppLayout.render()
+
+    return
+
+  # # # # #
+
+
+  # TODO - navigator
   # ons.notification.alert('Welcome to Onsen UI!')
 
   # console.log 'NEW ONSEN VIEW'

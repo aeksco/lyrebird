@@ -13,13 +13,5 @@ mixin ons_toolbar(name)
         ons-icon(icon='ion-plus, material:md-menu', size='32px, material:24px')
 
 //- ons-page
-+ons_toolbar('Snippets')
-
-ons-row
-  ons-col
-
-    p
-      ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
-
-    p(style='margin-top: 30px;')
-      ons-button.send(data-click='send') SEND
++ons_toolbar('Collection')
+ons-list.collection

@@ -1,28 +1,109 @@
-//- // Third navigation component: Tabbar. This will disappear if the first or second components change their content.
+//- //- // Third navigation component: Tabbar. This will disappear if the first or second components change their content.
+//- ons-template(id='tabbar.html')
+//-   ons-page#tabbarPage
+//-     ons-toolbar
+
+//-       .left
+//-         //- // Toolbar-button with different icons depending on the platform.
+//-         ons-toolbar-button(component='button/menu')
+//-           ons-icon(icon='ion-navicon, material:md-menu', size='32px, material:24px')
+
+//-       .center LYREBIRD
+
+//-       .right
+
+//-         //- // Toolbar-button  only visible for iOS/other.
+//-         //- ons-if(platform='ios other')
+//-         //-   ons-toolbar-button(component='button/new-task')
+//-         //-     ons-icon(icon='ion-plus, material:md-menu', size='32px, material:24px')
+
+
+//-     //- // Floating Action Button only visible for Android.
+//-     //- ons-if(platform='android')
+//-     //-   ons-fab(position='right bottom', component='button/new-task')
+//-     //-     ons-icon(icon='md-edit')
+
+//-     //- // Auto-positioned Tabbar: top on Android, bottom on iOS/other.
+//-     ons-tabbar#myTabbar(position='auto')
+//-         ons-tab(page='app.html', label='Device Name', active='')
+
+mixin ons_toolbar(name)
+  ons-toolbar
+    .left
+      ons-toolbar-button(onclick='fn.open()')
+        ons-icon(icon='md-menu')
+    .center= name
+
+
+mixin page_content(name)
+  p(style='text-align: center; opacity: 0.6; padding-top: 20px;')= name
+
+
+mixin sidebar_item(name, template)
+  ons-list-item(onclick="fn.load('#{template}')", tappable='')= name
+
+//- Layout Template
 ons-template(id='tabbar.html')
-  ons-page#tabbarPage
-    ons-toolbar
+  ons-splitter
 
-      .left
-        //- // Toolbar-button with different icons depending on the platform.
-        ons-toolbar-button(component='button/menu')
-          ons-icon(icon='ion-navicon, material:md-menu', size='32px, material:24px')
+    //- Sidebar
+    ons-splitter-side#menu(side='left', width='220px', collapse='', swipeable='')
+      ons-page
+        ons-list
+          ons-list-header LYREBIRD
+          +sidebar_item('Devices', 'home.html')
+          +sidebar_item('Keychain', 'keychain.html')
+          +sidebar_item('Snippets', 'snippets.html')
+          +sidebar_item('Settings', 'settings.html')
+          +sidebar_item('About', 'about.html')
 
-      .center LYREBIRD
+    //- Main
+    ons-splitter-content#content(page='home.html')
 
-      .right
+//- Devices
+ons-template(id='home.html')
+  ons-page
+    +ons_toolbar('Devices')
+    //- +page_content('Devices')
+    ons-carousel#carousel(swipeable='', auto-scroll='', overscrollable='', style="height: 80px;")
+      ons-carousel-item(style='background-color: #085078;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Keyboard
+          //- div(style='text-align: center; margin-top: 30px;')
+          //-   p
+          //-     ons-input#keyboard(modifier='underbar', placeholder='Keyboard', float='')
+          //-   p(style='margin-top: 30px;')
+          //-     ons-button(onclick='login()') SEND
+      ons-carousel-item(style='background-color: #373B44;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Mouse
+          //- p(style='margin-top: 30px;')
+          //-   ons-button(onclick='login()') L
+          //-   ons-button(onclick='login()') R
+      ons-carousel-item(style='background-color: #D38312;')
+        div(style='text-align: center; font-size: 30px; margin-top: 20px; color: #fff;')
+          | Remote
 
-        //- // Toolbar-button  only visible for iOS/other.
-        //- ons-if(platform='ios other')
-        //-   ons-toolbar-button(component='button/new-task')
-        //-     ons-icon(icon='ion-plus, material:md-menu', size='32px, material:24px')
+//- Keychain
+ons-template(id='keychain.html')
+  ons-page
+    +ons_toolbar('Keychain')
+    +page_content('Keychain')
 
+//- Snippets
+ons-template(id='snippets.html')
+  ons-page
+    +ons_toolbar('Snippets')
+    +page_content('Snippets')
 
-    //- // Floating Action Button only visible for Android.
-    //- ons-if(platform='android')
-    //-   ons-fab(position='right bottom', component='button/new-task')
-    //-     ons-icon(icon='md-edit')
+//- Settings
+ons-template(id='settings.html')
+  ons-page
+    +ons_toolbar('Settings')
+    +page_content('Settings')
 
-    //- // Auto-positioned Tabbar: top on Android, bottom on iOS/other.
-    ons-tabbar#myTabbar(position='auto')
-      ons-tab(page='app.html', label='Device Name', active='')
+//- About
+ons-template(id='about.html')
+  ons-page
+    +ons_toolbar('About')
+    +page_content('About')
