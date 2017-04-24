@@ -12,8 +12,9 @@ class DeviceListRoute extends require '../../base/route'
     return Backbone.Radio.channel('device').request('collection').then (devices) =>
       @collection = devices
 
-  render: (id) ->
+  render: ->
     @container.show new LayoutView({ collection: @collection })
+    @hideMenu()
 
 # # # # #
 

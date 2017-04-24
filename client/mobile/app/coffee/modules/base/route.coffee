@@ -8,6 +8,10 @@ class BaseRoute extends Backbone.Routing.Route
   initialize: (options={}) ->
     @container = options.container
 
+  hideMenu: ->
+    menu = document.getElementById('menu')
+    menu.close()
+
 # # # # #
 
 module.exports = BaseRoute

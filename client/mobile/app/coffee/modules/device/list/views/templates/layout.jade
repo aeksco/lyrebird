@@ -1,12 +1,19 @@
+//- TODO - abstract into a helper file
+mixin ons_toolbar(name)
+  ons-toolbar
+    .left
+      ons-toolbar-button(onclick='fn.open()')
+        ons-icon(icon='md-menu')
+    .center= name
+
++ons_toolbar('Devices')
 ons-row
   ons-col
 
     ons-button(modifier="large" data-click='refresh' ) Refresh
     ons-button.interfaces(modifier="large") Interfaces
 
-    //- button.btn.btn-primary-outline.w-100( data-click='refresh' )
-    //-   i.fa.fa-fw.fa-refresh
-    //-   | Refresh
-
     ons-row
       ons-col( data-region='list' )
+
+

@@ -4,8 +4,6 @@
 # when no Lyrebird devices are detected
 class DeviceEmpty extends Marionette.LayoutView
   template: require './templates/empty'
-  # className: 'list-group-item list-group-item-warning'
-  # tagName: 'li'
   tagName: 'ons-list-item'
 
 # # # # #
@@ -15,19 +13,13 @@ class DeviceEmpty extends Marionette.LayoutView
 # a single detected Lyrebird devices
 class DeviceChild extends Marionette.LayoutView
   template: require './templates/child'
-  # className: 'list-group-item'
-  # tagName: 'a'
   tagName: 'ons-list-item'
 
   events:
     'click': 'onClick'
 
-  # attributes: ->
-  #   return { href: '#devices/' + @model.id }
-
   onClick: ->
-    window.location.href = '#devices/' + @model.id
-    console.log 'ON CLICK!'
+    window.fn.load('device:show', @model.id)
 
 # # # # #
 
@@ -36,8 +28,6 @@ class DeviceChild extends Marionette.LayoutView
 # view instance for each Lyrebird device detected, or display a
 # DeviceEmpty view instance when no devices are detected.
 class DeviceList extends Marionette.CollectionView
-  # className: 'list-group'
-  # tagName: 'ul'
   tagName: 'ons-list'
   childView: DeviceChild
   emptyView: DeviceEmpty
@@ -50,7 +40,6 @@ class DeviceList extends Marionette.CollectionView
 # to scan for new devices.
 class DeviceListLayout extends Marionette.LayoutView
   template: require './templates/layout'
-  # className: 'container-fluid'
 
   tagName: 'ons-page'
 
@@ -68,11 +57,9 @@ class DeviceListLayout extends Marionette.LayoutView
     @listRegion.show new DeviceList({ collection: @collection })
 
   interfaces: ->
-    console.log 'interfaces!'
     window.location.href = '#interface'
 
   refreshDevices: ->
-    console.log 'REFRESH DEVICES'
     Backbone.Radio.channel('device').trigger('refresh')
 
 # # # # #
