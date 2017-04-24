@@ -1,5 +1,6 @@
 
 # TODO - this should be abstracted into an onsenView
+# TODO - this should be managed elsewhere
 class AppLayout extends Marionette.LayoutView
   template: require './layout'
 
@@ -20,3 +21,6 @@ class AppLayout extends Marionette.LayoutView
 # # # # #
 
 module.exports = AppLayout
+
+# TODO - do this?
+# module.exports = new AppLayout().render()

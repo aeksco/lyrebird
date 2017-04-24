@@ -1,39 +1,16 @@
-# This file defines a manifest for Tack's client application.
-# This includes configuration, Services, Components, Modules
-# and the Application singleton instance
-
-# # # # #
 
 # Application configuration manifest
 # require './config'
 
-# Application
-CordovaApp = require './cordova_app'
+# Application & Router & Layout
+CordovaApp  = require './cordova_app'
+AppRouter   = require './application/router'
+AppLayout   = require './onsen_tests/app_layout'
 
-# Application Layout
-window.Layout = require './application/layout' # TODO - decomission this view
-AppRouter = require './application/router'
-AppLayout = require './onsen_tests/app_layout'
-
-# Services are routeless, viewless background workers
-# We currently use a single service to manage sending SMS
-# and requesting requisite permissions
+# Services
 # BluetoothService      = require './services/bluetooth'
 BluetoothDevService   = require './services/bluetooth_dev'
 KnownDeviceServie = require './services/known_device'
-
-# TODO - all of these components can be phased out, methinks
-# # Components are routeless services with views that are
-# # accessible anywhere in the application
-# # Used to manage the header, sidebar, flash, and confirm UI elements
-# SidebarComponent  = require './components/sidebar/component'
-# FlashComponent    = require './components/flash/component'
-# OverlayComponent  = require './components/overlay/component'
-# ConfirmComponents = require './components/confirm/component'
-
-# Modules represent collections of endpoints in the application.
-# They have routes and entities (models and collections)
-# Each route represents an endpoint, or 'page' in the app.
 
 # Module Services
 # TODO - rename to factories?
@@ -46,15 +23,17 @@ PasswordService = require './modules/password/service'
 # # Page has loaded, document is ready
 # $(document).on 'ready', => new CordovaApp()
 
-# # # # # #
-
-# // Onsen UI is now initialized
+# Onsen UI is now initialized
 ons.ready =>
-
-  console.log 'ONSEN UI READY'
+  console.log 'ONSEN READY'
 
   # TODO - is CordovaApp still needed?
   new CordovaApp()
+
+  # # # # # # # # # # # # # # # # # # # #
+  # # # # # # # # # # # # # # # # # # # #
+  # TODO - everything below this must be abstracted
+
 
   # TODO - rename window.fn to window.App
   # Use for things like loadPage, hide/show menu?
