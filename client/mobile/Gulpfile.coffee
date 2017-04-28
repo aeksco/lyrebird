@@ -18,6 +18,27 @@ paths =
     src:  './app/sass/app.sass'
     dest: './www/css/'
 
+  onsen_ui:
+    src:  './node_modules/onsenui/css/onsenui.css'
+    dest: './www/css'
+
+  onsen_ui_components:
+    src:  './node_modules/onsenui/css/onsen-css-components.css'
+    dest: './www/css'
+
+  onsen_ui_icons:
+    font_awesome:
+      src:  './node_modules/onsenui/css/font_awesome/**/*'
+      dest: './www/css/font_awesome'
+
+    ionicons:
+      src:  './node_modules/onsenui/css/ionicons/**/*'
+      dest: './www/css/ionicons'
+
+    material:
+      src:  './node_modules/onsenui/css/material-design-iconic-font/**/*'
+      dest: './www/css/material-design-iconic-font'
+
   concat:
     dest: 'vendor.js'
     src: [
@@ -64,12 +85,47 @@ gulp.task 'watch', ->
   gulp.watch paths.src + '**/*.sass',    ['sass']
 
 # # # # #
+# Onsen UI Asset Tasks
+
+# Copy Onsen UI
+gulp.task 'copy_onsen_ui', ->
+  gulp.src paths.onsen_ui.src
+    .pipe plugins.plumber()
+    .pipe gulp.dest(paths.onsen_ui.dest)
+
+# Copy Onsen UI Component
+gulp.task 'copy_onsen_ui_components', ->
+  gulp.src paths.onsen_ui_components.src
+    .pipe plugins.plumber()
+    .pipe gulp.dest(paths.onsen_ui_components.dest)
+
+# Copy Onsen UI FontAwesome
+gulp.task 'copy_onsen_ui_icons_fa', ->
+  gulp.src paths.onsen_ui_icons.font_awesome.src
+    .pipe plugins.plumber()
+    .pipe gulp.dest(paths.onsen_ui_icons.font_awesome.dest)
+
+# Copy Onsen UI Ionicons
+gulp.task 'copy_onsen_ui_icons_ionicons', ->
+  gulp.src paths.onsen_ui_icons.ionicons.src
+    .pipe plugins.plumber()
+    .pipe gulp.dest(paths.onsen_ui_icons.ionicons.dest)
+
+# Copy Onsen UI Material Icons
+gulp.task 'copy_onsen_ui_icons_material', ->
+  gulp.src paths.onsen_ui_icons.material.src
+    .pipe plugins.plumber()
+    .pipe gulp.dest(paths.onsen_ui_icons.material.dest)
+
+gulp.task 'onsen_ui_assets', ['copy_onsen_ui', 'copy_onsen_ui_components', 'copy_onsen_ui_icons_fa', 'copy_onsen_ui_icons_ionicons', 'copy_onsen_ui_icons_material']
+
+# # # # #
 
 # Build tasks
 gulp.task 'default', ['dev']
 
 gulp.task 'dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'sass', 'jade', 'concat', 'bundle', 'watch', 'webserver')
+  plugins.runSequence.use(gulp)('env_dev', 'sass', 'jade', 'onsen_ui_assets', 'concat', 'bundle', 'watch', 'webserver')
 
 gulp.task 'release', =>
   plugins.runSequence.use(gulp)('env_prod', 'sass', 'jade', => console.log 'release completed.' )
