@@ -7,13 +7,10 @@ mixin ons_toolbar(name)
     .center= name
 
 +ons_toolbar('Devices')
+
+ons-pull-hook#pull-hook(data-pull='refresh')
+  | Pull to refresh
+  //- ons-progress-circular(indeterminate)
+
 ons-row
-  ons-col
-
-    ons-button(modifier="large" data-click='refresh' ) Refresh
-    ons-button.interfaces(modifier="large") Interfaces
-
-    ons-row
-      ons-col( data-region='list' )
-
-
+  ons-col( data-region='list' )

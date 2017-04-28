@@ -1,0 +1,64 @@
+mixin keyboardKey(opts)
+  ons-button(data-keycode=opts.key)= opts.key
+
+//- // // // // //
+
+ons-row
+  ons-col
+    +keyboardKey({ key: 'TAB' })
+    +keyboardKey({ key: 'Q' })
+    +keyboardKey({ key: 'W' })
+    +keyboardKey({ key: 'E' })
+    +keyboardKey({ key: 'R' })
+    +keyboardKey({ key: 'T' })
+    +keyboardKey({ key: 'Y' })
+    +keyboardKey({ key: 'U' })
+    +keyboardKey({ key: 'I' })
+    +keyboardKey({ key: 'O' })
+    +keyboardKey({ key: 'P' })
+    +keyboardKey({ key: '[' })
+    +keyboardKey({ key: ']' })
+    +keyboardKey({ key: '\\' })
+
+ons-row
+  ons-col
+    +keyboardKey({ key: 'CAPS' })
+    +keyboardKey({ key: 'A' })
+    +keyboardKey({ key: 'S' })
+    +keyboardKey({ key: 'D' })
+    +keyboardKey({ key: 'F' })
+    +keyboardKey({ key: 'G' })
+    +keyboardKey({ key: 'H' })
+    +keyboardKey({ key: 'J' })
+    +keyboardKey({ key: 'K' })
+    +keyboardKey({ key: 'L' })
+    +keyboardKey({ key: ';' })
+    +keyboardKey({ key: "'" })
+    +keyboardKey({ key: 'RETURN' })
+
+ons-row
+  ons-col
+    +keyboardKey({ key: 'SHIFT' })
+    +keyboardKey({ key: 'Z' })
+    +keyboardKey({ key: 'X' })
+    +keyboardKey({ key: 'C' })
+    +keyboardKey({ key: 'V' })
+    +keyboardKey({ key: 'B' })
+    +keyboardKey({ key: 'N' })
+    +keyboardKey({ key: 'M' })
+    +keyboardKey({ key: ',' })
+    +keyboardKey({ key: '.' })
+    +keyboardKey({ key: '/' })
+    +keyboardKey({ key: 'SHIFT' })
+
+ons-row
+  ons-col
+    +keyboardKey({ key: 'CTRL' })
+    +keyboardKey({ key: 'ALT' })
+    +keyboardKey({ key: 'CMD' })
+    +keyboardKey({ key: ' ' })
+    +keyboardKey({ key: 'CMD' })
+    +keyboardKey({ key: 'ALT' })
+    +keyboardKey({ key: 'FN' })
+    +keyboardKey({ key: 'CTRL' })
+

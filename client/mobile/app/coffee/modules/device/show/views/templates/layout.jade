@@ -6,22 +6,18 @@ mixin ons_toolbar(name)
         ons-icon(icon='md-menu')
     .center= name
 
+//- // // // // //
+
 +ons_toolbar(name)
 
-ons-row
-  ons-col= name
-
-ons-row
-  ons-col= id
-
-ons-row
-  ons-col Name
-  ons-col Color
+ons-list
+  ons-list-item= name
+  ons-list-item= id
 
 ons-row
   ons-col(data-region='controls')
 
 
-  //- .col-xs-4(data-region='rssi')
-  //- .col-xs-12.m-t-1(data-region='controls')
-  //- .col-xs-12.m-t-1(data-region='details')
+//- .col-xs-4(data-region='rssi')
+//- .col-xs-12.m-t-1(data-region='controls')
+//- .col-xs-12.m-t-1(data-region='details')

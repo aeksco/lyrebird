@@ -12,6 +12,12 @@ class OnsenLayout extends Marionette.LayoutView
     'click [data-mouse]': 'onMouseClick'
     'click [data-click=send]': 'onSend'
 
+  # onRender: ->
+  #   screen.orientation.lock('landscape')
+
+  # onBeforeDestroy: ->
+  #   screen.orientation.unlock()
+
   # MOUSE
   # TODO - should be a behavior
   mousePos:

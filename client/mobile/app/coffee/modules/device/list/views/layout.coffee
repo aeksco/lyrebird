@@ -47,20 +47,37 @@ class DeviceListLayout extends Marionette.LayoutView
     listRegion: '[data-region=list]'
 
   ui:
-    refresh: '[data-click=refresh]'
+    refresh: '[data-pull=refresh]'
 
   events:
-    'click @ui.refresh': 'refreshDevices'
-    'click .interfaces': 'interfaces'
+    'changestate @ui.refresh': 'onPull'
+
+  onPull: (e) ->
+    state = e.originalEvent.state
+
+    switch state
+      when 'initial'
+        message = 'Pull to refresh'
+
+      when 'preaction'
+        message = 'Release'
+
+      when 'action'
+        message = 'Loading...'
+
+    # @ui.refresh.html(message)
+    # pullHook.innerHTML = message
+    # @ui.refresh.get(0).innerHTML = message
 
   onRender: ->
     @listRegion.show new DeviceList({ collection: @collection })
+    setTimeout( @initPullHook, 500)
 
-  interfaces: ->
-    window.location.href = '#interface'
-
-  refreshDevices: ->
-    Backbone.Radio.channel('device').trigger('refresh')
+  initPullHook: =>
+    @ui.refresh.get(0)._show() # TODO - why does this have to be invoked manually?
+    @ui.refresh.get(0).onAction = (done) ->
+      Backbone.Radio.channel('device').trigger('refresh')
+      return setTimeout(done, 1000)
 
 # # # # #
 
